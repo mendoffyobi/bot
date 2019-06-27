@@ -99,7 +99,6 @@
           followAllRedirects: true,
           success: function( result, dataType ){
             if( result.url ){
-              alert('success url:' + result.url);
               var img_url = result.url;
               var img_url0 = img_url;
               var data = {
@@ -112,7 +111,6 @@
               ]).then( () => {
                 liff.closeWindow();
               }).catch( ( err ) => {
-                alert(err);
                 liff.closeWindow();
               });
             }
