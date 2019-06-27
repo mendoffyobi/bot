@@ -40,10 +40,15 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
+      window.onload = function (e) {
+        try {
+          liff.init(function (data) {
+          });
+        } catch(ex) {
+          alert(ex);
+        }
+      };
       window.addEventListener("load", function () {
-        // LIFF
-        liff.init(function (data) {
-        });
         // 必要な変数を宣言しておく
         var canvas = document.getElementById("myCanvas");
         var c = canvas.getContext("2d");
