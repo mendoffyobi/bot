@@ -38,6 +38,22 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
+      function sendMsg() {
+        var text = '投稿';
+        liff.sendMessages([
+          {
+            'type': 'text',
+            'text':  text
+          }
+        ])
+        .then(() => {
+          liff.closeWindow();
+        })
+        .catch((err) => {
+          alert(err);
+          liff.closeWindow();
+        });
+      }
       window.onload = function (e) {
         try {
           liff.init(function (data) {
@@ -105,7 +121,7 @@
       <div class="canvas"><canvas id="myCanvas"></canvas></div>
     </div>
     <div class="sub">
-      <input id="post_button" type="button" value="post" onclick="alert('post');"/>
+      <input id="post_button" type="button" value="post" onclick="sendMsg();"/>
     </div>
   </body>
 </html>
