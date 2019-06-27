@@ -83,8 +83,8 @@
           //. フォームにして送信
           console.log( 'Sending data... : ' + blob.size );
           var formData = new FormData();
-          formData.append( 'action', 'postImage' );
           formData.append( 'image', blob );
+          formData.append( 'action', 'postImage' );
           var sid = $('input:hidden[name="sid"]').val();
           var url = BASE_URL.replace('@SID', sid);
         } catch (ex) {
