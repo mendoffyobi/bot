@@ -98,6 +98,7 @@
           contentType: false,
           processData: false,
           success: function( result, dataType ){
+            alert(result);
             if( result.id ){
               alert('success id:' + result.id);
               var img_url = base_url + 'image?id=' + result.id;
