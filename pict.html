@@ -96,6 +96,7 @@
           data: formData,
           contentType: false,
           processData: false,
+          followAllRedirects: true,
           success: function( result, dataType ){
             if( result.url ){
               alert('success url:' + result.url);
