@@ -104,7 +104,7 @@
           followAllRedirects: true,
           beforeSend: function(){
             $('.loading').removeClass('hide');
-          }
+          },
           success: function( result, dataType ){
             $('.loading').addClass('hide');
             if( result.url ){
