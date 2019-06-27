@@ -102,7 +102,11 @@
           contentType: false,
           processData: false,
           followAllRedirects: true,
+          beforeSend: function(){
+            $('.loading').removeClass('hide');
+          }
           success: function( result, dataType ){
+            $('.loading').addClass('hide');
             if( result.url ){
               var img_url = result.url;
               var img_url0 = img_url;
@@ -121,6 +125,7 @@
             }
           },
           error: function( jqXHR, textStatus, errorThrown ){
+            $('.loading').addClass('hide');
             alert( textStatus + ': ' + errorThrown );
           }
         });
