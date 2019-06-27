@@ -25,8 +25,8 @@
       #middle {text-align:center; line-height:44px; font-size:200%;}
       #large {text-align:center; line-height:44px; font-size:400%;}
       /* お絵描きする部分のCSS */
-      .canvas {width:450px; height:400px; border:1px solid #ccc;}
-      .canvas canvas {width:450px; height:400px;}
+      .canvas {width:450px; height:300px; border:1px solid #ccc;}
+      .canvas canvas {width:450px; height:300px;}
       /* 削除ボタンのCSS */
       #delete_button {width:450px; height:44px; margin-top:10px;}
     </style>
@@ -37,7 +37,7 @@
         var canvas = document.getElementById("myCanvas");
         var c = canvas.getContext("2d");
         var w = 450;
-        var h = 400;
+        var h = 300;
         var drawing = false;
         var oldPos;
         // CanvasとContextを初期化する
