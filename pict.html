@@ -97,10 +97,6 @@
           var mouseY = event.touches[0].clientY - $(canvas).position().top + scrollY();
           return {x:mouseX, y:mouseY};
         }
-        // 投稿ボタンの動作
-        $("post_button").click(function () {
-          alert('POST');
-        });
         // ブラウザのデフォルト動作を禁止する関数
         // 指での捜査時に、ビヨーンと画面外が表示される箇所とかを防ぐ
         // ただし、liやbuttonといった色変更や太さ変更や削除機能を持つ
@@ -126,7 +122,7 @@
       <div class="canvas"><canvas id="myCanvas"></canvas></div>
     </div>
     <div class="sub">
-      <input id="post_button" type="button" value="post"/>
+      <input id="post_button" type="button" value="post" onclick="alert('post');"/>
     </div>
   </body>
 </html>
