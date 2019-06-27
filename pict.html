@@ -97,10 +97,9 @@
           contentType: false,
           processData: false,
           success: function( result, dataType ){
-            alert(result);
-            if( result.id ){
+            if( result.url ){
               alert('success id:' + result.id);
-              var img_url = base_url + 'image?id=' + result.id;
+              var img_url = result.url;
               var img_url0 = img_url + '&att=thumbnail';
               var data = {
                 type: "image",
@@ -110,10 +109,9 @@
               liff.sendMessages([
                 data
               ]).then( () => {
-                console.log( 'message sent' );
                 liff.closeWindow();
               }).catch( ( err ) => {
-                console.log( 'error', err );
+                liff.closeWindow();
               });
             }
           },
