@@ -61,30 +61,34 @@
         }
       };
       function post(){
-        var canvas = document.getElementById('myCanvas');
-        if( !canvas || !canvas.getContext ){
-          return false;
+        try {
+          var canvas = document.getElementById('myCanvas');
+          if( !canvas || !canvas.getContext ){
+            return false;
+          }
+          var ctx = canvas.getContext( '2d' );
+          //. 画像データ
+          var png = canvas.toDataURL( 'image/png' );
+          png = png.replace( /^.*,/, '' );
+          //. バイナリ変換
+          var bin = atob( png );
+          var buffer = new Uint8Array( bin.length );
+          for( var i = 0; i < bin.length; i ++ ){
+            buffer[i] = bin.charCodeAt( i );
+          }
+          var blob = new Blob( [buffer.buffer], {
+            type: 'image/png'
+          });
+          //. フォームにして送信
+          console.log( 'Sending data... : ' + blob.size );
+          var formData = new FormData();
+          formData.append( 'action', 'getXxx' );
+          formData.append( 'image', blob );
+          var sid = 'AKfycbxvMNsLlv7Jd1VwfLkco25lmVZcNYhGTJQNjT5uU60ofOmRmPg';
+          var url = 'https://script.google.com/macros/s/@SID/exec'.replace('@SID', sid);
+        } catch (ex) {
+          alert(ex);
         }
-        var ctx = canvas.getContext( '2d' );
-        //. 画像データ
-        var png = canvas.toDataURL( 'image/png' );
-        png = png.replace( /^.*,/, '' );
-        //. バイナリ変換
-        var bin = atob( png );
-        var buffer = new Uint8Array( bin.length );
-        for( var i = 0; i < bin.length; i ++ ){
-          buffer[i] = bin.charCodeAt( i );
-        }
-        var blob = new Blob( [buffer.buffer], {
-          type: 'image/png'
-        });
-        //. フォームにして送信
-        console.log( 'Sending data... : ' + blob.size );
-        var formData = new FormData();
-        formData.append( 'action', 'getXxx' );
-        formData.append( 'image', blob );
-        var sid = 'AKfycbxvMNsLlv7Jd1VwfLkco25lmVZcNYhGTJQNjT5uU60ofOmRmPg';
-        var url = 'https://script.google.com/macros/s/@SID/exec'.replace('@SID', sid);
         $.ajax({
           type: 'POST',
           url: url,
