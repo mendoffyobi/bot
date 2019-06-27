@@ -38,6 +38,18 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
+      var getUrlVars = function(){
+        var vars = {};
+        var param = location.search.substring(1).split('&');
+        for(var i = 0; i < param.length; i++) {
+          var keySearch = param[i].search(/=/);
+          var key = '';
+          if(keySearch != -1) key = param[i].slice(0, keySearch);
+          var val = param[i].slice(param[i].indexOf('=', 0) + 1);
+          if(key != '') vars[key] = decodeURI(val);
+        }
+        return vars;
+      }
       window.onload = function (e) {
         try {
           liff.init(function (data) {
@@ -163,7 +175,7 @@
       <div class="canvas"><canvas id="myCanvas"></canvas></div>
     </div>
     <div class="sub">
-      <input id="post_button" type="button" value="post" onclick="sendMsg();"/>
+      <input id="post_button" type="button" value="post" onclick="post();"/>
     </div>
   </body>
 </html>
