@@ -55,7 +55,7 @@
           liff.init(function (data) {
           });
           var param = getUrlVars();
-          alert(param['sid']);
+          $('input:hidden[name="sid"]').val(param['sid']);
         } catch(ex) {
           alert(ex);
         }
@@ -85,7 +85,8 @@
           var formData = new FormData();
           formData.append( 'action', 'getXxx' );
           formData.append( 'image', blob );
-          var sid = 'AKfycbxvMNsLlv7Jd1VwfLkco25lmVZcNYhGTJQNjT5uU60ofOmRmPg';
+          var sid = $('input:hidden[name="sid"]').val();
+          alert(sid);
           var url = 'https://script.google.com/macros/s/@SID/exec'.replace('@SID', sid);
         } catch (ex) {
           alert(ex);
@@ -181,6 +182,7 @@
     </div>
     <div class="sub">
       <input id="post_button" type="button" value="post" onclick="post();"/>
+      <input type="hidden" name="sid"/>
     </div>
   </body>
 </html>
