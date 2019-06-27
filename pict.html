@@ -71,17 +71,6 @@
           //. 画像データ
           var png = canvas.toDataURL( 'image/png' );
           png = png.replace( /^.*,/, '' );
-          //. バイナリ変換
-          //var bin = atob( png );
-          //var buffer = new Uint8Array( bin.length );
-          //for( var i = 0; i < bin.length; i ++ ){
-          //  buffer[i] = bin.charCodeAt( i );
-          //}
-          //var blob = new Blob( [buffer.buffer], {
-          //  type: 'image/png'
-          //});
-          //. フォームにして送信
-          //alert( 'Sending data... : ' + blob.size );
           var formData = new FormData();
           formData.append( 'image', png );
           formData.append( 'action', 'postImage' );
@@ -131,7 +120,7 @@
         // CanvasとContextを初期化する
         canvas.width = w;
         canvas.height = h;
-        c.strokeStyle = "#000000";
+        c.strokeStyle = "#0000ff";
         c.lineWidth = 5;
         c.lineJoin = "round";
         c.lineCap = "round";
