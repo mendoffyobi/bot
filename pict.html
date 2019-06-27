@@ -81,7 +81,7 @@
             type: 'image/png'
           });
           //. フォームにして送信
-          console.log( 'Sending data... : ' + blob.size );
+          alert( 'Sending data... : ' + blob.size );
           var formData = new FormData();
           formData.append( 'image', blob );
           formData.append( 'action', 'postImage' );
