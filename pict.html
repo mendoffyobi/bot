@@ -8,6 +8,10 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <title>sample</title>
     <style>
       /* グローバルな設定 */
@@ -37,6 +41,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
       window.addEventListener("load", function () {
+        // LIFF
+        liff.init(function (data) {
+        });
         // 必要な変数を宣言しておく
         var canvas = document.getElementById("myCanvas");
         var c = canvas.getContext("2d");
@@ -87,9 +94,9 @@
           var mouseY = event.touches[0].clientY - $(canvas).position().top + scrollY();
           return {x:mouseX, y:mouseY};
         }
-        // 削除ボタンの動作
-        $("delete_button").click(function () {
-          c.clearRect(0, 0, $(canvas).width(), $(canvas).height());
+        // 投稿ボタンの動作
+        $("post_button").click(function () {
+          alert('POST');
         });
         // ブラウザのデフォルト動作を禁止する関数
         // 指での捜査時に、ビヨーンと画面外が表示される箇所とかを防ぐ
@@ -114,7 +121,7 @@
   <body ontouchmove="event.preventDefault()">
     <div class="main">
       <div class="canvas"><canvas id="myCanvas"></canvas></div>
-      <input id="delete_button" type="button" value="delete"/>
+      <input id="post_button" type="button" value="post"/>
     </div>
   </body>
 </html>
