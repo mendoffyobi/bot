@@ -83,10 +83,9 @@
           //. フォームにして送信
           console.log( 'Sending data... : ' + blob.size );
           var formData = new FormData();
-          formData.append( 'action', 'getXxx' );
+          formData.append( 'action', 'postImage' );
           formData.append( 'image', blob );
           var sid = $('input:hidden[name="sid"]').val();
-          alert(sid);
           var url = 'https://script.google.com/macros/s/@SID/exec'.replace('@SID', sid);
         } catch (ex) {
           alert(ex);
