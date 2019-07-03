@@ -71,18 +71,20 @@ function getUrlList(sid, key) {
   }).done(function(data){
     $('.loading').addClass('hide');
     // ulタグを生成してinsertに追加
-    var insert = $('<ul class="list-group">').addClass('list');
+    var ul = $('<ul class="list-group">').addClass('list');
     for (var i = 0; i < data.length; i++) {
       // liタグを生成してテキスト追加
-      var newLi = $('<li class="list-group-item list-group-item-info">').text(data[i].URL);
-      insert.append(newLi);
+      var li = $('<li class="list-group-item list-group-item-info">').text(data[i].URL);
+      var trash = $('<i class="fas fa-trash-alt fa-2x">');
+      li.append(trash);
+      ul.append(li);
     }
-    newLi = $('<li class="list-group-item list-group-item-info">');
+    li = $('<li class="list-group-item list-group-item-info">');
     var plus  = $('<i class="far fa-plus-square fa-3x">');
-    newLi.append(plus);
-    insert.append(newLi);
+    li.append(plus);
+    ul.append(li);
     // insertを#sample内に追加
-    $('#sample').append(insert);
+    $('#sample').append(ul);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     console.log("failed...");
     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
