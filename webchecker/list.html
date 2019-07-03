@@ -70,10 +70,10 @@ function getUrlList(sid, key) {
   }).done(function(data){
     $('.loading').addClass('hide');
     // ulタグを生成してinsertに追加
-    var insert = $('<ul>').addClass('list');
+    var insert = $('<ul class="list-group">').addClass('list');
     for (var i = 0; i < data.length; i++) {
       // liタグを生成してテキスト追加
-      var newLi = $('<li>').text(data[i].URL);
+      var newLi = $('<li class="list-group-item">').text(data[i].URL);
       // insertに生成したliタグを追加
       insert.append(newLi);
     }
