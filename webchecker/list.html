@@ -30,16 +30,14 @@ var getUrlVars = function(){
 }
 window.onload = function (e) {
   try {
-    var userId;
     liff.init(function (data) {
-      userId = data.context.userId;
+      const userId = data.context.userId;
       $('input:hidden[name="userId"]').val(userId);
-      alert(userId);
+      var param = getUrlVars();
+      if (userId != '') {
+        getUrlList(param['sid'], userId);
+      }
     });
-    var param = getUrlVars();
-    if (userId != '') {
-      getUrlList(param['sid'], userId);
-    }
   } catch(ex) {
     alert(ex);
   }
