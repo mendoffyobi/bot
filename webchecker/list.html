@@ -16,9 +16,32 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
 <script>
+var getUrlVars = function(){
+  var vars = {};
+  var param = location.search.substring(1).split('&');
+  for(var i = 0; i < param.length; i++) {
+    var keySearch = param[i].search(/=/);
+    var key = '';
+    if(keySearch != -1) key = param[i].slice(0, keySearch);
+    var val = param[i].slice(param[i].indexOf('=', 0) + 1);
+    if(key != '') vars[key] = decodeURI(val);
+  }
+  return vars;
+}
 window.onload = function (e) {
-  liff.init(function (data) {
-  });
+  try {
+    var userId;
+    liff.init(function (data) {
+      userId = data.context.userId;
+      $('input:hidden[name="userId"]').val(userId);
+    });
+    var param = getUrlVars();
+    if (userId != '') {
+      getUrlList(param['sid'], userId);
+    }
+  } catch(ex) {
+    alert(ex);
+  }
 };
 function sendMsg() {
   var text = 'リスト';
@@ -36,6 +59,28 @@ function sendMsg() {
     liff.closeWindow();
   });
 }
+function getUrlList(sid, key) {
+  var url = 'https://script.google.com/macros/s/@SID/exec'.replace('@SID', sid);
+  $.ajax({
+    url: url,
+    type: 'GET',
+    data: { action: "getUrlList", id: key},
+    beforeSend: function(){
+      $('.loading').removeClass('hide');
+    }
+  }).done(function(data){
+    $('.loading').addClass('hide');
+    for (var i =0; i < data.length; i++) {
+      var u = data[i].URL;
+      alert(u);
+    }
+  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+    console.log("failed...");
+    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+    console.log("textStatus     : " + textStatus);
+    console.log("errorThrown    : " + errorThrown.message);
+  });
+}
 </script>
 <style type="text/css">
 .big { font-size:13pt; }
@@ -49,42 +94,6 @@ function sendMsg() {
     &nbsp;
   </div>
   <div class="row">
-    <div class="col-sm-1">
-      <font size="3">対象年</font>
-    </div>
-    <div class="col-sm-11">
-      <select id="year" style="width:100px">
-        <option value='2019'>2019</option>
-        <option value='2018'>2018</option>
-        <option value='2017'>2017</option>
-      </select>
-    </div>
-  </div>
-  <div class="row">
-    &nbsp;
-  </div>
-  <div class="row">
-    <div class="col-sm-1">
-      <font size="3">対象月</font>
-    </div>
-    <div class="col-sm-11">
-      <select id="month" style="width:50px">
-        <option value='01'>01</option>
-        <option value='02'>02</option>
-        <option value='03'>03</option>
-        <option value='04'>04</option>
-        <option value='05'>05</option>
-        <option value='06'>06</option>
-        <option value='07'>07</option>
-        <option value='08'>08</option>
-        <option value='09'>09</option>
-        <option value='10'>10</option>
-        <option value='11'>11</option>
-        <option value='12'>12</option>
-      </select>
-    </div>
-  </div>
-  <div class="row">
     &nbsp;
   </div>
   <div class="row">
@@ -94,6 +103,9 @@ function sendMsg() {
     </div>
   </div>
   <div class="loading hide"></div>
+  <div class="row">
+    <input type="hidden" name="userid">
+  </div>
 </div>
 </body>
 </html>
