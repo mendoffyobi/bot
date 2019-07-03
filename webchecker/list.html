@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -74,7 +75,8 @@ function getUrlList(sid, key) {
     for (var i = 0; i < data.length; i++) {
       // liタグを生成してテキスト追加
       var newLi = $('<li class="list-group-item list-group-item-info">').text(data[i].URL);
-      // insertに生成したliタグを追加
+      var plus  = $('<i class="far fa-plus-square">');
+      newLi.append(plus);
       insert.append(newLi);
     }
     // insertを#sample内に追加
