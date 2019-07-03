@@ -69,10 +69,16 @@ function getUrlList(sid, key) {
     }
   }).done(function(data){
     $('.loading').addClass('hide');
-    for (var i =0; i < data.length; i++) {
-      var u = data[i].URL;
-      alert(u);
+    // ulタグを生成してinsertに追加
+    var insert = $('<ul>').addClass('list');
+    for (var i = 0; i < data.length; i++) {
+      // liタグを生成してテキスト追加
+      var newLi = $('<li>').text(data[i].URL);
+      // insertに生成したliタグを追加
+      insert.append(newLi);
     }
+    // insertを#sample内に追加
+    $('#sample').append(insert);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     console.log("failed...");
     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -93,7 +99,7 @@ function getUrlList(sid, key) {
     &nbsp;
   </div>
   <div class="row">
-    &nbsp;
+    <div class="col-sm-12" id="sample"></div>
   </div>
   <div class="row">
     <div class="col-sm-1"></div>
