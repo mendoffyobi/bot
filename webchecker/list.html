@@ -75,7 +75,8 @@ function getUrlList(sid, key) {
     for (var i = 0; i < data.length; i++) {
       // liタグを生成してテキスト追加
       var li = $('<li class="list-group-item">');
-      var txt = $('<span width=70%>').text(data[i].TITLE);
+      var text = data[i].TITLE.length >= 25 ? data[i].TITLE.substring(0, 22) + '...' : data[i].TITLE;
+      var span = $('<span width=70%>').text(text);
       var btn = $('<i class="fas fa-2x fa-pull-right">');
       var trash = $('<i class="fas fa-trash-alt fa-2x fa-pull-right">');
       li.removeClass('on off');
@@ -87,7 +88,7 @@ function getUrlList(sid, key) {
         li.addClass('off');
         btn.addClass('fa-toggle-off');
       }
-      li.append(txt);
+      li.append(span);
       li.append(btn);
       li.append(trash);
       ul.append(li);
