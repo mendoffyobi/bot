@@ -75,7 +75,7 @@ function getUrlList(sid, key) {
     for (var i = 0; i < data.length; i++) {
       // liタグを生成してテキスト追加
       var li = $('<li class="list-group-item">');
-      var txt = $('<span>').text(data[i].TITLE.substring(0, 20));
+      var txt = $('<span width=70%>').text(data[i].TITLE);
       var btn = $('<i class="fas fa-2x fa-pull-right">');
       var trash = $('<i class="fas fa-trash-alt fa-2x fa-pull-right">');
       li.removeClass('on off');
