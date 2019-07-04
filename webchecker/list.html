@@ -80,13 +80,13 @@ function getUrlList(sid, key) {
       var btn = $('<i class="fas fa-2x fa-pull-right">');
       var trash = $('<i class="fas fa-trash-alt fa-2x fa-pull-right gray">');
       li.removeClass('on off');
-      btn.removeClass('fa-bell fa-bell-slash');
+      btn.removeClass('fa-eye fa-eye-slash');
       if (data[i].FLG == 'ON') {
         li.addClass('on');
-        btn.addClass('fa-bell');
+        btn.addClass('fa-eye');
       } else {
         li.addClass('off');
-        btn.addClass('fa-bell-slash');
+        btn.addClass('fa-eye-slash');
       }
       li.append(span);
       li.append(trash);
@@ -135,11 +135,11 @@ function getUrlList(sid, key) {
 .gray {
   color: #808080
 }
-.fa-bell {
+.fa-eye {
   align-items: center;
   color: #0033ff
 }
-.fa-bell-slash {
+.fa-eye-slash {
   align-items: center;
   color: #cc0000
 }
