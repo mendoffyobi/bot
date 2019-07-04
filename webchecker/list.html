@@ -75,9 +75,18 @@ function getUrlList(sid, key) {
     for (var i = 0; i < data.length; i++) {
       // liタグを生成してテキスト追加
       var li = $('<li class="list-group-item">').text(data[i].TITLE);
-      li.removeClass('on off');
-      li.addClass(data[i].FLG == 'ON' ? 'on' : 'off');
+      var btn = $('<i class="fas fa-2x fa-pull-right">');
       var trash = $('<i class="fas fa-trash-alt fa-2x fa-pull-right">');
+      li.removeClass('on off');
+      btn.removeClass('fa-toggle-on fa-toggle-off');
+      if (data[i].FLG == 'ON') {
+        li.addClass('on');
+        btn.addClass('fa-toggle-on');
+      } else {
+        li.addClass('off');
+        btn.addClass('fa-toggle-off');
+      }
+      li.append(btn);
       li.append(trash);
       ul.append(li);
     }
@@ -115,11 +124,9 @@ function getUrlList(sid, key) {
   background-size: 150px 150px;
 }
 .on {
-  color: #ffffff;
   background: rgba(30,144,255,.8);
 }
 .off {
-  color: #818181;
   background: rgba(77,0,0,.8);
 }
 </style>
