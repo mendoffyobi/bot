@@ -80,13 +80,13 @@ function getUrlList(sid, key) {
       var btn = $('<i class="fas fa-2x fa-pull-right">');
       var trash = $('<i class="fas fa-trash-alt fa-2x fa-pull-right gray">');
       li.removeClass('on off');
-      btn.removeClass('fa-toggle-on fa-toggle-off');
+      btn.removeClass('fa-bell fa-bell-slash');
       if (data[i].FLG == 'ON') {
         li.addClass('on');
-        btn.addClass('fa-toggle-on');
+        btn.addClass('fa-bell');
       } else {
         li.addClass('off');
-        btn.addClass('fa-toggle-off');
+        btn.addClass('fa-bell-slash');
       }
       li.append(span);
       li.append(trash);
@@ -134,6 +134,12 @@ function getUrlList(sid, key) {
 }
 .gray {
   color: #808080
+}
+.fa-bell {
+  color: #0033ff
+}
+.fa-bell-slash {
+  color: #cc0000
 }
 </style>
 <title>WEBページ一覧</title>
