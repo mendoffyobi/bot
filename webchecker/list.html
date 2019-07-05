@@ -101,10 +101,8 @@ function getUrlList(sid, key) {
     // insertを#sample内に追加
     $('#sample').append(ul);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-    console.log("failed...");
-    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-    console.log("textStatus     : " + textStatus);
-    console.log("errorThrown    : " + errorThrown.message);
+    $('.loading').addClass('hide');
+    alert('URL一覧取得に失敗しました');
   });
 }
 function registUrl() {
@@ -116,6 +114,8 @@ function registUrl() {
   var userId = $('input:hidden[name="userId"]').val();
   var sid = $('input:hidden[name="sid"]').val();
   var url = BASE_URL.replace('@SID', sid);
+  alert(userId);
+  alert(sid);
   $.ajax({
     url: url,
     type: 'GET',
@@ -126,8 +126,6 @@ function registUrl() {
   }).done(function(data){
     $('.loading').addClass('hide');
     alert('URLを登録しました');
-    alert(sid);
-    alert(userId);
     getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     $('.loading').addClass('hide');
