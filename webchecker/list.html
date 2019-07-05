@@ -17,6 +17,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
 <script>
+const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
 var getUrlVars = function(){
   var vars = {};
   var param = location.search.substring(1).split('&');
@@ -32,9 +33,10 @@ var getUrlVars = function(){
 window.onload = function (e) {
   try {
     liff.init(function (data) {
+      var param = getUrlVars();
       const userId = data.context.userId;
       $('input:hidden[name="userId"]').val(userId);
-      var param = getUrlVars();
+      $('input:hidden[name="sid"]').val(param['sid']);
       if (userId != '') {
         getUrlList(param['sid'], userId);
       }
@@ -60,7 +62,7 @@ function sendMsg() {
   });
 }
 function getUrlList(sid, key) {
-  var url = 'https://script.google.com/macros/s/@SID/exec'.replace('@SID', sid);
+  var url = BASE_URL.replace('@SID', sid);
   $.ajax({
     url: url,
     type: 'GET',
@@ -97,6 +99,26 @@ function getUrlList(sid, key) {
     ul.append(li);
     // insertを#sample内に追加
     $('#sample').append(ul);
+  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+    console.log("failed...");
+    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+    console.log("textStatus     : " + textStatus);
+    console.log("errorThrown    : " + errorThrown.message);
+  });
+}
+function registUrl(url) {
+  var userId = $('input:hidden[name="userId"]').val();
+  var sid = $('input:hidden[name="sid"]').val();
+  var url = BASE_URL.replace('@SID', sid);
+  $.ajax({
+    url: url,
+    type: 'GET',
+    data: { action: "registUrl", id: userId, url: url },
+    beforeSend: function(){
+      $('.loading').removeClass('hide');
+    }
+  }).done(function(data){
+    getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     console.log("failed...");
     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -161,6 +183,7 @@ function getUrlList(sid, key) {
   <div class="loading hide"></div>
   <div class="row">
     <input type="hidden" name="userid">
+    <input type="hidden" name="sid">
   </div>
 </div>
 </body>
