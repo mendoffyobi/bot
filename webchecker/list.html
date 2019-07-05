@@ -82,7 +82,7 @@ function getUrlList(sid, key) {
       var btn = $('<i class="far fa-2x fa-pull-right">');
       var trash = $(
         '<i class="fas fa-trash-alt fa-2x fa-pull-right gray" onclick="deleteUrl(\''
-        + data[i].UUID + '\');">'
+        + data[i].UUID + '\', \'' + data[i].TITLE + '\');">'
       );
       li.removeClass('on off');
       btn.removeClass('fa-eye fa-eye-slash');
@@ -132,8 +132,9 @@ function registUrl() {
     alert('URL登録に失敗しました');
   });
 }
-function deleteUrl(uuid) {
-  alert(uuid);
+function deleteUrl(uuid, title) {
+  var res = window.confirm(title + 'を削除しますか？');
+  alert(res);
   var userId = $('input:hidden[name="userId"]').val();
   var sid = $('input:hidden[name="sid"]').val();
   var url = BASE_URL.replace('@SID', sid);
