@@ -94,7 +94,7 @@ function getUrlList(sid, key) {
       ul.append(li);
     }
     li = $('<li class="list-group-item list-group-item-info">');
-    var input = $('<input type="text" name="targetUrl" placeholder="URLを入力してください">');
+    var input = $('<input type="text" name="targetUrl" placeholder="URLを入力してください" onclick="registUrl();">');
     var plus  = $('<i class="far fa-plus-square fa-3x">');
     li.append(input).append(plus);
     ul.append(li);
@@ -109,6 +109,10 @@ function getUrlList(sid, key) {
 }
 function registUrl() {
   var targetUrl = $('input:text[name="targetUrl"]').val();
+  if (targetUrl == '') {
+    alert('対象のURLを入力してください');
+    return false;
+  }
   var userId = $('input:hidden[name="userId"]').val();
   var sid = $('input:hidden[name="sid"]').val();
   var url = BASE_URL.replace('@SID', sid);
