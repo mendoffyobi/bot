@@ -81,7 +81,7 @@ function getUrlList(sid, key) {
       var link = $('<a target="_blank">').text(text).attr("href",data[i].URL);
       var btn = $(
         '<i class="far fa-2x fa-pull-right"'
-      + 'onclick="changeStatus(\'' + data[i].UUID  + '\');">');
+      + 'onclick="changeStatus(\'' + data[i].UUID  + '\', \'' + data[i].FLG + '\');">');
       var trash = $(
         '<i class="fas fa-trash-alt fa-2x fa-pull-right gray"'
       + 'onclick="deleteUrl(\'' + data[i].UUID + '\', \'' + data[i].TITLE + '\');">'
@@ -158,14 +158,14 @@ function deleteUrl(uuid, title) {
     alert('URL削除に失敗しました');
   });
 }
-function changeStatus(uuid) {
+function changeStatus(uuid, flg) {
   var userId = $('input:hidden[name="userId"]').val();
   var sid = $('input:hidden[name="sid"]').val();
   var url = BASE_URL.replace('@SID', sid);
   $.ajax({
     url: url,
     type: 'GET',
-    data: { action: "changeStatus", id: userId, uuid: uuid },
+    data: { action: "changeStatus", id: userId, uuid: uuid, flg: flg},
     beforeSend: function(){
       $('.loading').removeClass('hide');
     }
