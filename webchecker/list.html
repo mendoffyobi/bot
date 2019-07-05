@@ -94,8 +94,9 @@ function getUrlList(sid, key) {
       ul.append(li);
     }
     li = $('<li class="list-group-item list-group-item-info">');
+    var input = $('<input type="text" placeholder="URLを入力してください">');
     var plus  = $('<i class="far fa-plus-square fa-3x">');
-    li.append(plus);
+    li.append(input).append(plus);
     ul.append(li);
     // insertを#sample内に追加
     $('#sample').append(ul);
