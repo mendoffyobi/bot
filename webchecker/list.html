@@ -97,7 +97,7 @@ function getUrlList(sid, key) {
       ul.append(li);
     }
     li = $('<li class="list-group-item list-group-item-info">');
-    alert(window.width);
+    alert(window.innerWidth);
     var input = $('<input type="text" style="width:inherit;" name="targetUrl" placeholder="URLを入力してください">');
     var plus  = $('<i class="far fa-plus-square fa-3x" onclick="registUrl();">');
     li.append(input).append(plus);
