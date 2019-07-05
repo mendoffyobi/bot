@@ -81,8 +81,7 @@ function getUrlList(sid, key) {
       var link = $('<a target="_blank">').text(text).attr("href",data[i].URL);
       var btn = $('<i class="far fa-2x fa-pull-right">');
       var trash = $(
-        '<i class="fas fa-trash-alt fa-2x fa-pull-right gray" onclick="deleteUrl('
-        + data[i].UUID + ')">'
+        '<i class="fas fa-trash-alt fa-2x fa-pull-right gray" onclick="deleteUrl(' + data[i].UUID + ')">'
       );
       li.removeClass('on off');
       btn.removeClass('fa-eye fa-eye-slash');
