@@ -38,7 +38,7 @@ window.onload = function (e) {
       $('input:hidden[name="userId"]').val(userId);
       $('input:hidden[name="sid"]').val(param['sid']);
       if (userId != '') {
-        getUrlList(param['sid'], userId, false);
+        getUrlList(param['sid'], userId);
       }
     });
   } catch(ex) {
@@ -61,12 +61,12 @@ function sendMsg() {
     liff.closeWindow();
   });
 }
-function getUrlList(sid, key, nocache) {
+function getUrlList(sid, key) {
   var url = BASE_URL.replace('@SID', sid);
   $.ajax({
     url: url,
     type: 'GET',
-    data: { action: "getUrlList", id: key, nocache: nocache ? true : false},
+    data: { action: "getUrlList", id: key },
     beforeSend: function(){
       $('.loading').removeClass('hide');
     }
@@ -131,7 +131,7 @@ function registUrl() {
       $('.loading').removeClass('hide');
     }
   }).done(function(data){
-    getUrlList(sid, userId, true);
+    getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     $('.loading').addClass('hide');
     alert('URL登録に失敗しました');
@@ -152,7 +152,7 @@ function deleteUrl(uuid, title) {
       $('.loading').removeClass('hide');
     }
   }).done(function(data){
-    getUrlList(sid, userId, true);
+    getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     $('.loading').addClass('hide');
     alert('URL削除に失敗しました');
@@ -170,7 +170,7 @@ function changeStatus(uuid) {
       $('.loading').removeClass('hide');
     }
   }).done(function(data){
-    getUrlList(sid, userId, true);
+    getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     $('.loading').addClass('hide');
     alert('ステータス変更に失敗しました');
