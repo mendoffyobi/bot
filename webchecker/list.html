@@ -126,6 +126,8 @@ function registUrl() {
   }).done(function(data){
     $('.loading').addClass('hide');
     alert('URLを登録しました');
+    alert(sid);
+    alert(userId);
     getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     $('.loading').addClass('hide');
