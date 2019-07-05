@@ -133,7 +133,7 @@ function registUrl() {
   });
 }
 function deleteUrl(uuid, title) {
-  if (!window.confirm(title + 'を削除しますか？') {
+  if (!window.confirm(title + 'を削除しますか？')) {
     return false;
   }
   var userId = $('input:hidden[name="userId"]').val();
