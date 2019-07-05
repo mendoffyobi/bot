@@ -99,6 +99,7 @@ function getUrlList(sid, key) {
     li.append(input).append(plus);
     ul.append(li);
     // insertを#sample内に追加
+    $('#sample').empty();
     $('#sample').append(ul);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     $('.loading').addClass('hide');
