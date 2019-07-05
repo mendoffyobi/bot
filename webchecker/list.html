@@ -126,10 +126,8 @@ function registUrl() {
   }).done(function(data){
     getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-    console.log("failed...");
-    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-    console.log("textStatus     : " + textStatus);
-    console.log("errorThrown    : " + errorThrown.message);
+    alert('URL登録に失敗しました');
+    getUrlList(sid, userId);
   });
 }
 </script>
