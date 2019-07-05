@@ -94,7 +94,7 @@ function getUrlList(sid, key) {
       ul.append(li);
     }
     li = $('<li class="list-group-item list-group-item-info">');
-    var input = $('<input type="text" placeholder="URLを入力してください">');
+    var input = $('<input type="text" name="targetUrl" placeholder="URLを入力してください">');
     var plus  = $('<i class="far fa-plus-square fa-3x">');
     li.append(input).append(plus);
     ul.append(li);
@@ -107,14 +107,15 @@ function getUrlList(sid, key) {
     console.log("errorThrown    : " + errorThrown.message);
   });
 }
-function registUrl(url) {
+function registUrl() {
+  var targetUrl = $('input:text[name="targetUrl"]').val();
   var userId = $('input:hidden[name="userId"]').val();
   var sid = $('input:hidden[name="sid"]').val();
   var url = BASE_URL.replace('@SID', sid);
   $.ajax({
     url: url,
     type: 'GET',
-    data: { action: "registUrl", id: userId, url: url },
+    data: { action: "registUrl", id: userId, url: targetUrl },
     beforeSend: function(){
       $('.loading').removeClass('hide');
     }
