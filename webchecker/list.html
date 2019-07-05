@@ -114,8 +114,6 @@ function registUrl() {
   var userId = $('input:hidden[name="userId"]').val();
   var sid = $('input:hidden[name="sid"]').val();
   var url = BASE_URL.replace('@SID', sid);
-  alert(userId);
-  alert(sid);
   $.ajax({
     url: url,
     type: 'GET',
@@ -124,8 +122,6 @@ function registUrl() {
       $('.loading').removeClass('hide');
     }
   }).done(function(data){
-    $('.loading').addClass('hide');
-    alert('URLを登録しました');
     getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
     $('.loading').addClass('hide');
