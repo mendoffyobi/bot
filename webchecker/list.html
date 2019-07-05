@@ -61,12 +61,12 @@ function sendMsg() {
     liff.closeWindow();
   });
 }
-function getUrlList(sid, key) {
+function getUrlList(sid, key, nocache) {
   var url = BASE_URL.replace('@SID', sid);
   $.ajax({
     url: url,
     type: 'GET',
-    data: { action: "getUrlList", id: key},
+    data: { action: "getUrlList", id: key, nocache: nocache ? true : false},
     beforeSend: function(){
       $('.loading').removeClass('hide');
     }
