@@ -124,10 +124,12 @@ function registUrl() {
       $('.loading').removeClass('hide');
     }
   }).done(function(data){
+    $('.loading').addClass('hide');
+    alert('URLを登録しました');
     getUrlList(sid, userId);
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+    $('.loading').addClass('hide');
     alert('URL登録に失敗しました');
-    getUrlList(sid, userId);
   });
 }
 </script>
