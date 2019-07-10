@@ -78,7 +78,7 @@ function getUrlList(sid, key) {
       // liタグを生成してテキスト追加
       var li = $('<li class="list-group-item">');
       var text = data[i].TITLE.length >= 25 ? data[i].TITLE.substring(0, 22) + '...' : data[i].TITLE;
-      var link = $('<a target="_blank">').text(text).attr("href",data[i].URL);
+      var link = $('<a target="_blank" class="big">').text(text).attr("href",data[i].URL);
       var btn = $(
         '<i class="far fa-2x fa-pull-right"'
       + 'onclick="changeStatus(\'' + data[i].UUID  + '\', \'' + data[i].FLG + '\');">');
