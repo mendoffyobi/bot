@@ -42,6 +42,21 @@
         }
         return vars;
       };
+      var loadUrl = function(url) {
+        $.ajax({
+          url: url,
+          type: 'GET',
+          beforeSend: function(){
+            $('.loading').removeClass('hide');
+          }
+        }).done(function(data){
+          $('.loading').addClass('hide');
+          $("#preview").html(data);
+        }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+          $('.loading').addClass('hide');
+          alert('URLロードに失敗しました');
+        });
+      };
       var editKey = function() {
         $("#preview").html($("#edit").val());
       };
@@ -50,19 +65,7 @@
           liff.init(function (data) {
           });
           var param = getUrlVars();
-          $.ajax({
-            url: 'https://www.google.com',
-            type: 'GET',
-            beforeSend: function(){
-              $('.loading').removeClass('hide');
-            }
-          }).done(function(data){
-            $('.loading').addClass('hide');
-            $("#preview").html(data);
-          }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-            $('.loading').addClass('hide');
-            alert('URLロードに失敗しました');
-          });
+          loadUrl('https://www.google.com');
         } catch(ex) {
           alert(ex);
         }
