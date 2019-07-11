@@ -58,8 +58,9 @@
         }).done(function(data){
           $('.loading').addClass('hide');
           if (data.html) {
-            $('input:hidden[name="original"]').val(data.html);
-            $("#preview").text(data.html);
+            var html = data.html.stripScripts();
+            $('input:hidden[name="original"]').val(html);
+            $("#preview").text(html);
           }
         }).fail(function(XMLHttpRequest, textStatus, errorThrown){
           $('.loading').addClass('hide');
