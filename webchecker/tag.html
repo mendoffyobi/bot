@@ -33,6 +33,7 @@
     }
     </style>
     <script>
+      const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
       var getUrlVars = function(){
         var vars = {};
         var param = location.search.substring(1).split('&');
@@ -45,11 +46,12 @@
         }
         return vars;
       };
-      var loadUrl = function(url) {
+      var loadUrl = function(sid, key) {
+        var url = BASE_URL.replace('@SID', sid);
         $.ajax({
           url: url,
-          dataType: "jsonp",
           type: 'GET',
+          data: { action: "loadUrl", url: key },
           beforeSend: function(){
             $('.loading').removeClass('hide');
           },
@@ -68,9 +70,9 @@
       window.onload = function (e) {
         try {
           liff.init(function (data) {
+            var param = getUrlVars();
+            loadUrl(param['sid'], 'https://www.google.com');
           });
-          var param = getUrlVars();
-          loadUrl('https://www.google.com');
         } catch(ex) {
           alert(ex);
         }
