@@ -58,8 +58,8 @@
         }).done(function(data){
           $('.loading').addClass('hide');
           if (data.html) {
-            $("#original").html(data.html);
-            $("#preview").html(data.html);
+            $('input:hidden[name="original"]').val(data.html);
+            $("#preview").text(data.html);
           }
         }).fail(function(XMLHttpRequest, textStatus, errorThrown){
           $('.loading').addClass('hide');
@@ -84,13 +84,11 @@
 <body>
 <div>
   <div>
-    <div id="original" display="none">
-    </div>
-    <div id="preview">
-    </div>
+    <div id="preview"></div>
   </div>
   <div>
     <textarea id="edit" rows="5" cols="60" onkeyup="editKey();"></textarea>
+    <input type="hidden" name="original">
   </div>
 </div>
 </body>
