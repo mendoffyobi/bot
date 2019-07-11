@@ -10,6 +10,8 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.3/prototype.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautifier.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.0/beautify-html.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -60,7 +62,7 @@
           $('.loading').addClass('hide');
           if (data.html) {
             try {
-              var html = data.html.stripScripts();
+              var html = style_html(data.html.stripScripts());
               $('input:hidden[name="original"]').val(html);
               $("#preview").text(html);
             } catch(ex) {
