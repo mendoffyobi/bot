@@ -55,13 +55,15 @@
           beforeSend: function(){
             $('.loading').removeClass('hide');
           },
-          success　: function(data){
-            alert('success');
-          },
-          error: function(data){
-            alert('error');
-            alert(data);
+        }).done(function(data){
+          $('.loading').addClass('hide');
+          if (data.html) {
+            $("#original").html(data.html);
+            $("#preview").html(data.html);
           }
+        }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+          $('.loading').addClass('hide');
+          alert('URL取得に失敗しました');
         });
       };
       var editKey = function() {
@@ -82,6 +84,8 @@
 <body>
 <div>
   <div>
+    <div id="original" display="none">
+    </div>
     <div id="preview">
     </div>
   </div>
