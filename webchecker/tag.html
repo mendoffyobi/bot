@@ -55,6 +55,7 @@
         }).fail(function(XMLHttpRequest, textStatus, errorThrown){
           $('.loading').addClass('hide');
           alert('URLロードに失敗しました');
+          alert(textStatus);
         });
       };
       var editKey = function() {
