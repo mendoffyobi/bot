@@ -45,7 +45,7 @@
       var loadUrl = function(url) {
         $.ajax({
           url: url,
-          dataType : 'html',
+          dataType: "jsonp",
           type: 'GET',
           beforeSend: function(){
             $('.loading').removeClass('hide');
