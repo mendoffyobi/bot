@@ -61,7 +61,7 @@
           $('.loading').addClass('hide');
           if (data.html) {
             try {
-              var html = style_html(data.html.stripScripts(), { indent_size: 2 });
+              var html = style_html(data.html.stripScripts());
               $('input:hidden[name="original"]').val(html);
               $("#preview").text(html);
             } catch(ex) {
@@ -75,6 +75,9 @@
       };
       var editKey = function() {
         $("#preview").html($("#edit").val());
+      };
+      var style_html = function(html) {
+        return html_beautify(html, { indent_size: 2 });
       };
       window.onload = function (e) {
         try {
