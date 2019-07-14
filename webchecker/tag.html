@@ -63,7 +63,7 @@
             try {
               var html = style_html(data.html.stripScripts());
               $('input:hidden[name="original"]').val(html);
-              $("#preview").text(html);
+              $("#preview").val(html);
             } catch(ex) {
               alert(ex);
             }
@@ -94,7 +94,7 @@
 <body>
 <div>
   <div>
-    <textarea id="preview" rows="5" cols="60"></textarea>
+    <textarea id="preview" rows="50" cols="60" readonly></textarea>
   </div>
   <div>
     <textarea id="edit" rows="5" cols="60" onkeyup="editKey();"></textarea>
