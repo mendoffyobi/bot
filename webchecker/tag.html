@@ -33,7 +33,11 @@
       background-position: center 20%;
       background-size: 150px 150px;
     }
+    .preview-outline {
+      border: 1px solid;
+    }
     .preview {
+      border: none;
       overflow: scroll;
     }
     </style>
@@ -96,11 +100,13 @@
 </head>
 <body>
 <div>
-  <div>
+  <div class="preview-outline">
+    <div>
     <div class="big">アウトライン</div>
     <div>&lt;body&gt;</div>
     <textarea id="preview" class="preview" rows="20" cols="60" readonly></textarea>
     <div>&lt;/body&gt;</div>
+  </div>
   </div>
   <div>
     <div class="big">監視タグ</div>
