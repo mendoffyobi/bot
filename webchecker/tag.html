@@ -57,7 +57,7 @@
       };
       var editKey = function() {
         var original = $('input:hidden[name="original"]').val();
-        var monitor  = $('input:radio[name="monitor"]').val();
+        var monitor  = $('input:radio[name="monitor"]:checked').val();
         alert(monitor);
         $("#preview").html($("#edit").val());
       };
