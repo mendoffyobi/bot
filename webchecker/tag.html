@@ -80,7 +80,7 @@
       };
       var style_html = function(html) {
         var beautify_html = require('js-beautify').html;
-        return beautify_html.beautify(html);
+        return beautify_html(html, { indent_size: 2 });
       };
       window.onload = function (e) {
         try {
