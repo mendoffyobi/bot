@@ -16,34 +16,6 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
     <title>監視タグを編集</title>
-    <style type="text/css">
-    .hide {
-      display: none;
-    }
-    .loading {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(0,0,0,.5);
-      background-image: url(./img/loading.svg);
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center 20%;
-      background-size: 150px 150px;
-    }
-    .preview-outline {
-      border: 1px solid;
-    }
-    .preview-body {
-      background-color: #d3d3d3;
-    }
-    .preview {
-      border: none;
-      overflow: scroll;
-    }
-    </style>
     <script>
       const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
       var getUrlVars = function(){
@@ -103,7 +75,35 @@
         }
       }
     </script>
-</head>
+    <style type="text/css">
+      .hide {
+        display: none;
+      }
+      .loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,.5);
+        background-image: url(./img/loading.svg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center 20%;
+        background-size: 150px 150px;
+      }
+      .preview-outline {
+        border: 1px solid;
+      }
+      .preview-body {
+        background-color: #d3d3d3;
+      }
+      .preview {
+        border: none;
+        overflow: scroll;
+      }
+    </style>
+  </head>
 <body>
 <div>
   <div>
