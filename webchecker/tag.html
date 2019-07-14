@@ -79,7 +79,8 @@
         $("#preview").html($("#edit").val());
       };
       var style_html = function(html) {
-        return html;
+        var beautify_html = require('js-beautify').html;
+        return beautify_html.beautify(html);
       };
       window.onload = function (e) {
         try {
