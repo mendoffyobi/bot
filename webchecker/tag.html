@@ -63,7 +63,7 @@
           $('.loading').addClass('hide');
           if (data.html) {
             try {
-              var html = style_html(data.html.stripScripts());
+              var html = style_html(data.html.stripScripts(), { indent_size: 2 });
               $('input:hidden[name="original"]').val(html);
               $("#preview").text(html);
             } catch(ex) {
@@ -77,10 +77,6 @@
       };
       var editKey = function() {
         $("#preview").html($("#edit").val());
-      };
-      var style_html = function(html) {
-        var beautify_html = require('js-beautify').html;
-        return beautify_html(html, { indent_size: 2 });
       };
       window.onload = function (e) {
         try {
