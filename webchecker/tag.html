@@ -62,11 +62,15 @@
         $("#preview").html($("#edit").val());
       };
       var checkMonitor = function() {
-        var monitor     = $('input:radio[name="monitor"]:checked').val();
-        var placeholder = monitor == 'タグ名' ?
-        'HTMLタグで指定してください\n例：<div class="tab-unit js-tab">' :
-        '正規表現で指定してください\n例：<form[^>]*>([\\s\\S]*?)<\\/form>';
-        $('edit').attr('placeholder', '書き換え後のテキスト');
+        try {
+          var monitor = $('input:radio[name="monitor"]:checked').val();
+          var placeholder = monitor == 'タグ名' ?
+          'HTMLタグで指定してください\n例：<div class="tab-unit js-tab">' :
+          '正規表現で指定してください\n例：<form[^>]*>([\\s\\S]*?)<\\/form>';
+          $('edit').attr('placeholder', placeholder);
+        } catch(ex) {
+          alert(ex);
+        }
       };
       var style_html = function(html) {
         return html_beautify(html, { indent_size: 2 });
