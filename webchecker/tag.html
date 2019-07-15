@@ -61,6 +61,9 @@
         alert(monitor);
         $("#preview").html($("#edit").val());
       };
+      var checkMonitor = function(e) {
+        alert(e);
+      };
       var style_html = function(html) {
         return html_beautify(html, { indent_size: 2 });
       };
@@ -108,8 +111,8 @@
 <div>
   <div>
     <div class="big">監視タグ</div>
-    <input type="radio" name="monitor" value="タグ名" checked>タグ名で指定
-    <input type="radio" name="monitor" value="正規表現">正規表現で指定
+    <input type="radio" name="monitor" onChange="checkMonitor()" value="タグ名" checked>タグ名で指定
+    <input type="radio" name="monitor" onChange="checkMonitor()" value="正規表現">正規表現で指定
     <textarea id="edit" rows="3" cols="60" onkeyup="editKey();"></textarea>
   </div>
   <div>
