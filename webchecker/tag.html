@@ -63,8 +63,12 @@
           var edit = $("#edit").val();
           if (REG.test(edit)) {
             try {
-              var tag  = edit.match(REG)[1];
-              var reg  = new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'g');
+              var origTag = edit.match(REG)[1];
+              var tag = origTag;
+              if (tag.indexOf(' ') != -1) {
+                tag = tag.split(' ')[0];
+              }
+              var reg  = new RegExp('<' + origTag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'g');
               var text = original.match(reg);
               if (text) {
                 $("#preview").val(text.slice(0).join('\n'));
