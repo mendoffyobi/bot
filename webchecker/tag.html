@@ -63,7 +63,7 @@
           var edit = $("#edit").val();
           if (REG.test(edit)) {
             try {
-              var origTag = edit.match(REG)[0];
+              var origTag = edit.match(REG)[1];
               var tag = origTag;
               if (tag.indexOf(' ') != -1) {
                 tag = tag.split(' ')[0];
