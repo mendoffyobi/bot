@@ -68,7 +68,8 @@
               if (tag.indexOf(' ') != -1) {
                 tag = tag.split(' ')[0];
               }
-              var reg  = new RegExp('<' + origTag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'g');
+              alert(tag);
+              var reg = new RegExp('<' + origTag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'g');
               var text = original.match(reg);
               if (text) {
                 $("#preview").val(text.slice(0).join('\n'));
