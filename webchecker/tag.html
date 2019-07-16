@@ -67,7 +67,7 @@
               alert(tag);
               var child = original.children(tag);
               if (child) {
-                $("#preview").val(child.html());
+                $("#preview").val(child.prop('outerHTML'));
               }
             } catch(ex) {
               alert(ex);
