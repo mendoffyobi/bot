@@ -65,9 +65,9 @@
             try {
               var tag = edit.match(REG)[1];
               alert(tag);
-              var html = original.children(tag);
-              if (html) {
-                $("#preview").val(html);
+              var child = original.children(tag);
+              if (child) {
+                $("#preview").val(child.html());
               }
             } catch(ex) {
               alert(ex);
