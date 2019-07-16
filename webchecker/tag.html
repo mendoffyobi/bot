@@ -18,7 +18,7 @@
     <title>監視タグを編集</title>
     <script>
       const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
-      const REG = /^<("[^"]*"|'[^']*'|[^'">])*>$/;
+      const REG = /<("[^"]*"|'[^']*'|[^'">])*>/;
       var getUrlVars = function(){
         var vars = {};
         var param = location.search.substring(1).split('&');
@@ -64,9 +64,8 @@
           if (REG.test(edit)) {
             var tag   = edit.match(REG)[1];
             var child = original.children(tag);
-            alert(child);
             if (child) {
-              $("#preview").val(child.html);
+              $("#preview").val(child.html());
             }
           } else {
             $("#preview").val(tag.match(original));
