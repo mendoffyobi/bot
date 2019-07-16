@@ -79,7 +79,7 @@
         try {
           liff.init(function (data) {
             var param = getUrlVars();
-            loadUrl(param['sid'], 'https://www.google.com');
+            loadUrl(param['sid'], param['url']);
             checkMonitor();
           });
         } catch(ex) {
