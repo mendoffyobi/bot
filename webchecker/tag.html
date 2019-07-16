@@ -65,7 +65,7 @@
             var tag   = edit.match(REG)[1];
             var child = original.children(tag);
             if (child) {
-              $("#preview").val(child.prop('outerHTML'));
+              $("#preview").val(child[0].prop('outerHTML'));
             }
           }
         }
