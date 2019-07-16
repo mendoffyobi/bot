@@ -64,10 +64,10 @@
           if (REG.test(edit)) {
             try {
               var tag   = edit.match(REG)[1];
-              var child = original.children(tag);
-              alert(child.find("*").prop('outerHTML'));
+              var child = original.find(tag);
+              alert(child.prop('outerHTML'));
               if (child) {
-                $("#preview").val(child.find("*").prop('outerHTML'));
+                $("#preview").val(child.prop('outerHTML'));
               }
             } catch(ex) {
               alert(ex);
