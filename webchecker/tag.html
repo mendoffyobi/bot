@@ -65,10 +65,12 @@
             var tag   = edit.match(REG)[1];
             var child = original.children(tag);
             if (child) {
-              $("#preview").val(child.html());
+              try {
+                $("#preview").val(child.html());
+              } catch(ex) {
+                alert(ex)
+              }
             }
-          } else {
-            $("#preview").val(tag.match(original));
           }
         }
         //$("#preview").html($("#edit").val());
