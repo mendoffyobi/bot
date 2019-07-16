@@ -67,6 +67,8 @@
             if (reg.test(original)) {
               $("#preview").val(tag.match(reg));
             }
+          } else {
+            $("#preview").val(tag.match(original));
           }
         }
         //$("#preview").html($("#edit").val());
