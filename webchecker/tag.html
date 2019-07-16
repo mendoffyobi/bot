@@ -62,11 +62,15 @@
         if (monitor = 'タグ名') {
           var edit = $("#edit").val();
           if (REG.test(edit)) {
-            var tag   = edit.match(REG)[1];
-            var child = original.children(tag);
-            alert(child[0].prop('outerHTML'));
-            if (child) {
-              $("#preview").val(child.prop('outerHTML'));
+            try {
+              var tag   = edit.match(REG)[1];
+              var child = original.children(tag);
+              alert(child[0].prop('outerHTML'));
+              if (child) {
+                $("#preview").val(child.prop('outerHTML'));
+              }
+            } catch(ex) {
+              alert(ex);
             }
           }
         }
