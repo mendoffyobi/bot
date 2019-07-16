@@ -57,15 +57,16 @@
         });
       };
       var editKey = function() {
-        var original = $('input:hidden[name="original"]').val();
+        var original = $('input:hidden[name="original"]');
         var monitor  = $('input:radio[name="monitor"]:checked').val();
         if (monitor = 'タグ名') {
           var edit = $("#edit").val();
           if (REG.test(edit)) {
-            var tag = edit.match(REG)[1];
-            var reg = new RegExp(tag, g);
-            if (reg.test(original)) {
-              $("#preview").val(tag.match(reg));
+            var tag   = edit.match(REG)[1];
+            var child = original.children(tag);
+            alert(child);
+            if (child) {
+              $("#preview").val(child.html);
             }
           } else {
             $("#preview").val(tag.match(original));
