@@ -45,7 +45,7 @@
           if (data.html) {
             try {
               var html = style_html(data.html.stripScripts());
-              $('input:hidden[name="original"]').val(html);
+              $('#original').append(html);
               $("#preview").val(html);
             } catch(ex) {
               alert(ex);
@@ -57,7 +57,7 @@
         });
       };
       var editKey = function() {
-        var original = $('input:hidden[name="original"]').val();
+        var original = $('#original');
         var monitor  = $('input:radio[name="monitor"]:checked').val();
         if (monitor = 'タグ名') {
           var edit = $("#edit").val();
@@ -69,10 +69,9 @@
                 tag = tag.split(' ')[0];
               }
               alert(tag);
-              var reg = new RegExp('<' + origTag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'g');
-              var text = original.match(reg);
-              if (text) {
-                $("#preview").val(text.slice(0).join('\n'));
+              var html = original.children(tag);
+              if (html) {
+                $("#preview").val(html);
               }
             } catch(ex) {
               alert(ex);
@@ -156,7 +155,7 @@
   </div>
   <div>
     <div class="loading hide"></div>
-    <input type="hidden" name="original">
+    <div id="original" display="none"></div>
   </div>
 </div>
 </body>
