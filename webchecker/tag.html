@@ -67,7 +67,7 @@
               var reg  = new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'g');
               var text = original.match(reg);
               if (text) {
-                $("#preview").val(text.slice(1));
+                $("#preview").val(text.slice(0));
               }
             } catch(ex) {
               alert(ex);
