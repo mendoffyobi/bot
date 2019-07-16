@@ -18,7 +18,7 @@
     <title>監視タグを編集</title>
     <script>
       const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
-      const REG = /^<("[^"]*"|'[^']*'|[^'">])*>$/m;
+      const REG = /^<("[^"]*"|'[^']*'|[^'">])*>$/;
       var getUrlVars = function(){
         var vars = {};
         var param = location.search.substring(1).split('&');
@@ -62,7 +62,11 @@
         if (monitor = 'タグ名') {
           var edit = $("#edit").val();
           if (REG.test(edit)) {
-            alert(edit.match(REG))
+            var tag = edit.match(REG)[1];
+            var reg = new RegExp(tag, g);
+            if (reg.test(original)) {
+              $("#preview").val(tag.match(reg));
+            }
           }
         }
         //$("#preview").html($("#edit").val());
