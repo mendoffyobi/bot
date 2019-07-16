@@ -65,9 +65,10 @@
             try {
               var tag = edit.match(REG)[1];
               alert(tag);
-              var child = original.children(tag).find('*');
+              var child = original.children(tag);
               if (child) {
-                $("#preview").val(child.prop('outerHTML'));
+                alert(jQuery('<div>').append(child.clone(true)).html());
+                //$("#preview").val(child.prop('outerHTML'));
               }
             } catch(ex) {
               alert(ex);
