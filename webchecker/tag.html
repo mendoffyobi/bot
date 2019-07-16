@@ -64,7 +64,7 @@
           if (REG.test(edit)) {
             var tag   = edit.match(REG)[1];
             var child = original.children(tag);
-            alert(child.prop('outerHTML'));
+            alert(child[0].prop('outerHTML'));
             if (child) {
               $("#preview").val(child.prop('outerHTML'));
             }
