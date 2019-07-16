@@ -18,7 +18,7 @@
     <title>監視タグを編集</title>
     <script>
       const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
-      const REG = /<("[^"]*"|'[^']*'|[^'">])*>/g;
+      const REG = /<("[^"]*"|'[^']*'|[^'">])*>/;
       var getUrlVars = function(){
         var vars = {};
         var param = location.search.substring(1).split('&');
