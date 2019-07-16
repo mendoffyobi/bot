@@ -65,8 +65,8 @@
         try {
           var monitor = $('input:radio[name="monitor"]:checked').val();
           var placeholder = monitor == 'タグ名' ?
-          'HTMLタグで指定してください&#13;&#10;例：<div class="tab-unit js-tab">' :
-          '正規表現で指定してください&#13;&#10;例：<form[^>]*>([\\s\\S]*?)<\\/form>';
+          'HTMLタグで指定してください　例：<div class="tab-unit js-tab">' :
+          '正規表現で指定してください 例：<form[^>]*>([\\s\\S]*?)<\\/form>';
           $('#edit').attr('placeholder', placeholder);
         } catch(ex) {
           alert(ex);
