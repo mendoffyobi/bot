@@ -80,6 +80,7 @@
           liff.init(function (data) {
             var param = getUrlVars();
             loadUrl(param['sid'], 'https://www.google.com');
+            checkMonitor();
           });
         } catch(ex) {
           alert(ex);
