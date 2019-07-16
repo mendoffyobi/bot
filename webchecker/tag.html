@@ -64,7 +64,7 @@
           if (REG.test(edit)) {
             try {
               var tag  = edit.match(REG)[1];
-              var reg  = new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', g);
+              var reg  = new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'g');
               var text = original.match(reg);
               if (text) {
                 $("#preview").val(text.slice(1));
