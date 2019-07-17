@@ -60,12 +60,11 @@
         var original = $('#original');
         var monitor  = $('input:radio[name="monitor"]:checked').val();
         if (monitor = 'タグ名') {
-          var val  = original.find('*');
+          var val  = original.find('*').prop('outerHTML');
           var edit = $("#edit").val();
           if (REG.test(edit)) {
             try {
               var tag = edit.match(REG)[1];
-              alert(tag);
               var child = original.find(tag);
               if (child) {
                 val = child.prop('outerHTML');
