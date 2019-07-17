@@ -68,8 +68,9 @@
               var childs = original.find(tag);
               if (childs) {
                 childs.each(function( index, value ) {
-                  val += this.prop('outerHTML');
-                  val += '\n';
+                  alert(value);
+                  //val += this.prop('outerHTML');
+                  //val += '\n';
                 });
               }
             } catch(ex) {
