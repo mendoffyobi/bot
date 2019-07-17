@@ -65,10 +65,13 @@
           if (REG.test(edit)) {
             try {
               var tag = edit.match(REG)[1];
-              original.find(tag).each(function( index, value ) {
-                val += value.prop('outerHTML');
-                val += '\n';
-              };
+              var childs = original.find(tag);
+              if (childs) {
+                childs.each(function( index, value ) {
+                  val += this.prop('outerHTML');
+                  val += '\n';
+                });
+              }
             } catch(ex) {
               alert(ex);
             }
