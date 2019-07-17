@@ -60,6 +60,7 @@
         var original = $('#original');
         var monitor  = $('input:radio[name="monitor"]:checked').val();
         if (monitor = 'タグ名') {
+          var val  = original.find('*');
           var edit = $("#edit").val();
           if (REG.test(edit)) {
             try {
@@ -67,13 +68,13 @@
               alert(tag);
               var child = original.find(tag);
               if (child) {
-                //alert(jQuery('<div>').append(child.clone(true)).html());
-                $("#preview").val(child.prop('outerHTML'));
+                val = child.prop('outerHTML');
               }
             } catch(ex) {
               alert(ex);
             }
           }
+          $("#preview").val(val);
         }
         //$("#preview").html($("#edit").val());
       };
