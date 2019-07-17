@@ -68,7 +68,7 @@
               var childs = original.find(tag);
               if (childs) {
                 childs.each(function( index, value ) {
-                  alert(value);
+                  alert(value.prop('outerHTML'));
                   //val += this.prop('outerHTML');
                   //val += '\n';
                 });
