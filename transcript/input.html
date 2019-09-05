@@ -26,10 +26,14 @@ var WebSafeBase64 = {
 window.onload = function (e) {
   liff.init(function (data) {
   });
-  var key = location.search.substring(1).slice(4);
-  if (key) {
-    json = JSON.parse(WebSafeBase64.decode(key));
-    alert(JSON.stringify(json));
+  try {
+    var key = location.search.substring(1).slice(4);
+    if (key) {
+      json = JSON.parse(WebSafeBase64.decode(key));
+      alert(JSON.stringify(json));
+    }
+  } catch(ex) {
+    alert(ex);
   }
 };
 function sendMsg() {
