@@ -44,18 +44,12 @@ window.onload = function (e) {
 
 function sendMsg() {
   var text = "";
-  text += "ご契約種別:";
-  text += $("#type").val() + "\n";
-  text += "ご契約容量:";
-  text += $("#size").val() + "\n";
-  text += "地点番号:";
-  text += $("#point").val() + "\n";
-  text += "お客様番号:";
-  text += $("#user").val() + "\n";
-  text += "検針月日:";
-  text += $("#check").val() + "\n";
-  text += "ご使用期間:";
-  text += $("#use").val() + "\n";
+  text += "ご契約種別:" + $("#type"   ).val() + "\n";
+  text += "ご契約容量:" + $("#size"   ).val() + "\n";
+  text += "地点番号:"    + $("#point"  ).val() + "\n";
+  text += "お客様番号:" + $("#user"  ).val() + "\n";
+  text += "検針月日:"    + $("#check").val() + "\n";
+  text += "ご使用期間:" + $("#use"   ).val() + "\n";
   liff.sendMessages([
     {
       "type": "text",
