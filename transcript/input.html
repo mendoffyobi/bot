@@ -30,6 +30,7 @@ window.onload = function (e) {
     var key = location.search.substring(1).slice(4);
     if (key) {
       json = JSON.parse(WebSafeBase64.decode(key));
+      $("#type").val(json.type);
     }
   } catch(ex) {
     alert(ex);
@@ -75,9 +76,9 @@ function sendMsg() {
     &nbsp;
   </div>
   <div class="row">
-    <div class="col-sm-1"><font size="5">修正</font></div>
+    <div class="col-sm-1"><font size="5">ご契約種別</font></div>
     <div class="col-sm-11">
-      <input type="text" name="text" class="big" width="200px">
+      <input type="text" id="type" class="big">
     </div>
   </div>
   <div class="row">
