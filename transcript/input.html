@@ -30,6 +30,7 @@ window.onload = function (e) {
     var key = location.search.substring(1).slice(4);
     if (key) {
       json = JSON.parse(WebSafeBase64.decode(key));
+      $("#area").val(json.area);
       $("#type").val(json.type);
       $("#size").val(json.size);
       $("#point").val(json.point);
@@ -44,6 +45,7 @@ window.onload = function (e) {
 
 function sendMsg() {
   var text = "";
+  text += "エリア:"        + $("#area"   ).val() + "\n";
   text += "ご契約種別:" + $("#type"   ).val() + "\n";
   text += "ご契約容量:" + $("#size"   ).val() + "\n";
   text += "地点番号:"    + $("#point"  ).val() + "\n";
@@ -72,6 +74,15 @@ function sendMsg() {
 </head>
 <body>
 <div class="container">
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">エリア</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="area" class="big" size="40">
+    </div>
+  </div>
   <div class="row">
     &nbsp;
   </div>
@@ -136,7 +147,7 @@ function sendMsg() {
     </div>
   </div>
   <div class="row">
-    <input type="hidden" name="dateid">
+    &nbsp;
   </div>
 </div>
 </body>
