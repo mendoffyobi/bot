@@ -41,24 +41,25 @@ window.onload = function (e) {
     alert(ex);
   }
 };
+
 function sendMsg() {
+  var text = "";
+  text += "ご契約種別:";
+  text += $("#type").val() + "\n";
+  text += "ご契約容量:";
+  text += $("#size").val() + "\n";
+  text += "地点番号:";
+  text += $("#point").val() + "\n";
+  text += "お客様番号:";
+  text += $("#user").val() + "\n";
+  text += "検針月日:";
+  text += $("#check").val() + "\n";
+  text += "ご使用期間:";
+  text += $("#use").val() + "\n";
   liff.sendMessages([
     {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Hello,"
-          },
-          {
-            "type": "text",
-            "text": "World!"
-          }
-        ]
-      }
+      "type": "text",
+      "text":  text
     }
   ])
   .then(() => {
