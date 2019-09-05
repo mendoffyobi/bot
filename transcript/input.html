@@ -26,12 +26,11 @@ var WebSafeBase64 = {
 window.onload = function (e) {
   liff.init(function (data) {
   });
-  //var key = location.search.substring(1).slice(4);
-  //if (key) {
-  //  json = JSON.parse(WebSafeBase64.decode(key));
-  //  $('textarea[name="memo"]').val(WebSafeBase64.decode(json.memo));
-  //  $('input:hidden[name="dateid"]').val(json.id);
-  //}
+  var key = location.search.substring(1).slice(4);
+  if (key) {
+    json = JSON.parse(WebSafeBase64.decode(key));
+    alert(JSON.stringify(json));
+  }
 };
 function sendMsg() {
   liff.sendMessages([
