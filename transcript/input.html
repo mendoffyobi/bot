@@ -37,6 +37,7 @@ window.onload = function (e) {
       $("#user").val(json.user);
       $("#check").val(json.check);
       $("#use").val(json.use);
+      $("#amount").val(json.amount);
     }
   } catch(ex) {
     alert(ex);
@@ -45,13 +46,14 @@ window.onload = function (e) {
 
 function sendMsg() {
   var text = "";
-  text += "エリア:"        + $("#area"   ).val() + "\n";
-  text += "ご契約種別:" + $("#type"   ).val() + "\n";
-  text += "ご契約容量:" + $("#size"   ).val() + "\n";
-  text += "地点番号:"    + $("#point"  ).val() + "\n";
-  text += "お客様番号:" + $("#user"  ).val() + "\n";
-  text += "検針月日:"    + $("#check").val() + "\n";
-  text += "ご使用期間:" + $("#use"   ).val() + "\n";
+  text += "エリア:"        + $("#area"     ).val() + "\n";
+  text += "ご契約種別:" + $("#type"     ).val() + "\n";
+  text += "ご契約容量:" + $("#size"     ).val() + "\n";
+  text += "地点番号:"    + $("#point"     ).val() + "\n";
+  text += "お客様番号:" + $("#user"     ).val() + "\n";
+  text += "検針月日:"    + $("#check"   ).val() + "\n";
+  text += "ご使用期間:" + $("#use"      ).val() + "\n";
+  text += "ご使用量:"     + $("#amount").val() + "\n";
   liff.sendMessages([
     {
       "type": "text",
@@ -135,6 +137,15 @@ function sendMsg() {
     <div class="col-sm-1"><font size="5">ご使用期間</font></div>
     <div class="col-sm-11">
       <input type="text" id="use" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">ご使用量</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="amount" class="big" size="40">
     </div>
   </div>
   <div class="row">
