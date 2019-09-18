@@ -11,30 +11,6 @@
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <title>sample</title>
     <style>
-      /* グローバルな設定 */
-      * {margin:0px; padding:0px;}
-      body {
-        width:450px;
-        margin-right: auto;
-        margin-left : auto;
-      }
-      .title {padding:10px; margin-top:44px;}
-      .main {padding-left:10px; margin:auto;}
-      .sub {padding-left:10px; margin:auto;}
-      /* 色や太さを選択する部分のCSS */
-      .toolbar li {width:44px; height:44px; margin:auto;list-style-type: none; border:1px solid #ccc; border-radius:6px; margin:10px; display:block; float:left;}
-      /* お絵描きする部分のCSS */
-      .canvas {
-        width:400px;
-        height:250px;
-        border:1px
-        solid #ccc;
-        background-image: url("https://mendoffyobi.github.io/bot/img/graph.png");
-        background-size: cover;
-      }
-      .canvas canvas {width:400px; height:250px;}
-      /* 削除ボタンのCSS */
-      #post_button {width:400px; height:44px; margin-top:10px;}
       .hide {
         display: none;
       }
@@ -54,144 +30,109 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
-      const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
-      var getUrlVars = function(){
-        var vars = {};
-        var param = location.search.substring(1).split('&');
-        for(var i = 0; i < param.length; i++) {
-          var keySearch = param[i].search(/=/);
-          var key = '';
-          if(keySearch != -1) key = param[i].slice(0, keySearch);
-          var val = param[i].slice(param[i].indexOf('=', 0) + 1);
-          if(key != '') vars[key] = decodeURI(val);
+    $(function() {
+      var file = null; // 選択されるファイル
+      var blob = null; // 画像(BLOBデータ)
+      const THUMBNAIL_WIDTH = 500; // 画像リサイズ後の横の長さの最大値
+      const THUMBNAIL_HEIGHT = 500; // 画像リサイズ後の縦の長さの最大値
+
+      // ファイルが選択されたら
+      $('input[type=file]').change(function() {
+
+        // ファイルを取得
+        file = $(this).prop('files')[0];
+        // 選択されたファイルが画像かどうか判定
+        if (file.type != 'image/jpeg' && file.type != 'image/png') {
+          // 画像でない場合は終了
+          file = null;
+          blob = null;
+          return;
         }
-        return vars;
-      }
-      window.onload = function (e) {
-        try {
-          liff.init(function (data) {
-          });
-          var param = getUrlVars();
-          $('input:hidden[name="sid"]').val(param['sid']);
-        } catch(ex) {
-          alert(ex);
-        }
-      };
-      function post(){
-        try {
-          var canvas = document.getElementById('myCanvas');
-          if( !canvas || !canvas.getContext ){
-            return false;
-          }
-          var ctx = canvas.getContext( '2d' );
-          //. 画像データ
-          var png = canvas.toDataURL( 'image/png' );
-          png = png.replace( /^.*,/, '' );
-          var formData = new FormData();
-          formData.append( 'image', png );
-          formData.append( 'action', 'postImage' );
-          var sid = $('input:hidden[name="sid"]').val();
-          var url = BASE_URL.replace('@SID', sid);
-        } catch (ex) {
-          alert(ex);
-        }
-        $.ajax({
-          type: 'POST',
-          url: url,
-          data: formData,
-          contentType: false,
-          processData: false,
-          followAllRedirects: true,
-          beforeSend: function(){
-            $('.loading').removeClass('hide');
-          },
-          success: function( result, dataType ){
-            $('.loading').addClass('hide');
-            if( result.url ){
-              var img_url = result.url;
-              var img_url0 = img_url;
-              var data = {
-                type: "image",
-                originalContentUrl: img_url,
-                previewImageUrl: img_url0
-              };
-              liff.sendMessages([
-                data
-              ]).then( () => {
-                liff.closeWindow();
-              }).catch( ( err ) => {
-                liff.closeWindow();
-              });
+
+        // 画像をリサイズする
+        var image = new Image();
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          image.onload = function() {
+            var width, height;
+            if(image.width > image.height){
+              // 横長の画像は横のサイズを指定値にあわせる
+              var ratio = image.height/image.width;
+              width = THUMBNAIL_WIDTH;
+              height = THUMBNAIL_WIDTH * ratio;
+            } else {
+              // 縦長の画像は縦のサイズを指定値にあわせる
+              var ratio = image.width/image.height;
+              width = THUMBNAIL_HEIGHT * ratio;
+              height = THUMBNAIL_HEIGHT;
             }
-          },
-          error: function( jqXHR, textStatus, errorThrown ){
-            $('.loading').addClass('hide');
-            alert( textStatus + ': ' + errorThrown );
+            // サムネ描画用canvasのサイズを上で算出した値に変更
+            var canvas = $('#canvas')
+                         .attr('width', width)
+                         .attr('height', height);
+            var ctx = canvas[0].getContext('2d');
+            // canvasに既に描画されている画像をクリア
+            ctx.clearRect(0,0,width,height);
+            // canvasにサムネイルを描画
+            ctx.drawImage(image,0,0,image.width,image.height,0,0,width,height);
+
+            // canvasからbase64画像データを取得
+            var base64 = canvas.get(0).toDataURL('image/jpeg');        
+            // base64からBlobデータを作成
+            var barr, bin, i, len;
+            bin = atob(base64.split('base64,')[1]);
+            len = bin.length;
+            barr = new Uint8Array(len);
+            i = 0;
+            while (i < len) {
+              barr[i] = bin.charCodeAt(i);
+              i++;
+            }
+            blob = new Blob([barr], {type: 'image/jpeg'});
+            console.log(blob);
           }
-        });
-      }
-      window.addEventListener("load", function () {
-        // 必要な変数を宣言しておく
-        var canvas = document.getElementById("myCanvas");
-        var c = canvas.getContext("2d");
-        var w = 400;
-        var h = 250;
-        var drawing = false;
-        var oldPos;
-        // CanvasとContextを初期化する
-        canvas.width = w;
-        canvas.height = h;
-        c.strokeStyle = "#0000ff";
-        c.lineWidth = 5;
-        c.lineJoin = "round";
-        c.lineCap = "round";
-        // タップ開始時に、絵を描く準備をする
-        canvas.addEventListener("touchstart", function (event) {
-          drawing = true;
-          oldPos = getPosT(event);
-        }, false);
-        // タップ終了時に、絵を描く後処理を行う
-        canvas.addEventListener("touchend", function () {
-          drawing = false;
-        }, false);
-        // gestureイベント（２本指以上で触ると発生するやつ）の
-        // 終了時にも絵を描く後処理を行う
-        canvas.addEventListener("gestureend", function () {
-          console.log("mouseout");
-          drawing = false;
-        }, false);
-        // 実際に絵を描く処理
-        // 前回に保存した位置から現在の位置迄線を引く
-        canvas.addEventListener("touchmove", function (event) {
-          var pos = getPosT(event);
-          if (drawing) {
-            c.beginPath();
-            c.moveTo(oldPos.x, oldPos.y);
-            c.lineTo(pos.x, pos.y);
-            c.stroke();
-            c.closePath();
-            oldPos = pos;
-          }
-        }, false);
-        // タップ位置を取得する為の関数群
-        function scrollX(){return document.documentElement.scrollLeft || document.body.scrollLeft;}
-        function scrollY(){return document.documentElement.scrollTop || document.body.scrollTop;}
-        function getPosT (event) {
-          var mouseX = event.touches[0].clientX - $(canvas).position().left + scrollX();
-          var mouseY = event.touches[0].clientY - $(canvas).position().top + scrollY();
-          return {x:mouseX, y:mouseY};
+          image.src = e.target.result;
         }
-      }, false);
+        reader.readAsDataURL(file);
+      });
+
+      // アップロード開始ボタンがクリックされたら
+      $('#upload').click(function(){
+        // ファイルが指定されていなければ何も起こらない
+        if(!file || !blob) {
+          return;
+        }
+        var name, fd = new FormData();
+        fd.append('file', blob); // ファイルを添付する
+        $.ajax({
+          url: "http://exapmle.com", // 送信先
+          type: 'POST',
+          dataType: 'json',
+          data: fd,
+          processData: false,
+          contentType: false
+        })
+        .done(function( data, textStatus, jqXHR ) {
+          // 送信成功
+        })
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+          // 送信失敗
+        });  
+      });
+    });
     </script>
   </head>
   <body>
-    <div class="main" ontouchmove="event.preventDefault()">
-      <div class="canvas"><canvas id="myCanvas"></canvas></div>
+    <!-- ファイル選択ボタン -->
+    <div style="width: 500px">
+      <form enctype="multipart/form-data" method="post">
+        <input type="file" name="userfile" accept="image/*">
+      </form>
     </div>
-    <div class="sub">
-      <input id="post_button" type="button" value="post" onclick="post();"/>
-      <input type="hidden" name="sid"/>
-    </div>
+    <!-- サムネイル表示領域 -->
+    <canvas id="canvas" width="0" height="0"></canvas>
+    <!-- アップロード開始ボタン -->
+    <button class="btn btn-primary" id="upload">投稿</button>
     <div class="loading hide"></div>
   </body>
 </html>
