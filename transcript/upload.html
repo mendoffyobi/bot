@@ -75,9 +75,8 @@
             ctx.clearRect(0,0,width,height);
             // canvasにサムネイルを描画
             ctx.drawImage(image,0,0,image.width,image.height,0,0,width,height);
-
             // canvasからbase64画像データを取得
-            var base64 = canvas.get(0).toDataURL('image/jpeg');        
+            var base64 = canvas.get(0).toDataURL('image/jpeg');
             // base64からBlobデータを作成
             var barr, bin, i, len;
             bin = atob(base64.split('base64,')[1]);
@@ -117,7 +116,7 @@
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
           // 送信失敗
-        });  
+        });
       });
     });
     </script>
