@@ -30,6 +30,29 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
+    const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
+    var getUrlVars = function(){
+      var vars = {};
+      var param = location.search.substring(1).split('&');
+      for(var i = 0; i < param.length; i++) {
+        var keySearch = param[i].search(/=/);
+        var key = '';
+        if(keySearch != -1) key = param[i].slice(0, keySearch);
+        var val = param[i].slice(param[i].indexOf('=', 0) + 1);
+        if(key != '') vars[key] = decodeURI(val);
+      }
+      return vars;
+    }
+    window.onload = function (e) {
+      try {
+        liff.init(function (data) {
+        });
+        var param = getUrlVars();
+        $('input:hidden[name="sid"]').val(param['sid']);
+      } catch(ex) {
+        alert(ex);
+      }
+    };
     $(function() {
       var file = null; // 選択されるファイル
       var blob = null; // 画像(BLOBデータ)
@@ -101,21 +124,44 @@
         if(!file || !blob) {
           return;
         }
+        var sid = $('input:hidden[name="sid"]').val();
+        var url = BASE_URL.replace('@SID', sid);
         var name, fd = new FormData();
         fd.append('file', blob); // ファイルを添付する
         $.ajax({
-          url: "http://exapmle.com", // 送信先
+          url: url, // 送信先
           type: 'POST',
           dataType: 'json',
           data: fd,
           processData: false,
-          contentType: false
+          contentType: false,
+          beforeSend: function(){
+            $('.loading').removeClass('hide');
+          }
         })
-        .done(function( data, textStatus, jqXHR ) {
+        .done(function(result, textStatus, jqXHR) {
           // 送信成功
+          $('.loading').addClass('hide');
+          if( result.url ){
+            var img_url = result.url;
+            var img_url0 = img_url;
+            var data = {
+              type: "image",
+              originalContentUrl: img_url,
+              previewImageUrl: img_url0
+            };
+            liff.sendMessages([
+              data
+            ]).then( () => {
+              liff.closeWindow();
+            }).catch( ( err ) => {
+              liff.closeWindow();
+            });
+          }
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
           // 送信失敗
+          alert('送信失敗');
         });
       });
     });
@@ -132,6 +178,7 @@
     <canvas id="canvas" width="0" height="0"></canvas>
     <!-- アップロード開始ボタン -->
     <button class="btn btn-primary" id="upload">投稿</button>
+    <input type="hidden" name="sid"/>
     <div class="loading hide"></div>
   </body>
 </html>
