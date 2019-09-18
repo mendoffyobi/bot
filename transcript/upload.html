@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta name="viewport" content="width=450px initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <title>sample</title>
+    <style>
+      /* グローバルな設定 */
+      * {margin:0px; padding:0px;}
+      body {
+        width:450px;
+        margin-right: auto;
+        margin-left : auto;
+      }
+      .title {padding:10px; margin-top:44px;}
+      .main {padding-left:10px; margin:auto;}
+      .sub {padding-left:10px; margin:auto;}
+      /* 色や太さを選択する部分のCSS */
+      .toolbar li {width:44px; height:44px; margin:auto;list-style-type: none; border:1px solid #ccc; border-radius:6px; margin:10px; display:block; float:left;}
+      /* お絵描きする部分のCSS */
+      .canvas {
+        width:400px;
+        height:250px;
+        border:1px
+        solid #ccc;
+        background-image: url("https://mendoffyobi.github.io/bot/img/graph.png");
+        background-size: cover;
+      }
+      .canvas canvas {width:400px; height:250px;}
+      /* 削除ボタンのCSS */
+      #post_button {width:400px; height:44px; margin-top:10px;}
+      .hide {
+        display: none;
+      }
+      .loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,.5);
+        background-image: url(./img/loading.svg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center 20%;
+        background-size: 150px 150px;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
+      var getUrlVars = function(){
+        var vars = {};
+        var param = location.search.substring(1).split('&');
+        for(var i = 0; i < param.length; i++) {
+          var keySearch = param[i].search(/=/);
+          var key = '';
+          if(keySearch != -1) key = param[i].slice(0, keySearch);
+          var val = param[i].slice(param[i].indexOf('=', 0) + 1);
+          if(key != '') vars[key] = decodeURI(val);
+        }
+        return vars;
+      }
+      window.onload = function (e) {
+        try {
+          liff.init(function (data) {
+          });
+          var param = getUrlVars();
+          $('input:hidden[name="sid"]').val(param['sid']);
+        } catch(ex) {
+          alert(ex);
+        }
+      };
+      function post(){
+        try {
+          var canvas = document.getElementById('myCanvas');
+          if( !canvas || !canvas.getContext ){
+            return false;
+          }
+          var ctx = canvas.getContext( '2d' );
+          //. 画像データ
+          var png = canvas.toDataURL( 'image/png' );
+          png = png.replace( /^.*,/, '' );
+          var formData = new FormData();
+          formData.append( 'image', png );
+          formData.append( 'action', 'postImage' );
+          var sid = $('input:hidden[name="sid"]').val();
+          var url = BASE_URL.replace('@SID', sid);
+        } catch (ex) {
+          alert(ex);
+        }
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: formData,
+          contentType: false,
+          processData: false,
+          followAllRedirects: true,
+          beforeSend: function(){
+            $('.loading').removeClass('hide');
+          },
+          success: function( result, dataType ){
+            $('.loading').addClass('hide');
+            if( result.url ){
+              var img_url = result.url;
+              var img_url0 = img_url;
+              var data = {
+                type: "image",
+                originalContentUrl: img_url,
+                previewImageUrl: img_url0
+              };
+              liff.sendMessages([
+                data
+              ]).then( () => {
+                liff.closeWindow();
+              }).catch( ( err ) => {
+                liff.closeWindow();
+              });
+            }
+          },
+          error: function( jqXHR, textStatus, errorThrown ){
+            $('.loading').addClass('hide');
+            alert( textStatus + ': ' + errorThrown );
+          }
+        });
+      }
+      window.addEventListener("load", function () {
+        // 必要な変数を宣言しておく
+        var canvas = document.getElementById("myCanvas");
+        var c = canvas.getContext("2d");
+        var w = 400;
+        var h = 250;
+        var drawing = false;
+        var oldPos;
+        // CanvasとContextを初期化する
+        canvas.width = w;
+        canvas.height = h;
+        c.strokeStyle = "#0000ff";
+        c.lineWidth = 5;
+        c.lineJoin = "round";
+        c.lineCap = "round";
+        // タップ開始時に、絵を描く準備をする
+        canvas.addEventListener("touchstart", function (event) {
+          drawing = true;
+          oldPos = getPosT(event);
+        }, false);
+        // タップ終了時に、絵を描く後処理を行う
+        canvas.addEventListener("touchend", function () {
+          drawing = false;
+        }, false);
+        // gestureイベント（２本指以上で触ると発生するやつ）の
+        // 終了時にも絵を描く後処理を行う
+        canvas.addEventListener("gestureend", function () {
+          console.log("mouseout");
+          drawing = false;
+        }, false);
+        // 実際に絵を描く処理
+        // 前回に保存した位置から現在の位置迄線を引く
+        canvas.addEventListener("touchmove", function (event) {
+          var pos = getPosT(event);
+          if (drawing) {
+            c.beginPath();
+            c.moveTo(oldPos.x, oldPos.y);
+            c.lineTo(pos.x, pos.y);
+            c.stroke();
+            c.closePath();
+            oldPos = pos;
+          }
+        }, false);
+        // タップ位置を取得する為の関数群
+        function scrollX(){return document.documentElement.scrollLeft || document.body.scrollLeft;}
+        function scrollY(){return document.documentElement.scrollTop || document.body.scrollTop;}
+        function getPosT (event) {
+          var mouseX = event.touches[0].clientX - $(canvas).position().left + scrollX();
+          var mouseY = event.touches[0].clientY - $(canvas).position().top + scrollY();
+          return {x:mouseX, y:mouseY};
+        }
+      }, false);
+    </script>
+  </head>
+  <body>
+    <div class="main" ontouchmove="event.preventDefault()">
+      <div class="canvas"><canvas id="myCanvas"></canvas></div>
+    </div>
+    <div class="sub">
+      <input id="post_button" type="button" value="post" onclick="post();"/>
+      <input type="hidden" name="sid"/>
+    </div>
+    <div class="loading hide"></div>
+  </body>
+</html>
