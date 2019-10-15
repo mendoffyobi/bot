@@ -38,6 +38,7 @@ window.onload = function (e) {
       $("#check").val(json.check);
       $("#use").val(json.use);
       $("#amount").val(json.amount);
+      $("#image").val(json.image);
     }
   } catch(ex) {
     alert(ex);
@@ -54,6 +55,7 @@ function sendMsg() {
   text += "検針月日:"    + $("#check"   ).val() + "\n";
   text += "ご使用期間:" + $("#use"      ).val() + "\n";
   text += "ご使用量:"     + $("#amount").val() + "\n";
+  text += "IMAGE:"        + $("#image").val() + "\n";
   liff.sendMessages([
     {
       "type": "text",
@@ -155,6 +157,7 @@ function sendMsg() {
     <div class="col-sm-1"></div>
     <div class="col-sm-11">
       <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">更新</button>
+      <input type="hidden" id="image">
     </div>
   </div>
   <div class="row">
