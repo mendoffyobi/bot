@@ -24,8 +24,13 @@ var WebSafeBase64 = {
   }
 };
 window.onload = function (e) {
-  liff.init(function (data) {
-  });
+  liff.init(
+    function (data) {
+    },
+    function (error) {
+        alert(error);
+    }
+  );
   try {
     var key = location.search.substring(1).slice(4);
     if (key) {
