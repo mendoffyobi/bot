@@ -30,7 +30,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
     const sid = 'AKfycbzJYGW1GZQBjfX6okVAprpdCEX6JLETjqJs3xAYnQqg1SyrD10';
-    const BASE_URL = 'https://script.google.com/macros/s/@SID/exec?action=postImage&vendor=sinanen';
+    //const BASE_URL = 'https://script.google.com/macros/s/@SID/exec?action=postImage&vendor=sinanen';
+    const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
     var getUrlVars = function(){
       var vars = {};
       var param = location.search.substring(1).split('&');
@@ -131,9 +132,7 @@
           dataType: 'json',
           data: fd,
           processData: false,
-          headers: {  
-            'Content-Type': 'multipart/form-data'
-          },
+          contentType: false,
           beforeSend: function(){
             $('.loading').removeClass('hide');
           }
