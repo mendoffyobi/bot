@@ -130,7 +130,10 @@
           url: url, // 送信先
           type: 'POST',
           dataType: 'json',
-          data: fd,
+          data: {
+              action: "postImage"
+              vendor: "sinanen"
+          },
           processData: false,
           contentType: false,
           beforeSend: function(){
