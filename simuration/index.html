@@ -30,8 +30,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript">
     const sid = 'AKfycbzJYGW1GZQBjfX6okVAprpdCEX6JLETjqJs3xAYnQqg1SyrD10';
-    //const BASE_URL = 'https://script.google.com/macros/s/@SID/exec?action=postImage&vendor=sinanen';
-    const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
+    const BASE_URL = 'https://script.google.com/macros/s/@SID/exec?action=postImage&vendor=sinanen';
+    //const BASE_URL = 'https://script.google.com/macros/s/@SID/exec';
     var getUrlVars = function(){
       var vars = {};
       var param = location.search.substring(1).split('&');
@@ -116,6 +116,17 @@
         reader.readAsDataURL(file);
       });
 
+      var postJump = function(url, params) {
+        var html = '<form method="post" action="' + url + '" id="postjump" style="display: none;">';
+        Object.keys(params).forEach(function (key) {
+          html += '<input type="hidden" name="' + key + '" value="' + params[key] + '" >';
+        });
+        html += '</form>';
+        $("body").append(html);
+        $('#postjump').submit();
+        $('#postjump').remove();
+      };
+
       // アップロード開始ボタンがクリックされたら
       $('#upload').click(function(){
         // ファイルが指定されていなければ何も起こらない
@@ -123,6 +134,20 @@
           alert('ファイルを指定してください');
           return;
         }
+        var url = BASE_URL.replace('@SID', sid);
+        var params = {
+          filename: 'samplefile',
+          imageformat: 'JPG'
+        };
+
+        var file = $('#file').files[0];
+        var fr = new FileReader();
+        fr.onload = function(e) {
+          params.file = e.target.result.replace(/^.*,/, '');
+          postJump(url, params);
+        }
+
+/*
         var url = BASE_URL.replace('@SID', sid);
         var name, fd = new FormData();
         fd.append('file', blob); // ファイルを添付する
@@ -149,6 +174,8 @@
           alert('送信失敗');
           $('.loading').addClass('hide');
         });
+*/
+
       });
     });
     </script>
