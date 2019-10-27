@@ -131,7 +131,9 @@
           dataType: 'json',
           data: fd,
           processData: false,
-          contentType: false,
+          headers: {  
+            'Content-Type': 'multipart/form-data'
+          },
           beforeSend: function(){
             $('.loading').removeClass('hide');
           }
@@ -140,25 +142,13 @@
           // 送信成功
           $('.loading').addClass('hide');
           if( result.url ){
-            var img_url = result.url;
-            var img_url0 = img_url;
-            var data = {
-              type: "image",
-              originalContentUrl: img_url,
-              previewImageUrl: img_url0
-            };
-            liff.sendMessages([
-              data
-            ]).then( () => {
-              liff.closeWindow();
-            }).catch( ( err ) => {
-              liff.closeWindow();
-            });
+            alert(result.url);
           }
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
           // 送信失敗
           alert('送信失敗');
+          $('.loading').addClass('hide');
         });
       });
     });
