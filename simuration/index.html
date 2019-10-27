@@ -127,9 +127,6 @@
           return;
         }
         var url = BASE_URL.replace('@SID', sid);
-        console.log(data);
-        //var name, fd = new FormData();
-        //fd.append('file', blob); // ファイルを添付する
         $.ajax({
           url: url, // 送信先
           type: 'POST',
