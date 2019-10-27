@@ -124,15 +124,14 @@
           return;
         }
         var url = BASE_URL.replace('@SID', sid);
-        var name, fd = new FormData();
-        fd.append('file', blob); // ファイルを添付する
+        //var name, fd = new FormData();
+        //fd.append('file', blob); // ファイルを添付する
         $.ajax({
           url: url, // 送信先
           type: 'POST',
           dataType: 'json',
           data: {
-              action: "postImage",
-              vendor: "sinanen"
+              image: blob.toString('base64')
           },
           processData: false,
           contentType: false,
