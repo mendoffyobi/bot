@@ -122,6 +122,7 @@
       $('#upload').click(function(){
         // ファイルが指定されていなければ何も起こらない
         if(!file || !blob) {
+          alert('ファイルを指定してください');
           return;
         }
         var sid = $('input:hidden[name="sid"]').val();
