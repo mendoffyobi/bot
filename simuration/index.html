@@ -124,6 +124,10 @@
           return;
         }
         var url = BASE_URL.replace('@SID', sid);
+        var reader = new window.FileReader();
+        reader.readAsDataURL(blob); 
+        base64data = reader.result;
+        console.log(base64data)
         //var name, fd = new FormData();
         //fd.append('file', blob); // ファイルを添付する
         $.ajax({
@@ -131,7 +135,7 @@
           type: 'POST',
           dataType: 'json',
           data: {
-              image: blob.toString('base64')
+              image: base64data
           },
           processData: false,
           contentType: false,
