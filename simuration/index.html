@@ -140,12 +140,12 @@
           imageformat: 'JPG'
         };
 
-        var file = $('#file').files[0];
         var fr = new FileReader();
         fr.onload = function(e) {
           params.file = e.target.result.replace(/^.*,/, '');
           postJump(url, params);
         }
+        fr.readAsDataURL(file);
 
 /*
         var url = BASE_URL.replace('@SID', sid);
