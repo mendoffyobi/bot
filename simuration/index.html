@@ -54,7 +54,6 @@
     $(function() {
       var file = null; // 選択されるファイル
       var blob = null; // 画像(BLOBデータ)
-      var data = null;
       const THUMBNAIL_WIDTH = 500; // 画像リサイズ後の横の長さの最大値
       const THUMBNAIL_HEIGHT = 500; // 画像リサイズ後の縦の長さの最大値
 
@@ -111,7 +110,6 @@
               i++;
             }
             blob = new Blob([barr], {type: 'image/jpeg'});
-            data = base64;
             console.log(blob);
           }
           image.src = e.target.result;
@@ -122,18 +120,18 @@
       // アップロード開始ボタンがクリックされたら
       $('#upload').click(function(){
         // ファイルが指定されていなければ何も起こらない
-        if(!file || !blob || !data) {
+        if(!file || !blob) {
           alert('ファイルを指定してください');
           return;
         }
         var url = BASE_URL.replace('@SID', sid);
-        var formData = new FormData();
-        formData.append('imageFile', data);
+        var name, fd = new FormData();
+        fd.append('file', blob); // ファイルを添付する
         $.ajax({
           url: url, // 送信先
           type: 'POST',
           dataType: 'json',
-          data: formData,
+          data: fd,
           processData: false,
           contentType: false,
           beforeSend: function(){
