@@ -49,6 +49,8 @@
                         $("#" + p.replace("q", "quantity")).text(numberFormat(q, ",") + "kWh");
                     } else if (/^b/.test(p)) {
                         $("#" + p.replace("b", "bill")).text(numberFormat(q, ",") + "円");
+                    } else if(/^diff/.test(p)) {
+                        $("#" + p).text(numberFormat(q, ","));
                     }
                 });
             });
