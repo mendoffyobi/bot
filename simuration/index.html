@@ -50,9 +50,7 @@
                     } else if (/^b/.test(p)) {
                         $("#" + p.replace("b", "bill")).text(numberFormat(q, ",") + "円");
                     } else if(/^diff/.test(p)) {
-                        for (var i = 0; i <= Number(q); i++) {
-                            $("#" + p).text(numberFormat(i, ","));
-                        }
+                        $("#" + p).text(numberFormat(q, ","));
                     }
                 });
             });
