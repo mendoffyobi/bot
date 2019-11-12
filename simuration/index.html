@@ -51,6 +51,8 @@
                         $("#" + p.replace("b", "bill")).text(numberFormat(q, ",") + "円");
                     } else if(/^diff/.test(p)) {
                         $("#" + p).text(numberFormat(q, ","));
+                    } else if(/^year/.test(p)) {
+                        $("#" + p).text("対象年：" + q + "年");
                     }
                 });
             });
@@ -71,8 +73,7 @@
                     </span>
                 </h2>
                 <h3>
-                    <span class="line02">対象年：2019年
-                    </span>
+                    <span id="year" class="line02"></span>
                 </h3>
                 <div>
                     <div class="row">
