@@ -46,9 +46,9 @@
                 params.forEach(function(p) {
                     let q = getParam(p, query);
                     if (/^mq/.test(p)) {
-                        $("#" + p.replace("q", "quantity")).text(numberFormat(q, ",") + "kWh");
+                        $("#" + p.replace("mq", "quantity")).text(numberFormat(q, ",") + "kWh");
                     } else if (/^mb/.test(p)) {
-                        $("#" + p.replace("b", "bill")).text(numberFormat(q, ",") + "円");
+                        $("#" + p.replace("mb", "bill")).text(numberFormat(q, ",") + "円");
                     } else if(/^diff/.test(p)) {
                         $("#" + p).text(numberFormat(q, ","));
                     } else if(/^year/.test(p)) {
