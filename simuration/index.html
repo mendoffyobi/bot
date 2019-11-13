@@ -15,7 +15,7 @@
         <script>
             /* パラメータ */
             const params = [
-                "year", "diff",
+                "area", "year", "diff",
                 "q01", "q02", "q03", "q04", "q05", "q06", "q07", "q08", "q09", "q10", "q11", "q12",
                 "b01", "b02", "b03", "b04", "b05", "b06", "b07", "b08", "b09", "b10", "b11", "b12",
             ];
@@ -53,6 +53,8 @@
                         $("#" + p).text(numberFormat(q, ","));
                     } else if(/^year/.test(p)) {
                         $("#" + p).text("対象年：" + q + "年");
+                    } else if(/^area/.test(p)) {
+                        $("#" + p).text("※東京電力エナジーパートナー(東京エリア)と比較しての結果となります。");
                     }
                 });
             });
@@ -72,6 +74,9 @@
                         </strong>お得となります
                     </span>
                 </h2>
+                <h4>
+                    <span id="area" class="line02"></span>
+                </h4>
                 <h3>
                     <span id="year" class="line02"></span>
                 </h3>
