@@ -45,9 +45,9 @@
                 var query = location.search;
                 params.forEach(function(p) {
                     let q = getParam(p, query);
-                    if (/^q/.test(p)) {
+                    if (/^mq/.test(p)) {
                         $("#" + p.replace("q", "quantity")).text(numberFormat(q, ",") + "kWh");
-                    } else if (/^b/.test(p)) {
+                    } else if (/^mb/.test(p)) {
                         $("#" + p.replace("b", "bill")).text(numberFormat(q, ",") + "円");
                     } else if(/^diff/.test(p)) {
                         $("#" + p).text(numberFormat(q, ","));
