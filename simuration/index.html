@@ -15,7 +15,7 @@
         <script>
             /* パラメータ */
             const params = [
-                "area", "year", "diff",
+                "area", "diff",
                 "mq01", "mq02", "mq03", "mq04", "mq05", "mq06", "mq07", "mq08", "mq09", "mq10", "mq11", "mq12",
                 "mb01", "mb02", "mb03", "mb04", "mb05", "mb06", "mb07", "mb08", "mb09", "mb10", "mb11", "mb12",
             ];
@@ -51,8 +51,6 @@
                         $("#" + p.replace("mb", "bill")).text(numberFormat(q, ",") + "円");
                     } else if(/^diff/.test(p)) {
                         $("#" + p).text(numberFormat(q, ","));
-                    } else if(/^year/.test(p)) {
-                        $("#" + p).text("対象年：" + q + "年");
                     } else if(/^area/.test(p)) {
                         $("#" + p).text("※東京電力エナジーパートナー(東京エリア)と比較しての結果となります。");
                     }
@@ -76,9 +74,6 @@
                 <h4>
                     <span id="area" class="line02"></span>
                 </h4>
-                <h3>
-                    <span id="year" class="line02"></span>
-                </h3>
                 <div>
                     <div class="row">
                         <div class="col-lg-6">
