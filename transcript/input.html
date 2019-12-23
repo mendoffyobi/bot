@@ -56,6 +56,7 @@ function sendMsg() {
   text += "ご使用期間:" + $("#use"      ).val() + "\n";
   text += "ご使用量:"     + $("#amount").val() + "\n";
   text += "イメージ:"     + $("#image").val() + "\n";
+  text += "----\n";
   liff.sendMessages([
     {
       "type": "text",
