@@ -26,6 +26,7 @@ var WebSafeBase64 = {
 window.onload = function (e) {
   try {
     var key = location.search.substring(1).slice(4);
+    alert(key);
     if (key) {
       //json = JSON.parse(WebSafeBase64.decode(key));
       liff.init(
