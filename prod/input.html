@@ -28,7 +28,7 @@ window.onload = function (e) {
     var key = location.search.substring(1).slice(4);
     if (key) {
       json = JSON.parse(WebSafeBase64.decode(key));
-      alert()
+      alert(json.liffId);
       liff.init(
         config: { liffId: json.liffId }
       );
