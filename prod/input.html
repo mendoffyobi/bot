@@ -27,10 +27,15 @@ window.onload = function (e) {
   try {
     var key = location.search.substring(1).slice(4);
     if (key) {
-      json = JSON.parse(WebSafeBase64.decode(key));
-      alert(json.liffId);
+      //json = JSON.parse(WebSafeBase64.decode(key));
       liff.init(
-        config: { liffId: json.liffId }
+        config: { liffId: key },
+        successCallback: function(data) {
+            alert("success");
+        },
+        errorCallback: function(e) {
+            alert(e);
+        }
       );
     }
   } catch(ex) {
