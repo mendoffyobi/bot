@@ -28,9 +28,10 @@ window.onload = function (e) {
     var key = location.search.substring(1).slice(4);
     if (key) {
       json = JSON.parse(WebSafeBase64.decode(key));
-      liff.init(function (data) {
-        liffId: json.liffId
-      });
+      alert()
+      liff.init(
+        config: { liffId: json.liffId }
+      );
     }
   } catch(ex) {
     alert(ex);
