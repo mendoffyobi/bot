@@ -25,7 +25,9 @@ var WebSafeBase64 = {
 };
 window.onload = function (e) {
   try {
-    liff.init();
+    liff.init({
+        liffId: "1653828202-ldyEykQp"
+    });
     var key = location.search.substring(1).slice(4);
     if (key) {
       json = JSON.parse(WebSafeBase64.decode(key));
