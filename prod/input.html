@@ -30,6 +30,8 @@ window.onload = function (e) {
       json = JSON.parse(WebSafeBase64.decode(key));
       liff.init({
         liffId: json.liffId
+      }, (data) => {
+        alert(json.keyword);
       });
     }
   } catch(ex) {
