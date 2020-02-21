@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script>
+window.onload = function (e) {
+  liff.init(function (data) {
+    const key = data.context.key;
+  });
+  activation();
+  $(":checkbox").change(function() {
+    activation();
+  });
+};
+function sendMsg() {
+  var text = '利用規約並びに個人情報保護方針の両方に同意しました。';
+  liff.sendMessages([
+    {
+      type:'text',
+      text:text
+    }
+  ])
+  .then(() => {
+    liff.closeWindow();
+  })
+  .catch((err) => {
+    liff.closeWindow();
+  });
+}
+function activation() {
+  if($("#kiyaku-check").is(":checked") && $("#kojin-check").is(":checked")) {
+    $("#agree").prop("disabled", false);
+  } else {
+    $("#agree").prop("disabled", true);
+  }
+}
+</script>
+<style>
+input[type=checkbox] {
+  -ms-transform: scale(1.5, 1.5);
+  -webkit-transform: scale(1.5, 1.5);
+  transform: scale(1.5, 1.5);
+  margin-left:5px;
+}
+</style>
+<title>はじめにお読みください</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <font size="4">
+        動画の投稿には、利用規約と個人情報保護方針への同意が必要です。以下のリンクをご確認の上、ご同意いただける場合チェック入れ、「承諾する」ボタンをタップしてください。
+      </font>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <a href='./kiyaku.html'>
+        <font size="5">利用規約</font>
+      </a>
+      <input type="checkbox" name="kiyaku-check" id="kiyaku-check" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <a href='./kojin.html'>
+        <font size="5">個人情報保護方針</font>
+      </a>
+      <input type="checkbox" name="kojin-check" id="kojin-check" />
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" id="agree" onClick="sendMsg();">承諾する</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
