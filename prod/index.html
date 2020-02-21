@@ -42,25 +42,6 @@ window.onload = function (e) {
     alert(ex);
   }
 };
-
-function sendMsg() {
-  var text = "入力-";
-  text += $("#keyword").text() + ":";
-  text += $("#input1").val();
-  liff.sendMessages([
-    {
-      "type": "text",
-      "text":  text
-    }
-  ])
-  .then(() => {
-    liff.closeWindow();
-  })
-  .catch((err) => {
-    alert(err);
-    liff.closeWindow();
-  });
-}
 </script>
 <style type="text/css">
 .big { font-size:14pt; }

@@ -28,4 +28,24 @@
       <input type="checkbox" name="kojin-check" id="kojin-check" />
     </div>
   </div>
+  <script>
+    function sendMsg() {
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#input1").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
 <!-- 規約:kiyaku.html end -->
