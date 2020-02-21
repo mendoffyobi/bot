@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script>
+var WebSafeBase64 = {
+  encode: function(str) {
+    var s = str.replace(/\+/g, '-').replace(/\//g, '_');
+    return btoa(unescape(encodeURIComponent(s)));
+  },
+  decode: function(str) {
+    var s = str.replace(/\-/g, '+').replace(/_/g , '/').replace(/%3D/g, '=');
+    return decodeURIComponent(escape(atob(s)));
+  }
+};
+window.onload = function (e) {
+  try {
+    var key = location.search.substring(1).slice(4);
+    if (key) {
+      json = JSON.parse(WebSafeBase64.decode(key));
+      liff.init({
+        liffId: json.liffId
+      }, (data) => {
+        $("#keyword").text(json.keyword);
+      });
+    }
+  } catch(ex) {
+    alert(ex);
+  }
+};
+
+function sendMsg() {
+  var text = "入力-";
+  text += $("#keyword").text() + ":";
+  text += $("#input1").val();
+  liff.sendMessages([
+    {
+      "type": "text",
+      "text":  text
+    }
+  ])
+  .then(() => {
+    liff.closeWindow();
+  })
+  .catch((err) => {
+    alert(err);
+    liff.closeWindow();
+  });
+}
+</script>
+<style type="text/css">
+.big { font-size:14pt; }
+</style>
+<title>テキスト入力</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    &nbsp;
+  </div>
+  <div id="contents"></div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">更新</button>
+      <input type="hidden" id="keyword">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+</div>
+</body>
+</html>
