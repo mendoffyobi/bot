@@ -32,9 +32,16 @@ window.onload = function (e) {
         liffId: json.liffId
       }, (data) => {
         $(function(){
-          if (json.keyword == "規約") {
-            $("#contents").load("kiyaku.html");
+          let contents = "";
+          switch(json.keyword) {
+            case "規約":
+             contents = "kiyaku.html";
+              break;
+            default:
+             contents = "input.html";
+              break;
           }
+          $("#contents").load(contents);
         });
       });
     }
