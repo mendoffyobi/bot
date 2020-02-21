@@ -31,7 +31,11 @@ window.onload = function (e) {
       liff.init({
         liffId: json.liffId
       }, (data) => {
-        $("#keyword").text(json.keyword);
+        $(function(){
+          if (json.keyword == "規約") {
+            $("#contents").load("kiyaku.html");
+          }
+        });
       });
     }
   } catch(ex) {
