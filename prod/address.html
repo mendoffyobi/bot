@@ -70,9 +70,9 @@ function sendMsg() {
     &nbsp;
   </div>
   <div class="row">
-    <div class="col-sm-1"><font size="5">〒</font></div>
+    <div class="col-sm-1"><font size="5"><span id="keyword"></span></font></div>
     <div class="col-sm-11">
-      <input type="text" id="input1" name="input1" class="big" size="10">
+      <input type="text" id="input1" name="input1" class="big" size="10" placeholder="郵便番号">
       <button type="button" class="btn btn-default btn-sm btn-success"
            onClick="AjaxZip3.zip2addr('input1', '', 'input2', 'input2');">反映</button>
     </div>
