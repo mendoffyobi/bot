@@ -11,15 +11,16 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 <script>
 var WebSafeBase64 = {
   encode: function(str) {
-    var s = str.replace(/\+/g, '-').replace(/\//g, '_');
+    var s = str.replace(/\+/g, "-").replace(/\//g, "_");
     return btoa(unescape(encodeURIComponent(s)));
   },
   decode: function(str) {
-    var s = str.replace(/\-/g, '+').replace(/_/g , '/').replace(/%3D/g, '=');
+    var s = str.replace(/\-/g, "+").replace(/_/g , "/").replace(/%3D/g, "=");
     return decodeURIComponent(escape(atob(s)));
   }
 };
@@ -61,7 +62,7 @@ function sendMsg() {
 <style type="text/css">
 .big { font-size:14pt; }
 </style>
-<title>テキスト入力</title>
+<title>住所入力</title>
 </head>
 <body>
 <div class="container">
@@ -69,13 +70,32 @@ function sendMsg() {
     &nbsp;
   </div>
   <div class="row">
-    <div class="col-sm-1"><font size="5"><span id="keyword"></span></font></div>
-    <div class="col-sm-11">
-      <input type="text" id="input1" class="big" size="40">
+    <div class="col-sm-1"><font size="5">〒</font></div>
+    <div class="col-sm-8">
+      <input type="text" id="input1" class="big" size="20">
+    </div>
+    <div class="col-sm-3">
+        <button type="button" class="btn btn-default btn-sm btn-success"
+             onClick="AjaxZip3.zip2addr('input1', '', 'input2', 'input3');">反映</button>
     </div>
   </div>
   <div class="row">
     &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">&nbsp;</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="input2" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">&nbsp;</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="input3" class="big" size="40">
+    </div>
   </div>
   <div class="row">
     <div class="col-sm-1"></div>
