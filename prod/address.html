@@ -16,11 +16,11 @@
 <script>
 var WebSafeBase64 = {
   encode: function(str) {
-    var s = str.replace(/\+/g, "-").replace(/\//g, "_");
+    var s = str.replace(/\+/g, '-').replace(/\//g, '_');
     return btoa(unescape(encodeURIComponent(s)));
   },
   decode: function(str) {
-    var s = str.replace(/\-/g, "+").replace(/_/g , "/").replace(/%3D/g, "=");
+    var s = str.replace(/\-/g, '+').replace(/_/g , '/').replace(/%3D/g, '='); //'
     return decodeURIComponent(escape(atob(s)));
   }
 };
@@ -32,6 +32,7 @@ window.onload = function (e) {
       liff.init({
         liffId: json.liffId
       }, (data) => {
+        $("#keyword").text(json.keyword);
       });
     }
   } catch(ex) {
