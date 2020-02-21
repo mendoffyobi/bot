@@ -25,13 +25,13 @@ var WebSafeBase64 = {
 };
 window.onload = function (e) {
   try {
-    var key = location.search.substring(1).slice(4);
+    //var key = location.search.substring(1).slice(4);
     if (key) {
-      json = JSON.parse(WebSafeBase64.decode(key));
+      //json = JSON.parse(WebSafeBase64.decode(key));
       liff.init({
-        liffId: json.liffId
+        liffId: "1653828202-BrE2EXPm"
       }, (data) => {
-        $("#keyword").text(json.keyword);
+        $("#keyword").text("kiyaku");
         activation();
         $(":checkbox").change(function() {
             activation();
@@ -43,17 +43,20 @@ window.onload = function (e) {
   }
 };
 function sendMsg() {
-  var text = '利用規約並びに個人情報保護方針の両方に同意しました。';
+  var text = "入力-";
+  text += $("#keyword").text() + ":";
+  text += '利用規約並びに個人情報保護方針の両方に同意しました。';
   liff.sendMessages([
     {
-      type:'text',
-      text:text
+      "type": "text",
+      "text":  text
     }
   ])
   .then(() => {
     liff.closeWindow();
   })
   .catch((err) => {
+    alert(err);
     liff.closeWindow();
   });
 }
