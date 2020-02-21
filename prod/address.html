@@ -26,13 +26,14 @@ var WebSafeBase64 = {
 };
 window.onload = function (e) {
   try {
-    var key = location.search.substring(1).slice(4);
+    //var key = location.search.substring(1).slice(4);
+    var key = 'ok';
     if (key) {
       json = JSON.parse(WebSafeBase64.decode(key));
       liff.init({
-        liffId: json.liffId
+        liffId: '1653828202-DRyzyvW1';
       }, (data) => {
-        $("#keyword").text(json.keyword);
+        $("#keyword").text('住所');
       });
     }
   } catch(ex) {
