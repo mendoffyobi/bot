@@ -14,13 +14,23 @@
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 <script>
 window.onload = function (e) {
-  liff.init(function (data) {
-    const key = data.context.key;
-  });
-  activation();
-  $(":checkbox").change(function() {
-    activation();
-  });
+  try {
+    var key = location.search.substring(1).slice(4);
+    if (key) {
+      json = JSON.parse(WebSafeBase64.decode(key));
+      liff.init({
+        liffId: json.liffId
+      }, (data) => {
+        $("#keyword").text(json.keyword);
+        activation();
+        $(":checkbox").change(function() {
+            activation();
+        });
+      });
+    }
+  } catch(ex) {
+    alert(ex);
+  }
 };
 function sendMsg() {
   var text = '利用規約並びに個人情報保護方針の両方に同意しました。';
@@ -93,6 +103,7 @@ input[type=checkbox] {
     <div class="col-sm-1"></div>
     <div class="col-sm-11">
       <button type="button" class="btn btn-lg btn-success" id="agree" onClick="sendMsg();">承諾する</button>
+      <input type="hidden" id="keyword">
     </div>
   </div>
 </div>
