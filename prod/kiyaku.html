@@ -13,6 +13,16 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 <script>
+var WebSafeBase64 = {
+  encode: function(str) {
+    var s = str.replace(/\+/g, '-').replace(/\//g, '_');
+    return btoa(unescape(encodeURIComponent(s)));
+  },
+  decode: function(str) {
+    var s = str.replace(/\-/g, '+').replace(/_/g , '/').replace(/%3D/g, '=');
+    return decodeURIComponent(escape(atob(s)));
+  }
+};
 window.onload = function (e) {
   try {
     var key = location.search.substring(1).slice(4);
