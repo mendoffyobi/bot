@@ -42,7 +42,7 @@ jQuery(function() {
               break;
           }
           $("#contents").load(contents, function() {
-            $("#keyword").val(json.keyword);
+            $("#keyword").text(json.keyword);
           });
         });
       });
