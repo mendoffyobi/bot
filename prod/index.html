@@ -38,11 +38,12 @@ jQuery(function() {
              contents = "kiyaku.html";
               break;
             default:
-             contents = "input.html";
+              contents = "input.html";
               break;
           }
-          $("#contents").load(contents);
-          $("#keyword").value(json.keyword);
+          $("#contents").load(contents, function() {
+            $("#keyword").value(json.keyword);
+          });
         });
       });
     }
@@ -50,35 +51,6 @@ jQuery(function() {
     alert(ex);
   }
 });
-/*
-window.onload = function (e) {
-  try {
-    var key = location.search.substring(1).slice(4);
-    if (key) {
-      json = JSON.parse(WebSafeBase64.decode(key));
-      liff.init({
-        liffId: json.liffId
-      }, (data) => {
-        $(function(){
-          let contents = "";
-          switch(json.keyword) {
-            case "規約":
-             contents = "kiyaku.html";
-              break;
-            default:
-             contents = "input.html";
-              break;
-          }
-          $("#contents").load(contents);
-          $("#keyword").value(json.keyword);
-        });
-      });
-    }
-  } catch(ex) {
-    alert(ex);
-  }
-};
-*/
 </script>
 <style type="text/css">
 .big { font-size:14pt; }
