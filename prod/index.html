@@ -43,6 +43,10 @@ jQuery(function() {
           }
           $("#contents").load(contents, function() {
             $("#keyword").text(json.keyword);
+            if (json.keyword == "規約") {
+              $("#kiyaku").attr("href", "./denken/kiyaku.html");
+              $("#kojin").attr("href", "./denken/kojin.html");
+            }
           });
         });
       });
