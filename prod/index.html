@@ -35,7 +35,10 @@ jQuery(function() {
           let contents = "";
           switch(json.keyword) {
             case "規約":
-             contents = "kiyaku.html";
+              contents = "kiyaku.html";
+              break;
+            case "住所":
+              contents = "address.html";
               break;
             default:
               contents = "input.html";
