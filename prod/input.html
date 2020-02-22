@@ -24,7 +24,7 @@
   <script>
     function sendMsg() {
       var text = "入力-";
-      text += $("#keyword").text() + ":";
+      text += $("#keyword").val() + ":";
       text += $("#input1").val();
       liff.sendMessages([
         {
