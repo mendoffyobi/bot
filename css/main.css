@@ -92,3 +92,16 @@ div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active
 -webkit-box-shadow: none;
 box-shadow: none;
 }
+
+.current {
+  font-size:1.5em;
+}
+.meter::placeholder {
+  color: #d9534f;
+}
+.meter:-ms-input-placeholder {
+  color: #d9534f;
+}
+.meter::-ms-input-placeholder {
+  color: #d9534f;
+}
