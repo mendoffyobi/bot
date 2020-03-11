@@ -1,0 +1,54 @@
+<!-- 支払方法:payment.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="col-sm-1">
+    <span id="keyword" style="font-size: 14pt;"></span>
+    <span style="font-size: 12pt;">:</span>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5"></font></div>
+    <div class="col-sm-11">
+      <select id="payment" class="form-control">
+        <option value="">選択してください</option>
+        <option value="口座振替">口座振替</option>
+        <option value="クレジット決済">クレジット決済</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#payment").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 支払方法:payment.html end -->
