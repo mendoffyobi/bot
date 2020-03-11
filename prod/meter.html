@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">エリア</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input1" class="big" size="40">
+      <input type="text" id="area" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">ご契約種別</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input2" class="big" size="40">
+      <input type="text" id="type" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -30,7 +30,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">ご契約容量</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input3" class="big" size="40">
+      <input type="text" id="size" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -39,7 +39,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">地点番号</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input4" class="big" size="40">
+      <input type="text" id="point" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -48,7 +48,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">お客様番号</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input5" class="big" size="40">
+      <input type="text" id="user" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -57,7 +57,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">検針月日</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input6" class="big" size="40">
+      <input type="text" id="date" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -66,7 +66,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">ご使用期間</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input7" class="big" size="40">
+      <input type="text" id="period" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -75,7 +75,7 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">ご使用量</font></div>
     <div class="col-sm-11">
-      <input type="text" id="input8" class="big" size="40">
+      <input type="text" id="amount" class="big" size="40">
     </div>
   </div>
   <div class="row">
@@ -85,7 +85,7 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-11">
       <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
-      <input type="hidden" id="input9">
+      <input type="hidden" id="image">
     </div>
   </div>
   <div class="row">
@@ -95,15 +95,15 @@
     function sendMsg() {
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += $("#input1").val() + "\n";
-      text += $("#input2").val() + "\n";
-      text += $("#input3").val() + "\n";
-      text += $("#input4").val() + "\n";
-      text += $("#input5").val() + "\n";
-      text += $("#input6").val() + "\n";
-      text += $("#input7").val() + "\n";
-      text += $("#input8").val() + "\n";
-      text += $("#input9").val();
+      text += $("#area").val() + "\n";
+      text += $("#type").val() + "\n";
+      text += $("#size").val() + "\n";
+      text += $("#point").val() + "\n";
+      text += $("#user").val() + "\n";
+      text += $("#date").val() + "\n";
+      text += $("#period").val() + "\n";
+      text += $("#amount").val() + "\n";
+      text += $("#image").val();
       liff.sendMessages([
         {
           "type": "text",
