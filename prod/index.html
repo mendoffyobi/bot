@@ -51,10 +51,10 @@ jQuery(function() {
             $("#keyword").text(json.keyword);
             if (json.parameter) {
               try {
-              var param = JSON.parse(WebSafeBase64.decode(json.parameter));
-              Object.keys(param).forEach(function(v) {
-                $("#" + v).val(WebSafeBase64.decode(param[v]));
-              });
+                var param = JSON.parse(WebSafeBase64.decode(json.parameter));
+                Object.keys(param).forEach(function(v) {
+                  $("#" + v).val(WebSafeBase64.decode(param[v]));
+                });
               } catch(ex) {
                 alert(ex);
               }
