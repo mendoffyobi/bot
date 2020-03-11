@@ -53,8 +53,7 @@ jQuery(function() {
               try {
               var param = JSON.parse(WebSafeBase64.decode(json.parameter));
               Object.keys(param).forEach(function(v) {
-                alert(v + ":" + param[v]);
-                $("#" + v).val(param[v]);
+                $("#" + v).val(WebSafeBase64.decode(param[v]));
               });
               } catch(ex) {
                 alert(ex);
