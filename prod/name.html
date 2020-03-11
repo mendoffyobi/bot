@@ -1,0 +1,61 @@
+<!-- 氏名:name.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="col-sm-1">
+    <span id="keyword" style="font-size: 14pt;"></span>
+    <span style="font-size: 12pt;">:</span>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">姓</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="lastName" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">名</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="firstName" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      <input type="hidden" id="image">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#lastName").val() + "|";
+      text += $("#firstName").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 氏名:name.html end -->
