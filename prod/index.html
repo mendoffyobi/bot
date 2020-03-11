@@ -51,7 +51,7 @@ jQuery(function() {
             $("#keyword").text(json.keyword);
             if (json.parameter) {
               var param = JSON.parse(WebSafeBase64.decode(json.parameter));
-              Object.keys(param).forEach(function(v){
+              Object.keys(param).forEach(function(v) {
                 $("#" + v).val(param[v]);
               });
             }
