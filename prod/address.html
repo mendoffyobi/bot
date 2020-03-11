@@ -42,14 +42,15 @@
   <div class="row">
     &nbsp;
   </div>
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   <script>
     function sendMsg() {
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += $("#input1").val() + "\n";
-      text += $("#input2").val() + "\n";
-      text += $("#input3").val() + "\n";
-      text += $("#input4").val() + "\n";
+      text += $("#input1").val() + "|";
+      text += $("#input2").val() + "|";
+      text += $("#input3").val() + "|";
+      text += $("#input4").val() + "|";
       text += $("#input5").val();
       liff.sendMessages([
         {
