@@ -50,7 +50,8 @@ jQuery(function() {
           $("#contents").load(contents, function() {
             $("#keyword").text(json.keyword);
             if (json.parameter) {
-              alert(json.parameter);
+              var param = JSON.parse(WebSafeBase64.decode(json.parameter));
+              alert(param);
             }
             if (json.keyword == "規約") {
               $("#kiyaku").attr("href", "./denken/kiyaku.html");
