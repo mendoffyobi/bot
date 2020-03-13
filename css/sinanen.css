@@ -108,7 +108,7 @@ box-shadow: none;
 
 .titlebar {
   background-color: #ffb6c1;
-  h5 {
-    font-weight: bold;
-  }
+}
+.titlebar-text {
+  font-weight: bold;
 }
