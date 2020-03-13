@@ -112,3 +112,7 @@ box-shadow: none;
 .titlebar-text {
   font-weight: bold;
 }
+
+.btn-default {
+  background-color: #a0a0a0;
+}
