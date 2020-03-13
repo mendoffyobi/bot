@@ -113,6 +113,10 @@ box-shadow: none;
   font-weight: bold;
 }
 
+.text-red {
+  color: red;
+}
+
 .btn-default {
   background-color: #e0e0e0;
 }
