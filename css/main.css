@@ -123,8 +123,3 @@ box-shadow: none;
     width: 50%;
 }
 
-.popup-show {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
