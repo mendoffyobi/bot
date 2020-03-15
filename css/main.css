@@ -122,3 +122,9 @@ box-shadow: none;
     padding: 30px;
     width: 50%;
 }
+
+.popup-show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
