@@ -125,6 +125,6 @@ box-shadow: none;
 
 .popup-show {
     display: flex;
-    justify-content: start;
-    align-items: center;
+    justify-content: center;
+    align-items: start;
 }
