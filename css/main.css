@@ -117,13 +117,13 @@ box-shadow: none;
     left: 0;
 }
  
-.content{
+.popup-content{
     background: #fff;
     padding: 30px;
     width: 50%;
 }
 
-.show {
+.popup-show {
     display: flex;
     justify-content: center;
     align-items: center;
