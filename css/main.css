@@ -120,6 +120,7 @@ box-shadow: none;
 #popup-content {
     display: none;
     position: fixed;
+    width: 50%;
     top: 5%;
     left: 35%;
     height: 250px;
@@ -128,4 +129,8 @@ box-shadow: none;
     text-align: center;
     background-color: #fff;
     z-index: 2;
+}
+
+#popup-msg {
+    text-align: left;
 }
