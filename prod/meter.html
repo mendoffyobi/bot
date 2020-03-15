@@ -21,7 +21,8 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">ご契約種別</font></div>
     <div class="col-sm-11">
-      <input type="text" id="type" class="big" size="40">
+      <input type="text" id="type" class="big" size="40" autocomplete="on" list="typeList">
+      <datalist id="typeList"></datalist>
     </div>
   </div>
   <div class="row">
@@ -116,6 +117,23 @@
       .catch((err) => {
         alert(err);
         liff.closeWindow();
+      });
+    }
+    function makeType(area) {
+      var list = [];
+      switch(area) {
+        case '四国':
+        case '中国':
+        case '関西':
+          list = ['', '従量電灯A', '従量電灯B', '低圧電力'];
+          break;
+        default:
+          list = ['', '従量電灯B', '従量電灯C', '低圧電力'];
+          break;
+      }
+      $('#typeList > option').remove();
+      list.forEach(function(val){
+        $('#typeList').append($('<option>').html(val ? val : 'ご契約種別を選択してください').val(val));
       });
     }
   </script>

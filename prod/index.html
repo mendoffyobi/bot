@@ -57,11 +57,13 @@ jQuery(function() {
           }
           $("#contents").load(contents, function() {
             $("#keyword").text(json.keyword);
+            var p = {};
             if (json.parameter) {
               try {
                 var param = JSON.parse(WebSafeBase64.decode(json.parameter));
                 Object.keys(param).forEach(function(v) {
                   $("#" + v).val(WebSafeBase64.decode(param[v]));
+                  p[v] = param[v];
                 });
               } catch(ex) {
                 alert(ex);
@@ -71,6 +73,9 @@ jQuery(function() {
               $("#date").datepicker({
                 format: "m月d日"
               });
+              if (p && p["area"]) {
+                makeType(p["area"]);
+              }
             }
             if (json.keyword == "規約") {
               $("#kiyaku").attr("href", "./denken/kiyaku.html");
