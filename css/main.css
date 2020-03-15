@@ -12,7 +12,7 @@
 #loader {
     display: none;
     position: fixed;
-    top: 5%;
+    top: 100px;
     left: 50%;
     margin-top: -100px;
     margin-left: -100px;
@@ -121,7 +121,7 @@ box-shadow: none;
     display: none;
     position: fixed;
     width: 50%;
-    top: 5%;
+    top: 100px;
     left: 35%;
     height: 250px;
     margin-top: -100px;
