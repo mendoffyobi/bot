@@ -12,7 +12,7 @@
 #loader {
     display: none;
     position: fixed;
-    top: 20%;
+    top: 5%;
     left: 50%;
     margin-top: -100px;
     margin-left: -100px;
@@ -104,4 +104,21 @@ box-shadow: none;
 }
 .meter::-ms-input-placeholder {
   color: #d9534f;
+}
+
+.popup {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    opacity: 0.7;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+ 
+.popup-content {
+    background: #fff;
+    padding: 30px;
+    width: 50%;
 }
