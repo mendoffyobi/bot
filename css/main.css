@@ -120,11 +120,13 @@ box-shadow: none;
 #popup-content {
     display: none;
     position: fixed;
+    width: 50%;
     top: 5%;
     left: 50%;
     margin-top: -100px;
     margin-left: -100px;
     text-align: center;
-    color: #000;
+    color: red;
+    background-color: #000;
     z-index: 2;
 }
