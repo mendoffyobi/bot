@@ -121,12 +121,13 @@ box-shadow: none;
     display: none;
     position: fixed;
     width: 50%;
+    height: 50vh;
     top: 5%;
     left: 50%;
     margin-top: -100px;
     margin-left: -100px;
     text-align: center;
     color: red;
-    background-color: #000;
+    background-color: #fff;
     z-index: 2;
 }
