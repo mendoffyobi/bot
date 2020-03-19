@@ -27,9 +27,9 @@
     function sendMsg() {
       let msg = "";
       if ($("#input1").val() == "") {
-        msg += $("#keyword").text() + "を入力してください";
+        msg += $("#keyword").text().replace("修正", "") + "を入力してください";
       } else {
-        if ($("#keyword").text() == "Eメール") {
+        if ($("#keyword").text().replace("修正", "") == "Eメール") {
           if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test($("#input1").val())) {
             msg += "Eメールアドレスの形式が正しくありません";
           }
