@@ -95,16 +95,16 @@
   <script>
     function sendMsg() {
       var text = "入力-";
-      text += $("#keyword").text() + ":\n";
-      text += "|エリア:["        + $("#area").val()      + "]\n";
-      text += "|ご契約種別:[" + $("#type").val()      + "]\n";
-      text += "|ご契約容量:[" + $("#size").val()      + "]\n";
-      text += "|地点番号:["     + $("#point").val()    + "]\n";
-      text += "|お客様番号:[" + $("#user").val()     + "]\n";
-      text += "|検針月日:["     + $("#date").val()     + "]\n";
-      text += "|ご使用期間:[" + $("#period").val()  + "]\n";
-      text += "|ご使用料:["    + $("#amount").val() + "]\n";
-      text += "|IMAGE:["       + $("#image").val()   + "]";
+      text += $("#keyword").text() + ":";
+      text += "エリア:["        + $("#area").val()      + "]|";
+      text += "ご契約種別:[" + $("#type").val()      + "]|";
+      text += "ご契約容量:[" + $("#size").val()      + "]|";
+      text += "地点番号:["     + $("#point").val()    + "]|";
+      text += "お客様番号:[" + $("#user").val()     + "]|";
+      text += "検針月日:["     + $("#date").val()     + "]|";
+      text += "ご使用期間:[" + $("#period").val()  + "]|";
+      text += "ご使用料:["    + $("#amount").val() + "]|";
+      text += "IMAGE:["       + $("#image").val()   + "]";
       liff.sendMessages([
         {
           "type": "text",
