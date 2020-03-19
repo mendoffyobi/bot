@@ -33,6 +33,14 @@
   </div>
   <script>
     function sendMsg() {
+      let msg = "";
+      if ($("#payment").val() == "") {
+        msg += $("#keyword").text() + "を選択してください";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
       var text = "入力-";
       text += $("#keyword").text() + ":";
       text += $("#payment").val();

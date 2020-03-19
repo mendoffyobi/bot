@@ -38,6 +38,17 @@
   </div>
   <script>
     function sendMsg() {
+      let msg = "";
+      if ($("#lastName").val() == "") {
+        msg += "姓を入力してください\n";
+      }
+      if ($("#firstName").val() == "") {
+        msg += "名を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
       var text = "入力-";
       text += $("#keyword").text() + ":";
       text += $("#lastName").val() + "|";

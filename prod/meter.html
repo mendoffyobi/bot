@@ -94,6 +94,35 @@
   </div>
   <script>
     function sendMsg() {
+      let msg = "";
+      if ($("#area").val() == "") {
+        msg += "エリアを入力してください\n";
+      }
+      if ($("#type").val() == "") {
+        msg += "ご契約種別を入力してください\n";
+      }
+      if ($("#size").val() == "") {
+        msg += "ご契約容量を入力してください\n";
+      }
+      if ($("#point").val() == "") {
+        msg += "地点番号を入力してください\n";
+      }
+      if ($("#user").val() == "") {
+        msg += "お客様番号を入力してください\n";
+      }
+      if ($("#date").val() == "") {
+        msg += "検針月日を入力してください\n";
+      }
+      if ($("#period").val() == "") {
+        msg += "ご使用期間を入力してください\n";
+      }
+      if ($("#amount").val() == "") {
+        msg += "ご使用量を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
       var text = "入力-";
       text += $("#keyword").text() + ":";
       text += "エリア["        + $("#area").val()      + "]|";
