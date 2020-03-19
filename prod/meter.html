@@ -96,15 +96,15 @@
     function sendMsg() {
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += "エリア:["        + $("#area").val()      + "]|";
-      text += "ご契約種別:[" + $("#type").val()      + "]|";
-      text += "ご契約容量:[" + $("#size").val()      + "]|";
-      text += "地点番号:["     + $("#point").val()    + "]|";
-      text += "お客様番号:[" + $("#user").val()     + "]|";
-      text += "検針月日:["     + $("#date").val()     + "]|";
-      text += "ご使用期間:[" + $("#period").val()  + "]|";
-      text += "ご使用料:["    + $("#amount").val() + "]|";
-      text += "IMAGE:["       + $("#image").val()   + "]";
+      text += "エリア["        + $("#area").val()      + "]|";
+      text += "ご契約種別[" + $("#type").val()      + "]|";
+      text += "ご契約容量[" + $("#size").val()      + "]|";
+      text += "地点番号["     + $("#point").val()    + "]|";
+      text += "お客様番号[" + $("#user").val()     + "]|";
+      text += "検針月日["     + $("#date").val()     + "]|";
+      text += "ご使用期間[" + $("#period").val()  + "]|";
+      text += "ご使用料["    + $("#amount").val() + "]|";
+      text += "IMAGE["       + $("#image").val()   + "]";
       liff.sendMessages([
         {
           "type": "text",
