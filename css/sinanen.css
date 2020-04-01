@@ -186,3 +186,13 @@ box-shadow: none;
     background: #cc0033;
     color: #ffffff;
 }
+
+.btn-primary.outline {
+    background: none;
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    background: #ff0033;
+    color: #ffffff;
+    opacity: 1.0;
+}
