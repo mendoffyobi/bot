@@ -154,6 +154,9 @@ box-shadow: none;
 .simulation-file-inline {
   margin-top: 10px;
 }
+.simulation-text-inline {
+  margin-top: 10px;
+}
 .simulation-border-inline {
   border-bottom: 1px solid lightgray;
 }
