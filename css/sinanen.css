@@ -96,6 +96,7 @@ box-shadow: none;
 .current {
   font-size:1.5em;
 }
+
 .meter::placeholder {
   color: #d9534f;
 }
@@ -112,6 +113,10 @@ box-shadow: none;
 .titlebar-text {
   font-weight: bold;
 }
+.titlebar-text-center {
+  font-weight: bold;
+  text-align: center;
+}
 
 .text-red {
   color: red;
@@ -119,4 +124,44 @@ box-shadow: none;
 
 .btn-default {
   background-color: #b3b3b3;
+}
+
+.simulation-logo {
+  float: left;
+}
+.simulation-title {
+  text-align: right;
+  float: right;
+  margin-top: 20px;
+}
+.simulation-title-h4 {
+  font-weight: bold;
+}
+.simulation-title-h5 {
+  font-weight: bold;
+}
+.simulation-text-h5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.simulation-step {
+  font-weight: bold;
+}
+.simulation-step-red {
+  font-weight: normal;
+  color: red;
+}
+.simulation-file-inline {
+  margin-top: 10px;
+}
+.simulation-border-inline {
+  border-bottom: 1px solid lightgray;
+}
+.simulation-border-row {
+  border: 1px solid lightgray;
+  border-bottom: 0px;
+}
+.simulation-border-col {
+  border-right: 1px solid lightgray;
+  background-color: #f5f5f5;
 }
