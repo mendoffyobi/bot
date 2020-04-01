@@ -172,6 +172,7 @@ box-shadow: none;
 .btn-primary {
     background: #ff0033;
     color: #ffffff;
+    border: none;
 }
 .btn-primary:hover, .btn-primary:focus, 
 .btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
@@ -185,10 +186,6 @@ box-shadow: none;
 .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
     background: #cc0033;
     color: #ffffff;
-}
-
-.btn-primary.outline {
-    background: none;
 }
 
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
