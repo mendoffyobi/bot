@@ -197,6 +197,10 @@ box-shadow: none;
   background-color: #f5f5f5;
 }
 
+.font-small {
+  font-size: small;
+}
+
 .btn-primary {
     background: #ff0033;
     color: #ffffff;
