@@ -240,9 +240,3 @@ box-shadow: none;
     background: #c0c0c0;
     color: #000000;
 }
-
-.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
-    background: #e0e0e0;
-    color: #000000;
-    opacity: 1.0;
-}
