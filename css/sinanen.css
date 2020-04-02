@@ -201,7 +201,6 @@ box-shadow: none;
     background: #ff0033;
     color: #ffffff;
     border: none;
-    font-size: small;
 }
 .btn-primary:hover, .btn-primary:focus, 
 .btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
@@ -226,7 +225,6 @@ box-shadow: none;
 .btn-default {
     background: #e0e0e0;
     color: #000000;
-    font-size: small;
 }
 .btn-default:hover, .btn-default:focus, 
 .btn-default:active, .btn-default:active:focus, .btn-default:active:hover, .btn-default:active.focus,
