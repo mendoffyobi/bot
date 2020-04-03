@@ -243,3 +243,35 @@ box-shadow: none;
     background: #c0c0c0;
     color: #000000;
 }
+
+.sample-ol {
+  counter-reset: my-counter;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sample-li {
+  font-size: 16px;
+  line-height: 1.5;
+  padding-left: 30px;
+  position: relative;
+}
+.sample-li:before {
+  content: counter(my-counter);
+  counter-increment: my-counter;
+  background-color: #0d92aa;
+  border: 1px solid;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 22px;
+  width: 22px;
+  color: #ffffff;
+  font-size: 85%;
+  line-height: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
