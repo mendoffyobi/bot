@@ -17,6 +17,7 @@ jQuery(function() {
   var key = location.search.substring(1).slice(4);
   if (key) {
     $("#source").val(key);
+    $("#back").hide();
   }
 });
 function goBack() {
