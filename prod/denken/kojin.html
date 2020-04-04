@@ -16,11 +16,11 @@
 jQuery(function() {
   var key = location.search.substring(1).slice(4);
   if (key) {
-    $("source").val(key);
+    $("#source").val(key);
   }
 });
 function goBack() {
-  if ($("source").val() === 'web') {
+  if ($("#source").val() === 'web') {
     window.close();
   } else {
     window.history.back();
