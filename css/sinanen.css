@@ -1,9 +1,3 @@
-@media screen and (max-width: 500px) {
-   #file-name-disp {
-     display:none;
-   }
-}
-
 .row {
   margin-right: 0px;
   margin-left: 0px;
