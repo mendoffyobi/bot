@@ -1,3 +1,10 @@
+@media (max-width: 500px) {
+   /* 横幅が320px以下の場合に適用するスタイル */
+   #file-name-disp {
+     display:none;
+   }
+}
+
 /* ローダー */
 #loader-bg {
     display: none;
