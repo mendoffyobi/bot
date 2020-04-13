@@ -3,6 +3,11 @@
   margin-left: 0px;
 }
 
+.table-row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
 /* ローダー */
 #loader-bg {
     display: none;
