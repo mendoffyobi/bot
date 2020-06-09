@@ -65,8 +65,9 @@ jQuery(function() {
               try {
                 var param = JSON.parse(WebSafeBase64.decode(json.parameter));
                 Object.keys(param).forEach(function(v) {
-                  $("#" + v).val(WebSafeBase64.decode(param[v]));
-                  p[v] = param[v];
+                  let val = WebSafeBase64.decode(param[v]);
+                  $("#" + v).val(val);
+                  p[v] = val;
                 });
               } catch(ex) {
                 alert(ex);
@@ -77,7 +78,6 @@ jQuery(function() {
                 format: "m月d日"
               });
               if (p && p["area"]) {
-                alert(p["area"]);
                 makeType(p["area"]);
               }
             }
