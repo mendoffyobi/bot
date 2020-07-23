@@ -54,6 +54,10 @@
 .simulation-title-h4 {
   font-weight: bold;
 }
+.simulation-text-h5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 /* ローダー */
 #loader-bg {
