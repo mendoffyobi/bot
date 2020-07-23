@@ -23,6 +23,19 @@
   transition: .3s ease-out;/*変化を緩やかに*/
 }
 
+.titlebar {
+  background-color: #ffb6c1;
+}
+
+.titlebar-text {
+  font-weight: bold;
+}
+
+.titlebar-text-center {
+  font-weight: bold;
+  text-align: center;
+}
+
 .main-area {
   display: grid;
 }
