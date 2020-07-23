@@ -53,7 +53,6 @@
     background: rgba(0,0,0,.5);
     z-index: 2;
 }
-
 #loader {
     display: none;
     position: fixed;
@@ -64,4 +63,31 @@
     text-align: center;
     color: #fff;
     z-index: 3;
+}
+
+/* ポップアップ */
+#popup-bg {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgba(0,0,0,.5);
+    z-index: 2;
+}
+#popup-content {
+    display: none;
+    position: fixed;
+    width: 50%;
+    top: 100px;
+    left: 35%;
+    height: 250px;
+    text-align: center;
+    background-color: #fff;
+    z-index: 3;
+}
+#popup-msg {
+    text-align: left;
+    color: red;
 }
