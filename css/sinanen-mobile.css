@@ -58,6 +58,13 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.simulation-step {
+  font-weight: bold;
+}
+.simulation-step-red {
+  font-weight: normal;
+  color: red;
+}
 
 /* ローダー */
 #loader-bg {
