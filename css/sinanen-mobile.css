@@ -48,14 +48,8 @@
 .title-area {
   display: grid;
 }
-
 .upload-area {
   display: grid;
-}
-
-
-
-.title-area {
 }
 .agent-area {
 }
@@ -77,6 +71,10 @@
 .simulation-step-red {
   font-weight: normal;
   color: red;
+}
+
+.text-red {
+  color: #e4012e;
 }
 
 /* ローダー */
