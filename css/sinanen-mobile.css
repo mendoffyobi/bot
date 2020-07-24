@@ -45,7 +45,11 @@
   text-align: center;
 }
 
-.main-area {
+.title-area {
+  display: grid;
+}
+
+.upload-area {
   display: grid;
 }
 
