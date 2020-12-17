@@ -1,0 +1,93 @@
+<!-- 個人名義:kojin.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="col-sm-1">
+    <span id="keyword" style="font-size: 14pt; display: none"></span>
+    <span style="font-size: 12pt;">:</span>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">お名前(漢字)</span>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">姓</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="lastName" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">名</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="firstName" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">お名前(フリガナ)</span>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">姓</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="lastNameKana" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">名</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="firstNameKana" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      if ($("#lastName").val() == "") {
+        msg += "姓(漢字)を入力してください\n";
+      }
+      if ($("#firstName").val() == "") {
+        msg += "名(漢字)を入力してください\n";
+      }
+      if ($("#lastNameKana").val() == "") {
+        msg += "姓(フリガナ)を入力してください\n";
+      }
+      if ($("#firstNameKana").val() == "") {
+        msg += "名(フリガナ)を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#lastName").val() + "|";
+      text += $("#firstName").val() + "|";
+      text += $("#lastNameKana").val() + "|";
+      text += $("#firstNameKana").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 個人名義:kojin.html end -->

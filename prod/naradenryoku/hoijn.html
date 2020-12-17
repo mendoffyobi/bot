@@ -1,0 +1,121 @@
+<!-- 法人名義:hojin.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="col-sm-1">
+    <span id="keyword" style="font-size: 14pt; display: none"></span>
+    <span style="font-size: 12pt;">:</span>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">法人名(漢字)</span>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <input type="text" id="officeName" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">法人名(フリガナ)</span>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <input type="text" id="officeNameKana" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">法人ご担当者様氏名(漢字)</span>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">姓</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="lastName" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">名</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="firstName" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">法人ご担当者様氏名(フリガナ)</span>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">姓</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="lastNameKana" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">名</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="firstNameKana" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      if ($("#officeName").val() == "") {
+        msg += "法人名(漢字)を入力してください\n";
+      }
+      if ($("#officeNameKana").val() == "") {
+        msg += "法人名(フリガナ)を入力してください\n";
+      }
+      if ($("#lastName").val() == "") {
+        msg += "法人ご担当者様ー姓(漢字)を入力してください\n";
+      }
+      if ($("#firstName").val() == "") {
+        msg += "法人ご担当者様ー名(漢字)を入力してください\n";
+      }
+      if ($("#lastNameKana").val() == "") {
+        msg += "法人ご担当者様ー姓(フリガナ)を入力してください\n";
+      }
+      if ($("#firstNameKana").val() == "") {
+        msg += "法人ご担当者様ー名(フリガナ)を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#officeName").val() + "|";
+      text += $("#officeNameKana").val() + "|";
+      text += $("#lastName").val() + "|";
+      text += $("#firstName").val() + "|";
+      text += $("#lastNameKana").val() + "|";
+      text += $("#firstNameKana").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 法人名義:hojin.html end -->
