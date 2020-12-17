@@ -1,0 +1,84 @@
+<!-- 住所:address.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5"><span id="keyword"></span></font></div>
+    <div class="col-sm-11">
+      <input type="text" id="input1" name="input1" class="big" size="10" placeholder="〒">
+      <button type="button" class="btn btn-default btn-sm btn-success"
+           onClick="AjaxZip3.zip2addr('input1', '', 'input2', 'input2');">反映</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input2" name="input2" class="big" size="40" placeholder="都道府県市区町村を入力">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input3" name="input3" class="big" size="40" placeholder="番地を入力">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input4" name="input4" class="big" size="40" placeholder="建物名を入力">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input5" name="input5" class="big" size="40" placeholder="部屋番号等を入力">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      if ($("#input1").val() == "") {
+        msg += "郵便番号を入力してください\n";
+      }
+      if ($("#input2").val() == "") {
+        msg += "都道府県市区町村を入力してください\n";
+      }
+      if ($("#input3").val() == "") {
+        msg += "番地を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#input1").val() + "|";
+      text += $("#input2").val() + "|";
+      text += $("#input3").val() + "|";
+      text += $("#input4").val() + "|";
+      text += $("#input5").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 住所:address.html end -->
