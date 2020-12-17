@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script>
+var WebSafeBase64 = {
+  encode: function(str) {
+    var s = str.replace(/\+/g, '-').replace(/\//g, '_');
+    return btoa(unescape(encodeURIComponent(s)));
+  },
+  decode: function(str) {
+    var s = str.replace(/\-/g, '+').replace(/_/g , '/').replace(/%3D/g, '=');
+    return decodeURIComponent(escape(atob(s)));
+  }
+};
+jQuery(function() {
+  try {
+    var key = location.search.substring(1).slice(4);
+    if (key) {
+      json = JSON.parse(WebSafeBase64.decode(key));
+      liff.init({
+        liffId: json.liffId
+      }, (data) => {
+        $(function(){
+          let contents = "";
+          switch(json.keyword) {
+            case "規約":
+              contents = "kiyaku.html";
+              break;
+            case "氏名":
+            case "氏名修正":
+              contents = "name.html";
+              break;
+            case "住所":
+            case "住所修正":
+              contents = "address.html";
+              break;
+            case "支払方法":
+            case "支払方法修正":
+              contents = "payment.html";
+              break;
+            case "検針情報":
+              contents = "meter.html";
+              break;
+            default:
+              contents = "input.html";
+              break;
+          }
+          $("#contents").load(contents, function() {
+            $("#keyword").text(json.keyword);
+            var p = {};
+            if (json.parameter) {
+              try {
+                var param = JSON.parse(WebSafeBase64.decode(json.parameter));
+                Object.keys(param).forEach(function(v) {
+                  let val = WebSafeBase64.decode(param[v]);
+                  $("#" + v).val(val);
+                  p[v] = val;
+                });
+              } catch(ex) {
+                alert(ex);
+              }
+            }
+            if (json.keyword == "検針情報") {
+              $("#date").datepicker({
+                format: "m月d日"
+              });
+              if (p && p["area"]) {
+                makeType(p["area"]);
+              }
+            }
+            if (json.keyword == "規約") {
+              $("#kiyaku").attr("href", "./denken/kiyaku.html");
+              $("#kojin").attr("href", "./denken/kojin.html");
+            }
+          });
+        });
+      });
+    }
+  } catch(ex) {
+    alert(ex);
+  }
+});
+</script>
+<style type="text/css">
+.big { font-size:14pt; }
+</style>
+<title>テキスト入力</title>
+</head>
+<body>
+<div class="container">
+  <div id="contents"></div>
+</div>
+</body>
+</html>
