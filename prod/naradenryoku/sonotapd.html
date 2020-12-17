@@ -143,7 +143,9 @@
       }
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += $("#company").val();
+      text += $("#company").val() + "|";
+      text += $("#plan").val() + "|";
+      text += $("#capacity").val();
       liff.sendMessages([
         {
           "type": "text",
