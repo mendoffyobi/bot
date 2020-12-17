@@ -1,0 +1,60 @@
+<!-- 入力:input.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1">
+      <span id="keyword" style="font-size: 14pt;"></span>
+      <span style="font-size: 12pt;">:</span>
+    </div>
+    <div class="col-sm-11">
+      <input type="text" id="input1" name="input1" class="big" size="40" placeholder="項目を入力">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      if ($("#input1").val() == "") {
+        msg += $("#keyword").text().replace("修正", "") + "を入力してください";
+      } else {
+        if ($("#keyword").text().replace("修正", "") == "Eメール") {
+          if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test($("#input1").val())) {
+            msg += "Eメールアドレスの形式が正しくありません";
+          }
+        }
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#input1").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 入力:input.html end -->
