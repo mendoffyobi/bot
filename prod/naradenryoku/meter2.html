@@ -1,0 +1,172 @@
+<!-- 検針情報:meter.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="col-sm-1">
+    <span id="keyword" style="font-size: 14pt;"></span>
+    <span style="font-size: 12pt;">:</span>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">エリア</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="area" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">ご契約種別</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="type" class="big" size="40" autocomplete="on" list="typeList">
+      <datalist id="typeList"></datalist>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">ご契約容量</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="size" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">地点番号</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="point" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">お客様番号</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="user" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">検針月日</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="date" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">ご使用期間</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="period" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"><font size="5">ご使用量</font></div>
+    <div class="col-sm-11">
+      <input type="text" id="amount" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      <input type="hidden" id="image">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      if ($("#area").val() == "") {
+        msg += "エリアを入力してください\n";
+      }
+      if ($("#type").val() == "") {
+        msg += "ご契約種別を入力してください\n";
+      }
+      if ($("#size").val() == "") {
+        msg += "ご契約容量を入力してください\n";
+      }
+      if ($("#point").val() == "") {
+        msg += "地点番号を入力してください\n";
+      }
+      if ($("#user").val() == "") {
+        msg += "お客様番号を入力してください\n";
+      }
+      if ($("#date").val() == "") {
+        msg += "検針月日を入力してください\n";
+      }
+      if ($("#period").val() == "") {
+        msg += "ご使用期間を入力してください\n";
+      }
+      if ($("#amount").val() == "") {
+        msg += "ご使用量を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += "エリア["        + $("#area").val()      + "]|";
+      text += "ご契約種別[" + $("#type").val()      + "]|";
+      text += "ご契約容量[" + $("#size").val()      + "]|";
+      text += "地点番号["     + $("#point").val()    + "]|";
+      text += "お客様番号[" + $("#user").val()     + "]|";
+      text += "検針月日["     + $("#date").val()     + "]|";
+      text += "ご使用期間[" + $("#period").val()  + "]|";
+      text += "ご使用量["    + $("#amount").val() + "]|";
+      text += "IMAGE["       + $("#image").val()   + "]";
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+    function makeType(area) {
+      var list = [];
+      switch(area) {
+        case '四国エリア':
+        case '中国エリア':
+        case '関西エリア':
+          list = ['', '従量電灯A', '従量電灯B', '低圧電力'];
+          break;
+        case '九州エリア':
+          list = ['', '従量電灯A', '従量電灯B', '季時別電灯', '低圧電力'];
+          break;
+        default:
+          list = ['', '従量電灯B', '従量電灯C', '低圧電力'];
+          break;
+      }
+      $('#typeList > option').remove();
+      list.forEach(function(val){
+        $('#typeList').append($('<option>').html(val ? val : 'ご契約種別を選択してください').val(val));
+      });
+    }
+  </script>
+<!-- 検針情報:meter.html end -->

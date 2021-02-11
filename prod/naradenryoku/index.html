@@ -51,8 +51,11 @@ jQuery(function() {
             case "法人名義":
               contents = "nmhojin.html";
               break;
-            case "検針情報":
-              contents = "meter.html";
+            case "検針情報1":
+              contents = "meter1.html";
+              break;
+            case "検針情報2":
+              contents = "meter2.html";
               break;
             default:
               contents = "input.html";
@@ -73,7 +76,7 @@ jQuery(function() {
                 alert(ex);
               }
             }
-            if (json.keyword == "検針情報") {
+            if (json.keyword == "検針情報2") {
               $("#date").datepicker({
                 format: "m月d日"
               });
