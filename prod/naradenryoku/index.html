@@ -70,14 +70,15 @@ jQuery(function() {
             var p = {};
             if (json.parameter) {
               try {
-                var param = JSON.parse(WebSafeBase64.decode(json.parameter));
-                Object.keys(param).forEach(function(v) {
-                  let val = WebSafeBase64.decode(param[v]);
-                  $("#" + v).val(val);
-                  p[v] = val;
-                });
                 if (json.keyword == "シミュレーション詳細") {
-                  makeGraph(param);
+                  makeGraph(JSON.parse(json.parameter));
+                } else {
+                  var param = JSON.parse(WebSafeBase64.decode(json.parameter));
+                  Object.keys(param).forEach(function(v) {
+                    let val = WebSafeBase64.decode(param[v]);
+                    $("#" + v).val(val);
+                    p[v] = val;
+                  });
                 }
               } catch(ex) {
                 alert(ex);
