@@ -74,7 +74,6 @@ jQuery(function() {
                 if (json.keyword == "シミュレーション") {
                   makeType("関西");
                 } else if (json.keyword == "シミュレーション詳細") {
-                  alert(JSON.stringify(param));
                   makeGraph(param);
                 } else {
                   Object.keys(param).forEach(function(v) {
