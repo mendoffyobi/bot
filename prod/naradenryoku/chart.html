@@ -1,0 +1,49 @@
+<!-- シミュレーション結果:chart.html start -->
+  <!--  グラフの描画エリア -->
+  <div id="chart_div" style="width: 100%; height: 350px"></div>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+ 
+    // ライブラリのロード
+    google.load('visualization', '1', {'packages':['corechart']});
+    // グラフを描画する為のコールバック関数を指定
+    google.setOnLoadCallback(drawChart);
+
+    // グラフの描画
+    function drawChart() {
+
+      // 配列からデータの生成
+      var data = google.visualization.arrayToDataTable([
+        ['使用月', 'SW前', 'SW後','使用量'],
+        ['1',  16.08 , 14.74, 13.69],
+        ['2',  14.99 , 10.01, 11.6],
+        ['3',  12.91 ,  6.36,  9.6],
+        ['4',  12.98 ,  8.97, 10.6], 
+        ['5',  13.48 ,  9.35, 11.0],
+        ['6',  13.99 ,  9.76, 11.3],
+        ['7',  13.99 ,  9.76, 11.3],
+        ['8',  13.99 ,  9.76, 11.3],
+        ['9',  13.99 ,  9.76, 11.3],
+        ['10',  13.99 ,  9.76, 11.3],
+        ['11',  13.99 ,  9.76, 11.3],
+        ['12',  15.53 , 10.49, 12.2]  
+      ]);
+
+      // オプションの設定
+      var options = {
+        title: '料金試算結果 ( 単位：円 )',
+        // グラフの種類(bars:棒グラフ)
+        seriesType: "bars",
+        // 使用量だけを折れ線グラフにする
+        series: {2: {type: "line"}}
+      };
+
+      // 指定されたIDの要素にコンボチャートを作成
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+ 
+      // グラフの描画
+      chart.draw(data, options);
+    }
+
+  </script>
+<!-- シミュレーション結果:chart.html end -->
