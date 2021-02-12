@@ -54,7 +54,7 @@ jQuery(function() {
             case "検針情報1":
               contents = "meter1.html";
               break;
-            case "検針情報2":
+            case "シミュレーション":
               contents = "meter2.html";
               break;
             default:
@@ -76,7 +76,7 @@ jQuery(function() {
                 alert(ex);
               }
             }
-            if (json.keyword == "検針情報2") {
+            if (json.keyword == "シミュレーション") {
               $("#date").datepicker({
                 format: "m月d日"
               });
