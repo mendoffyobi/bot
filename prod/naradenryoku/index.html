@@ -71,9 +71,7 @@ jQuery(function() {
             if (json.parameter) {
               try {
                 var param = JSON.parse(WebSafeBase64.decode(json.parameter));
-                if (json.keyword == "シミュレーション") {
-                  makeType("関西");
-                } else if (json.keyword == "シミュレーション詳細") {
+                if (json.keyword == "シミュレーション詳細") {
                   makeGraph(param);
                 } else {
                   Object.keys(param).forEach(function(v) {
@@ -85,6 +83,9 @@ jQuery(function() {
               } catch(ex) {
                 alert(ex);
               }
+            }
+            if (json.keyword == "シミュレーション") {
+              makeType("関西");
             }
           });
         });
