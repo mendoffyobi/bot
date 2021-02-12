@@ -7,8 +7,11 @@
       var m = WebSafeBase64.decode(param['moto']);
       var s = WebSafeBase64.decode(param['saki']);
       var u = WebSafeBase64.decode(param['usage']);
-      
-      var p = JSON.parse(param);
+
+      alert(m);
+      alert(s);
+      alert(u);
+
       // ライブラリのロード
       google.load('visualization', '1', {'packages':['corechart']});
       // グラフを描画する為のコールバック関数を指定
@@ -50,9 +53,6 @@
           ['11',  n(p['moto']['M11']), n(p['saki']['M11']), n(p['usage']['M11'])],
           ['12',  n(p['moto']['M12']), n(p['saki']['M12']), n(p['usage']['M12'])]  
         ]);
-        alert(m);
-        alert(s);
-        alert(u);
 
         // オプションの設定
         var options = {
