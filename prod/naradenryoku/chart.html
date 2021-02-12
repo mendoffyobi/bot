@@ -30,21 +30,21 @@
           ['12',  15.53 , 10.49, 12.2]  
         ]);
 */
-
+        var n = function(s) {return Number(s);};
         var data = google.visualization.arrayToDataTable([
           ['使用月', 'SW前', 'SW後','使用量'],
-          ['01',  p['moto']['M01'], p['saki']['M01'], p['usage']['M01']],
-          ['02',  p['moto']['M02'], p['saki']['M02'], p['usage']['M02']],
-          ['03',  p['moto']['M03'], p['saki']['M03'], p['usage']['M03']],
-          ['04',  p['moto']['M04'], p['saki']['M04'], p['usage']['M04']], 
-          ['05',  p['moto']['M05'], p['saki']['M05'], p['usage']['M05']],
-          ['06',  p['moto']['M06'], p['saki']['M06'], p['usage']['M06']],
-          ['07',  p['moto']['M07'], p['saki']['M07'], p['usage']['M07']],
-          ['08',  p['moto']['M08'], p['saki']['M08'], p['usage']['M08']],
-          ['09',  p['moto']['M09'], p['saki']['M09'], p['usage']['M09']],
-          ['10',  p['moto']['M10'], p['saki']['M10'], p['usage']['M10']],
-          ['11',  p['moto']['M11'], p['saki']['M11'], p['usage']['M11']],
-          ['12',  p['moto']['M12'], p['saki']['M12'], p['usage']['M12']]  
+          ['01',  n(p['moto']['M01']), n(p['saki']['M01']), n(p['usage']['M01'])],
+          ['02',  n(p['moto']['M02']), n(p['saki']['M02']), n(p['usage']['M02'])],
+          ['03',  n(p['moto']['M03']), n(p['saki']['M03']), n(p['usage']['M03'])],
+          ['04',  n(p['moto']['M04']), n(p['saki']['M04']), n(p['usage']['M04'])], 
+          ['05',  n(p['moto']['M05']), n(p['saki']['M05']), n(p['usage']['M05'])],
+          ['06',  n(p['moto']['M06']), n(p['saki']['M06']), n(p['usage']['M06'])],
+          ['07',  n(p['moto']['M07']), n(p['saki']['M07']), n(p['usage']['M07'])],
+          ['08',  n(p['moto']['M08']), n(p['saki']['M08']), n(p['usage']['M08'])],
+          ['09',  n(p['moto']['M09']), n(p['saki']['M09']), n(p['usage']['M09'])],
+          ['10',  n(p['moto']['M10']), n(p['saki']['M10']), n(p['usage']['M10'])],
+          ['11',  n(p['moto']['M11']), n(p['saki']['M11']), n(p['usage']['M11'])],
+          ['12',  n(p['moto']['M12']), n(p['saki']['M12']), n(p['usage']['M12'])]  
         ]);
 
         // オプションの設定
