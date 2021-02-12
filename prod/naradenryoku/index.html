@@ -14,6 +14,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script>
 var WebSafeBase64 = {
   encode: function(str) {
@@ -81,6 +82,8 @@ jQuery(function() {
             }
             if (json.keyword == "シミュレーション") {
               makeType("関西");
+            } else if (json.keyword == "シミュレーション詳細") {
+              makeGraph();
             }
           });
         });
