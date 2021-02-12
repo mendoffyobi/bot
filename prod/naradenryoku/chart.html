@@ -3,8 +3,8 @@
   <div id="chart_div" style="width: 100%; height: 350px"></div>
   <script type="text/javascript">
 
-    function makeGraph(p) {
-
+    function makeGraph(param) {
+      var p = JSON.parse(param);
       // ライブラリのロード
       google.load('visualization', '1', {'packages':['corechart']});
       // グラフを描画する為のコールバック関数を指定
@@ -46,8 +46,7 @@
           ['11',  n(p['moto']['M11']), n(p['saki']['M11']), n(p['usage']['M11'])],
           ['12',  n(p['moto']['M12']), n(p['saki']['M12']), n(p['usage']['M12'])]  
         ]);
-        alert(JSON.stringify(p));
-
+        alert(param);
 
         // オプションの設定
         var options = {
