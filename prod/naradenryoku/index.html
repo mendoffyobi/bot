@@ -76,15 +76,15 @@ jQuery(function() {
                   $("#" + v).val(val);
                   p[v] = val;
                 });
-                if (json.keyword == "シミュレーション詳細") {
-                  makeGraph(param);
-                }
               } catch(ex) {
                 alert(ex);
               }
             }
             if (json.keyword == "シミュレーション") {
               makeType("関西");
+            }
+            if (json.keyword == "シミュレーション詳細") {
+              makeGraph(p);
             }
           });
         });
