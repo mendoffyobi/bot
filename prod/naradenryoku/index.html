@@ -77,12 +77,7 @@ jQuery(function() {
               }
             }
             if (json.keyword == "シミュレーション") {
-              $("#date").datepicker({
-                format: "m月d日"
-              });
-              if (p && p["area"]) {
-                makeType(p["area"]);
-              }
+              makeType("関西");
             }
           });
         });
