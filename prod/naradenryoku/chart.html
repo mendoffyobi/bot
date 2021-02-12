@@ -16,7 +16,7 @@
       function drawChart() {
 
         // 配列からデータの生成
-        var n = function(s) {return s;};
+        var n = function(s) {return Number(s);};
         var data = google.visualization.arrayToDataTable([
           ['使用月', 'SW前', 'SW後','使用量'],
           ['01',  n(p['M1']), n(p['S1']), n(p['U1'])],
