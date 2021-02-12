@@ -38,7 +38,11 @@
           seriesType: "bars",
           // 使用量だけを折れ線グラフにする
           series: {2: {type: "line"}},
-          vAxis: {minValue: 10000}
+          hAxis: {
+            minValue: 20000,
+            maxValue: 40000,
+            gridlined:{count: 11}
+          }
         };
 
         // 指定されたIDの要素にコンボチャートを作成
