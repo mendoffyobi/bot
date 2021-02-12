@@ -9,9 +9,9 @@
       var s = WebSafeBase64.decode(param['saki']);
       var u = WebSafeBase64.decode(param['usage']);
 
-      alert(m);
-      alert(s);
-      alert(u);
+      alert(JSON.stringify(m));
+      alert(JSON.stringify(s));
+      alert(JSON.stringify(u));
 
       // ライブラリのロード
       google.load('visualization', '1', {'packages':['corechart']});
