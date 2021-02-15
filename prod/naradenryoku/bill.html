@@ -1,0 +1,152 @@
+<!-- 請求書郵送2:bill.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 12pt;">請求先情報を入力してください</span>
+  <div class="col-sm-1">
+    <span id="keyword" style="font-size: 14pt; display: none"></span>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">お名前(漢字)</span>
+  <div class="row">
+    <div class="col-sm-11">
+      <input type="text" id="billLastName" class="big" size="40" placeholder="奈良">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-11">
+      <input type="text" id="billFirstName" class="big" size="40" placeholder="元気">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">お名前(フリガナ)</span>
+  <div class="row">
+    <div class="col-sm-11">
+      <input type="text" id="billLastNameKana" class="big" size="40" placeholder="ナラ">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-11">
+      <input type="text" id="billFirstNameKana" class="big" size="40" placeholder="ゲンキ">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input1" name="input1" class="big" size="10" placeholder="〒">
+      <button type="button" class="btn btn-default btn-sm btn-success"
+           onClick="AjaxZip3.zip2addr('input1', '', 'input2', 'input2');">郵便番号から住所を取得</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input2" name="input2" class="big" size="40" placeholder="都道府県・市区町村を入力">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input3" name="input3" class="big" size="40" placeholder="番地等を入力">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input4" name="input4" class="big" size="40" placeholder="建物名を入力">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input5" name="input5" class="big" size="40" placeholder="棟番号を半角英数字で入力">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" id="input6" name="input6" class="big" size="40" placeholder="部屋番号を半角英数字で入力">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-11">
+      <input type="text" id="billTel" class="big" size="40" placeholder="電話番号を半角英数字で入力">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      if ($("#billLastName").val() == "") {
+        msg += "姓(漢字)を入力してください\n";
+      }
+      if ($("#billFirstName").val() == "") {
+        msg += "名(漢字)を入力してください\n";
+      }
+      if ($("#billLastNameKana").val() == "") {
+        msg += "姓(フリガナ)を入力してください\n";
+      }
+      if ($("#billFirstNameKana").val() == "") {
+        msg += "名(フリガナ)を入力してください\n";
+      }
+      if ($("#input1").val() == "") {
+        msg += "郵便番号を入力してください\n";
+      }
+      if ($("#input2").val() == "") {
+        msg += "都道府県市区町村を入力してください\n";
+      }
+      if ($("#input3").val() == "") {
+        msg += "番地を入力してください\n";
+      }
+      if ($("#billTel").val() == "") {
+        msg += "電話番号を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += $("#keyword").text() + ":";
+      text += $("#billFirstName").val() + "|";
+      text += $("#billLastName").val() + "|";
+      text += $("#billFirstNameKana").val() + "|";
+      text += $("#billLastNameKana").val() + "|";
+      text += $("#input1").val() + "|";
+      text += $("#input2").val() + "|";
+      text += $("#input3").val() + "|";
+      text += $("#input4").val() + "|";
+      text += $("#input5").val() + "|";
+      text += $("#input6").val() + "|";
+      text += $("#billTel").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- ご利用場所:address.html end -->
