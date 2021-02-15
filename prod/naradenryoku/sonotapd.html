@@ -188,11 +188,11 @@
     function makeCapacity() {
       $('#plan').change(function() {
         if ($(this).val() === "基本料金のあるプラン") {
-          $("#capacity").removeAttr('disabled');
-          $("#capacityUnit").removeAttr('disabled');
+          $("#capacity").show();
+          $("#capacityUnit").show();
         } else {
-          $("#capacity").attr('disabled', 'disabled');
-          $("#capacityUnit").attr('disabled', 'disabled');
+          $("#capacity").hide();
+          $("#capacityUnit").hide();
         }
       });
     }

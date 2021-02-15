@@ -148,11 +148,11 @@
       $('#plan').change(function() {
         if ($(this).val() == "従量電灯B" ||
             $(this).val() == "低圧電力") {
-          $("#capacity").removeAttr('disabled');
-          $("#capacityUnit").removeAttr('disabled');
+          $("#capacity").show();
+          $("#capacityUnit")show();
         } else {
-          $("#capacity").attr('disabled', 'disabled');
-          $("#capacityUnit").attr('disabled', 'disabled');
+          $("#capacity").hide();
+          $("#capacityUnit").hide();
         }
       });
     }
