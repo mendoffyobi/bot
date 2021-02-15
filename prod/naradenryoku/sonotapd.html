@@ -60,57 +60,24 @@
   <div class="row">
     &nbsp;
   </div>
-  <span style="font-size: 14pt;">ご契約容量を選択してください</span>
+  <span style="font-size: 14pt;">ご契約容量を入力してください</span>
   <div class="row">
     <div class="col-sm-1"><font size="5"></font></div>
     <div class="col-sm-11">
-      <select id="capacity" class="form-control">
+      <input type="text" id="capacity" class="big" size="40">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">ご契約容量の単位を選択してください</span>
+  <div class="row">
+    <div class="col-sm-1"><font size="5"></font></div>
+    <div class="col-sm-11">
+      <select id="capacityUnit" class="form-control">
         <option value="">選択してください</option>
-        <option value="6kVA">6kVA</option>
-        <option value="7kVA">7kVA</option>
-        <option value="8kVA">8kVA</option>
-        <option value="9kVA">9kVA</option>
-        <option value="10kVA">10kVA</option>
-        <option value="11kVA">11kVA</option>
-        <option value="12kVA">12kVA</option>
-        <option value="13kVA">13kVA</option>
-        <option value="14kVA">14kVA</option>
-        <option value="15kVA">15kVA</option>
-        <option value="16kVA">16kVA</option>
-        <option value="17kVA">17kVA</option>
-        <option value="18kVA">18kVA</option>
-        <option value="19kVA">19kVA</option>
-        <option value="20kVA">20kVA</option>
-        <option value="21kVA">21kVA</option>
-        <option value="22kVA">22kVA</option>
-        <option value="23kVA">23kVA</option>
-        <option value="24kVA">24kVA</option>
-        <option value="25kVA">25kVA</option>
-        <option value="26kVA">26kVA</option>
-        <option value="27kVA">27kVA</option>
-        <option value="28kVA">28kVA</option>
-        <option value="29kVA">29kVA</option>
-        <option value="30kVA">30kVA</option>
-        <option value="31kVA">31kVA</option>
-        <option value="32kVA">32kVA</option>
-        <option value="33kVA">33kVA</option>
-        <option value="34kVA">34kVA</option>
-        <option value="35kVA">35kVA</option>
-        <option value="36kVA">36kVA</option>
-        <option value="37kVA">37kVA</option>
-        <option value="38kVA">38kVA</option>
-        <option value="39kVA">39kVA</option>
-        <option value="40kVA">40kVA</option>
-        <option value="41kVA">41kVA</option>
-        <option value="42kVA">42kVA</option>
-        <option value="43kVA">43kVA</option>
-        <option value="44kVA">44kVA</option>
-        <option value="45kVA">45kVA</option>
-        <option value="46kVA">46kVA</option>
-        <option value="47kVA">47kVA</option>
-        <option value="48kVA">48kVA</option>
-        <option value="49kVA">49kVA</option>
-        <option value="none"></option>
+        <option value="kVA">kVA</option>
+        <option value="kVA">kW</option>
       </select>
     </div>
   </div>
@@ -128,15 +95,24 @@
   </div>
   <script>
     function sendMsg() {
-      let msg = ""; 
+      let msg = "";
+      let capacity = "";
+      let capacityUnit = "";
       if ($("#company").val() == "") {
         msg += "電力会社を選択してください";
       }
       if ($("#plan").val() == "") {
         msg += "電気料金プランを選択してください";
       }
-      if ($("#capacity").val() == "") {
-        msg += "ご契約容量を選択してください";
+      if ($("#plan").val() == "基本料金のあるプラン") {
+        capacity = $("#capacity").val();
+        capacityUnit = $("#capacityUnit").val();
+        if (capacity == "") {
+          msg += "ご契約容量を入力してください";
+        }
+        if (capacityUnit == "") {
+          msg += "ご契約容量の単位を選択してください";
+        }
       }
       if (msg) {
         alert(msg);
@@ -146,7 +122,7 @@
       text += $("#keyword").text() + ":";
       text += $("#company").val() + "|";
       text += $("#plan").val() + "|";
-      text += $("#capacity").val();
+      text += capacity + capacityUnit;
       liff.sendMessages([
         {
           "type": "text",
@@ -164,22 +140,13 @@
 
     // 契約容量のプルダウン連動
     function makeCapacity() {
-      var $children = $('#capacity');
-      var original  = $children.html();
       $('#plan').change(function() {
-        var val1 = $(this).val();
-        $children.html(original).find('option').each(function() {
-          var val2 = $(this).data('val');
-          if (val1 != val2) {
-            $(this).not(':first-child').remove();
-          }
-        });
-        if ($(this).val() === "") {
-          $children.attr('disabled', 'disabled');
-        } else if ($(this).val() === "契約容量のないプラン") {
-          $children.attr('disabled', 'disabled');
+        if ($(this).val() === "基本料金のあるプラン") {
+          $("#capacity").removeAttr('disabled');
+          $("#capacityUnit").removeAttr('disabled');
         } else {
-          $children.removeAttr('disabled');
+          $("#capacity").attr('disabled', 'disabled');
+          $("#capacityUnit").attr('disabled', 'disabled');
         }
       });
     }
