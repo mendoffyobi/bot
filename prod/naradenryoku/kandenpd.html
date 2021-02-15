@@ -23,6 +23,76 @@
   <div class="row">
     &nbsp;
   </div>
+  <span style="font-size: 14pt;">ご契約容量を選択してください</span>
+  <div class="row">
+    <div class="col-sm-1"><font size="5"></font></div>
+    <div class="col-sm-11">
+      <select id="capacity" class="form-control">
+        <option value="">選択してください</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+       </select>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">ご契約容量の単位を選択してください</span>
+  <div class="row">
+    <div class="col-sm-1"><font size="5"></font></div>
+    <div class="col-sm-11">
+      <select id="capacityUnit" class="form-control">
+        <option value="">選択してください</option>
+        <option value="kVA">kVA</option>
+        <option value="kVA">kW</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
   <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-11">
@@ -35,8 +105,21 @@
   <script>
     function sendMsg() {
       let msg = "";
+      let capacity = "";
+      let capacityUnit = "";
       if ($("#plan").val() == "") {
         msg += "電気料金プランを選択してください";
+      }
+      if ($("#plan").val() == "従量電灯B" ||
+          $("#plan").val() == "低圧電力") {
+        capacity = $("#capacity").val();
+        capacityUnit = $("#capacityUnit").val();
+        if (capacity == "") {
+          msg += "ご契約容量を選択してください";
+        }
+        if (capacityUnit == "") {
+          msg += "ご契約容量の単位を選択してください";
+        }
       }
       if (msg) {
         alert(msg);
@@ -44,7 +127,8 @@
       }
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += $("#plan").val();
+      text += $("#plan").val() + "|";
+      text += capacity + capacityUnit;
       liff.sendMessages([
         {
           "type": "text",
@@ -57,6 +141,19 @@
       .catch((err) => {
         alert(err);
         liff.closeWindow();
+      });
+    }
+    // 契約容量のプルダウン連動
+    function makeCapacity() {
+      $('#plan').change(function() {
+        if ($(this).val() == "従量電灯B" ||
+            $(this).val() == "低圧電力") {
+          $("#capacity").removeAttr('disabled');
+          $("#capacityUnit").removeAttr('disabled');
+        } else {
+          $("#capacity").attr('disabled', 'disabled');
+          $("#capacityUnit").attr('disabled', 'disabled');
+        }
       });
     }
   </script>

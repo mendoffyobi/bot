@@ -86,6 +86,8 @@ jQuery(function() {
             }
             if (json.keyword == "シミュレーション") {
               makeType("関西");
+            } else if (json.keyword == "関西電力") {
+               makeCapacity();
             } else if (json.keyword == "その他電力会社") {
                makeCapacity();
             }
