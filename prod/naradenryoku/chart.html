@@ -16,7 +16,7 @@
         // 配列からデータの生成
         var n = function(s) {return Number(s);};
         var data = google.visualization.arrayToDataTable([
-          ['使用月', 'SW前', 'SW後','使用量'],
+          ['使用月', 'SW前(円)', 'SW後(円)','使用量(kWh)'],
           ['01月',  n(p['M1']), n(p['S1']), n(p['U1'])],
           ['02月',  n(p['M2']), n(p['S2']), n(p['U2'])],
           ['03月',  n(p['M3']), n(p['S3']), n(p['U3'])],
@@ -33,7 +33,7 @@
 
         // オプションの設定
         var options = {
-          title: '料金試算結果 ( 単位：円 )',
+          title: '関西電力との料金比較結果',
           // グラフの種類(bars:棒グラフ)
           seriesType: "bars",
           // 使用量だけを折れ線グラフにする
