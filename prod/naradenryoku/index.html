@@ -59,7 +59,6 @@ jQuery(function() {
               contents = "meter1.html";
               break;
             case "シミュレーション":
-              alert("test");
               contents = "meter2.html";
               break;
             case "シミュレーション詳細":
@@ -89,7 +88,6 @@ jQuery(function() {
               }
             }
             if (json.keyword == "シミュレーション") {
-              alert("シミュレーション");
               makeType();
             } else if (json.keyword == "関西電力") {
                makeCapacity();
