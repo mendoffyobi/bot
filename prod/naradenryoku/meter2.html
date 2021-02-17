@@ -172,6 +172,7 @@
       });
     }
     function makeType() {
+      try {
       $('#type').change(function() {
         switch ($(this).val()) {
           case: "従量電灯B":
@@ -188,6 +189,9 @@
         }
       });
       $('#type').change();
+    }
+    } catch(ex) {
+      alert(ex);
     }
   </script>
 <!-- シミュレーション:meter2.html end -->
