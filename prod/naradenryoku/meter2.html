@@ -135,7 +135,7 @@
       if ($("#type").val() == "従量電灯B" ||
           $("#type").val() == "低圧電力") {
         size = $("#size").val();
-        unit = $("#unit").val();
+        unit = $("#unit").text();
         if (size == "") {
           msg += "ご契約容量を選択してください";
         }
@@ -176,10 +176,10 @@
         let val = $(this).val();
         if (val == "従量電灯B") {
           $("#dispSize").show();
-          $("#unit").val("kVA");
+          $("#unit").text("kVA");
         } else if (val == "低圧電力") {
           $("#dispSize").show();
-          $("#unit").val("kW");
+          $("#unit").text("kW");
         } else {
           $("#dispSize").hide();
         }
