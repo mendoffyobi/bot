@@ -172,26 +172,19 @@
       });
     }
     function makeType() {
-      try {
       $('#type').change(function() {
-        switch ($(this).val()) {
-          case: "従量電灯B":
-            $("#dispSize").show();
-            //$("#unit").val("kVA");
-            break;
-          case: "低圧電力":
-            $("#dispSize").show();
-            //$("#unit").val("kW");
-            break;
-          default:
-            $("#dispSize").hide();
-            break;
+        let val = $(this).val();
+        if (val == "従量電灯B") {
+          $("#dispSize").show();
+          $("#unit").val("kVA");
+        } else if (val == "低圧電力") {
+          $("#dispSize").show();
+          $("#unit").val("kW");
+        } else {
+          $("#dispSize").hide();
         }
       });
       $('#type').change();
-    }
-    } catch(ex) {
-      alert(ex);
     }
   </script>
 <!-- シミュレーション:meter2.html end -->
