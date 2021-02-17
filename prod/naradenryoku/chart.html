@@ -16,7 +16,7 @@
         // 配列からデータの生成
         var n = function(s) {return Number(s);};
         var data = google.visualization.arrayToDataTable([
-          ['使用月', 'SW前(円)', 'SW後(円)','使用量(kWh)'],
+          ['使用月', 'SW前', 'SW後','使用量'],
           ['01月',  n(p['M1']), n(p['S1']), n(p['U1'])],
           ['02月',  n(p['M2']), n(p['S2']), n(p['U2'])],
           ['03月',  n(p['M3']), n(p['S3']), n(p['U3'])],
@@ -41,7 +41,11 @@
           series: {2: {
               type: "line",
               targetAxisIndex: 1
-          }}
+          }},
+          vAxes: [
+            { title: 'SW料金(円 / 月)' },
+            { title: '使用量(kWh)' }
+          ]
         };
 
         // 指定されたIDの要素にコンボチャートを作成
