@@ -12,26 +12,71 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">ご契約種別</font></div>
     <div class="col-sm-11">
-      <input type="text" id="type" class="big" size="40" autocomplete="on" list="typeList">
-      <datalist id="typeList"></datalist>
+      <select id="type" class="big" size="40">
+        <option value="" selected="selected">ご契約種別を選択してください</option>
+        <option value="従量電灯A">従量電灯A</option>
+        <option value="従量電灯B">従量電灯B</option>
+        <option value="低圧電力">低圧電力 </option>
+      </select>
     </div>
   </div>
   <div class="row">
     &nbsp;
   </div>
-  <div class="row">
-    <div class="col-sm-1"><font size="5">ご契約容量</font></div>
-    <div class="col-sm-11">
-      <input type="text" id="size" class="big" size="40">
-    </div>
-  </div>
-  <div class="row">
-    &nbsp;
-  </div>
-  <div class="row">
-    <div class="col-sm-1"><font size="5">ご契約容量単位</font></div>
-    <div class="col-sm-11">
-      <input type="text" id="unit" class="big" size="40">
+  <div id="dispSize">
+    <div class="row">
+      <div class="col-sm-1">
+        <font size="5">ご契約容量(単位:<span id="unit"></span>)</font>
+      </div>
+      <div class="col-sm-11">
+        <select id="size" class="big" size="40">
+          <option value="">選択してください</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+        </select>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -40,14 +85,28 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">検針月</font></div>
     <div class="col-sm-11">
-      <input type="text" id="month" class="big" size="40">
+      <select id="month" class="big" size="40">
+        <option value="" selected="selected">検針月を選択してください</option>
+        <option value="1" >1月</option>
+        <option value="2" >2月</option>
+        <option value="3" >3月</option>
+        <option value="4" >4月</option>
+        <option value="5" >5月</option>
+        <option value="6" >6月</option>
+        <option value="7" >7月</option>
+        <option value="8" >8月</option>
+        <option value="9" >9月</option>
+        <option value="10">10月</option>
+        <option value="11">11月</option>
+        <option value="12">12月</option>
+      </select>
     </div>
   </div>
   <div class="row">
     &nbsp;
   </div>
   <div class="row">
-    <div class="col-sm-1"><font size="5">ご使用量</font></div>
+    <div class="col-sm-1"><font size="5">ご使用量(kWh)</font></div>
     <div class="col-sm-11">
       <input type="text" id="amount" class="big" size="40">
     </div>
@@ -68,17 +127,21 @@
   <script>
     function sendMsg() {
       let msg = "";
+      let size = "";
+      let unit = "";
       if ($("#type").val() == "") {
-        msg += "ご契約種別を入力してください\n";
+        msg += "ご契約種別を選択してください\n";
       }
-      if ($("#size").val() == "") {
-        msg += "ご契約容量を入力してください\n";
-      }
-      if ($("#unit").val() == "") {
-        msg += "ご契約容量単位を入力してください\n";
+      if ($("#type").val() == "従量電灯B" ||
+          $("#type").val() == "低圧電力") {
+        size = $("#size").val();
+        unit = $("#unit").val();
+        if (size == "") {
+          msg += "ご契約容量を選択してください";
+        }
       }
       if ($("#month").val() == "") {
-        msg += "検針月を入力してください\n";
+        msg += "検針月を選択してください\n";
       }
       if ($("#amount").val() == "") {
         msg += "ご使用量を入力してください\n";
@@ -89,11 +152,11 @@
       }
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += "ご契約種別[" + $("#type").val()      + "]|";
-      text += "ご契約容量[" + $("#size").val()      + "]|";
-      text += "ご契約容量単位[" + $("#unit").val()      + "]|";
-      text += "検針月["     + $("#month").val()     + "]|";
-      text += "ご使用量["    + $("#amount").val() + "]|";
+      text += "ご契約種別[" + $("#type").val() + "]|";
+      text += "ご契約容量[" + size + "]|";
+      text += "ご契約容量単位[" + unit + "]|";
+      text += "検針月[" + $("#month").val() + "]|";
+      text += "ご使用量[" + $("#amount").val() + "]|";
       liff.sendMessages([
         {
           "type": "text",
@@ -108,12 +171,23 @@
         liff.closeWindow();
       });
     }
-    function makeType(area) {
-      var list = ['', '従量電灯A', '従量電灯B', '低圧電力'];;
-      $('#typeList > option').remove();
-      list.forEach(function(val){
-        $('#typeList').append($('<option>').html(val ? val : 'ご契約種別を選択してください').val(val));
+    function makeType() {
+      $('#type').change(function() {
+        switch ($(this).val()) {
+          case: "従量電灯B":
+            $("#dispSize").show();
+            $("#unit").val("kVA");
+            break;
+          case: "低圧電力":
+            $("#dispSize").show();
+            $("#unit").val("kW");
+            break;
+          default:
+            $("#dispSize").hide();
+            break;
+        }
       });
+      $('#type').change();
     }
   </script>
 <!-- シミュレーション:meter2.html end -->
