@@ -127,14 +127,14 @@
   <script>
     function sendMsg() {
       let msg = "";
-      let size = "";
+      let s = "";
       let unit = "";
       if ($("#type").val() == "") {
         msg += "ご契約種別を選択してください\n";
       }
       if ($("#type").val() == "従量電灯B" ||
           $("#type").val() == "低圧電力") {
-        size = $("#size").val();
+        s = $("#size").val();
         unit = $("#unit").val();
         if (size == "") {
           msg += "ご契約容量を選択してください";
@@ -153,7 +153,7 @@
       var text = "入力-";
       text += $("#keyword").text() + ":";
       text += "ご契約種別[" + $("#type").val() + "]|";
-      text += "ご契約容量[" + size + "]|";
+      text += "ご契約容量[" + s + "]|";
       text += "ご契約容量単位[" + unit + "]|";
       text += "検針月[" + $("#month").val() + "]|";
       text += "ご使用量[" + $("#amount").val() + "]|";
