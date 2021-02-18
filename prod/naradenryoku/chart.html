@@ -1,7 +1,7 @@
 <!-- シミュレーション結果:chart.html start -->
   <!--  グラフの描画エリア -->
   <div id="chart_div" style="width: 100%; height: 350px"></div>
-  <h5>*1 燃料費調整額、再エネ賦課金等を除いた比較</h5>
+  <h5>*1 燃料費調整額、再エネ賦課金等を除いた概算金額</h5>
   <script type="text/javascript">
 
     function makeGraph(p) {
@@ -46,7 +46,7 @@
               targetAxisIndex: 1
           }},
           vAxes: [
-            { title: '電気料金概算(円 / 月) *1' },
+            { title: '電気料金概算(税込円 / 月) *1' },
             { title: '使用量(kWh)' }
           ]
         };
