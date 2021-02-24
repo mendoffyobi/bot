@@ -1,0 +1,65 @@
+<!-- 入力:input.html start -->
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1">
+      <span id="keyword" style="font-size: 14pt;"></span>
+      <span style="font-size: 12pt;">:</span>
+    </div>
+    <div class="col-sm-11">
+      <a href="https://www.naradenryoku.co.jp/policy.html">個人情報保護方針</a>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1">
+      <span id="keyword" style="font-size: 14pt;"></span>
+      <span style="font-size: 12pt;">:</span>
+    </div>
+    <div class="col-sm-11">
+      <a href="https://www.naradenryoku.co.jp/images/naraden-agreement.pdf">電気需給約款</a>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1">電気需給約款・個人情報保護方針に同意する</div>
+    <div class="col-sm-11">
+      <input type="checkbox" class="btn btn-lg btn-success" name="agree">
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      let agree = $('input:checkbox[name="agree"]:checked');
+      if (!agree) {
+        msg += "電気需給約款・個人情報保護方針に同意してください";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-申込内容の確認";
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 入力:input.html end -->
