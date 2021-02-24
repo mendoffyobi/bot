@@ -93,6 +93,8 @@ jQuery(function() {
                makeCapacity();
             } else if (json.keyword == "その他電力会社") {
                makeCapacity();
+            } else if (json.keyword == "検針情報1") {
+               makeMeterInfo();
             }
           });
         });

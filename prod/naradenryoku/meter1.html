@@ -12,7 +12,12 @@
   <div class="row">
     <div class="col-sm-1"><font size="5">地点番号</font></div>
     <div class="col-sm-11">
-      <input type="text" id="point" class="big" size="40">
+      <input type="text" id="point" class="big" size="40" maxlength="22">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      ※検針票記載の22ケタの供給地点番号です。
     </div>
   </div>
   <div class="row">
@@ -42,6 +47,8 @@
       let msg = "";
       if ($("#point").val() == "") {
         msg += "地点番号を入力してください\n";
+      } else if ($("#point").val().length != 22) {
+        msg += "地点番号を22桁で入力してください\n";
       }
       if ($("#user").val() == "") {
         msg += "お客様番号を入力してください\n";
@@ -67,6 +74,11 @@
         alert(err);
         liff.closeWindow();
       });
+    }
+    function makeMeterInfo() {
+      if ($("#point").val() == "") {
+        $("#point").val("06");
+      }
     }
   </script>
 <!-- 検針情報1:meter1.html end -->
