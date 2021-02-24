@@ -1,4 +1,49 @@
 <!-- 入力:input.html start -->
+  <style>
+  .chkbox {
+	margin:			0 0 10px 20px;
+  }
+  /* ラベルのスタイル　*/
+  .chkbox label {
+	padding-left:		38px;			/* ラベルの位置 */
+	font-size:		32px;
+	line-height:		32px;
+	display:		inline-block;
+	cursor:			pointer;
+	position:		relative;
+  }
+  /* ボックスのスタイル */
+  .chkbox label:before {
+	content:		'';
+	width:			32px;			/* ボックスの横幅 */
+	height:			32px;			/* ボックスの縦幅 */
+	display:		inline-block;
+	position:		absolute;
+	left:			0;
+	background-color:	#fff;
+	box-shadow:		inset 1px 2px 3px 0px #000;
+	border-radius:		6px 6px 6px 6px;
+  }
+  /* 元のチェックボックスを表示しない */
+  .chkbox input[type=checkbox] {
+	display:		none;
+  }
+  /* チェックした時のスタイル */
+  .chkbox input[type=checkbox]:checked + label:before {
+	content:		'\2713';		/* チェックの文字 */ 
+	font-size:		34px;			/* チェックのサイズ */
+	color:			#fff;			/* チェックの色 */
+	background-color:	#06f;			/* チェックした時の色 */
+  }
+  </style>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      
+    </div>
+  </div>
   <div class="row">
     &nbsp;
   </div>
@@ -22,9 +67,11 @@
     &nbsp;
   </div>
   <div class="row">
-    <div class="col-sm-1">電気需給約款・個人情報保護方針に同意する</div>
-    <div class="col-sm-11">
-      <input type="checkbox" class="btn btn-lg btn-success" name="agree">
+    <div class="col-sm-12">
+      <div class="chkbox">
+	    <input type="checkbox" name="agree" value="1" />
+	    <label for="chkbox3">電気需給約款・個人情報保護方針に同意する</label>
+      </div>
     </div>
   </div>
   <div class="row">
