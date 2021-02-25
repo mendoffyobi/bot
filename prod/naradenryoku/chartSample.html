@@ -1,0 +1,68 @@
+<html>
+<head>
+</head>
+<body>
+<!-- シミュレーション結果:chart.html start -->
+  <!--  グラフの描画エリア -->
+  <div id="chart_div" style="width: 100%; height: 350px"></div>
+  <h5>*1 燃料費調整額、再エネ賦課金等を除いた比較</h5>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    function makeGraph(p) {
+
+      // ライブラリのロード
+      google.load('visualization', '1', {'packages':['corechart']});
+      // グラフを描画する為のコールバック関数を指定
+      google.setOnLoadCallback(drawChart);
+
+      // グラフの描画
+      function drawChart() {
+
+        // 配列からデータの生成
+        var n = function(s) {return Number(s);};
+        var data = google.visualization.arrayToDataTable([
+          ['使用月', 'SW前', 'SW後','使用量'],
+          ['01月',  2756, 2755, 131],
+          ['02月',  2653, 2653, 127],
+          ['03月',  2372, 2373, 115],
+          ['04月',  2290, 2291, 111], 
+          ['05月',  2026, 2027, 98],
+          ['06月',  1986, 1986, 96],
+          ['07月',  2229, 2230, 108],
+          ['08月',  2576, 2576, 124],
+          ['09月',  2189, 2190, 106],
+          ['10月',  2067, 2068, 100],
+          ['11月',  2189, 2190, 106],
+          ['12月',  2412, 2413, 117]  
+        ]);
+
+        // オプションの設定
+        var options = {
+          title: '関西電力との料金比較結果',
+          // グラフの種類(bars:棒グラフ)
+          seriesType: "bars",
+          colors: ['red', 'deepskyblue', 'orange'],
+          legend : { maxLines: 2},
+          // 使用量だけを折れ線グラフにする
+          series: {2: {
+              type: "line",
+              targetAxisIndex: 1
+          }},
+          vAxes: [
+            { title: '電気料金概算(円 / 月) *1' },
+            { title: '使用量(kWh)' }
+          ]
+        };
+
+        // 指定されたIDの要素にコンボチャートを作成
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+
+        // グラフの描画
+        chart.draw(data, options);
+      }
+    }
+    makeGraph();
+  </script>
+<!-- シミュレーション結果:chart.html end -->
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!-- 低圧電力:planLP.html start -->
+  <div class="row">
+    <div class="col-sm-12" style="display:none;">
+      <span id="keyword" style="font-size: 14pt;"></span>
+      <span style="font-size: 12pt;">:</span>
+    </div>
+  </div>
+  <span style="font-size: 14pt;">ご契約容量を選択してください</span>
+  <div class="row">
+    <div class="col-sm-12">
+        <select id="capacity" class="form-control">
+          <option value="">選択してください</option>
+          <option value="0.5">0.5kW</option>
+          <option value="1">1kW</option>
+          <option value="2">2kW</option>
+          <option value="3">3kW</option>
+          <option value="4">4kW</option>
+          <option value="5">5kW</option>
+          <option value="6">6kW</option>
+          <option value="7">7kW</option>
+          <option value="8">8kW</option>
+          <option value="9">9kW</option>
+          <option value="10">10kW</option>
+          <option value="11">11kW</option>
+          <option value="12">12kW</option>
+          <option value="13">13kW</option>
+          <option value="14">14kW</option>
+          <option value="15">15kW</option>
+          <option value="16">16kW</option>
+          <option value="17">17kW</option>
+          <option value="18">18kW</option>
+          <option value="19">19kW</option>
+          <option value="20">20kW</option>
+          <option value="21">21kW</option>
+          <option value="22">22kW</option>
+          <option value="23">23kW</option>
+          <option value="24">24kW</option>
+          <option value="25">25kW</option>
+          <option value="26">26kW</option>
+          <option value="27">27kW</option>
+          <option value="28">28kW</option>
+          <option value="29">29kW</option>
+          <option value="30">30kW</option>
+          <option value="31">31kW</option>
+          <option value="32">32kW</option>
+          <option value="33">33kW</option>
+          <option value="34">34kW</option>
+          <option value="35">35kW</option>
+          <option value="36">36kW</option>
+          <option value="37">37kW</option>
+          <option value="38">38kW</option>
+          <option value="39">39kW</option>
+          <option value="40">40kW</option>
+          <option value="41">41kW</option>
+          <option value="42">42kW</option>
+          <option value="43">43kW</option>
+          <option value="44">44kW</option>
+          <option value="45">45kW</option>
+          <option value="46">46kW</option>
+          <option value="47">47kW</option>
+          <option value="48">48kW</option>
+          <option value="49">49kW</option>
+        </select>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <span style="font-size: 14pt;">力率を選択してください</span>
+  <div class="row">
+    <div class="col-sm-12">
+        <select id="powerFactor" class="form-control">
+          <option value="">選択してください</option>
+          <option value="90">90%</option>
+          <option value="85">85%</option>
+          <option value="80">80%</option>
+        </select>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <script>
+    function sendMsg() {
+      let msg = "";
+      if ($("#capacity").val() == "") {
+        msg += "契約容量を選択してください";
+      }
+      if ($("#powerFactor").val() == "") {
+        msg += "力率を選択してください";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "低圧電力プラン:";
+      text += $("#capacity").val() + "|";
+      text += $("#powerFactor").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+  </script>
+<!-- 低圧電力:planLP.html end -->
