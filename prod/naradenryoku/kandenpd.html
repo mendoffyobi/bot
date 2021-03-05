@@ -120,7 +120,7 @@
       let powerFactor = "";
       let plan = $("#plan").val();
       if (plan == "") {
-        msg += "電気料金プランを選択してください";
+        msg += "電気料金プランを選択してください\n";
       }
       if (plan == "従量電灯B" ||
           plan == "低圧電力" ||
@@ -130,12 +130,12 @@
         capacity = $("#capacity").val();
         capacityUnit = $("#capacityUnit").text();
         if (capacity == "") {
-          msg += "ご契約容量を選択してください";
+          msg += "ご契約容量を選択してください\n";
         }
         if (plan == "低圧電力") {
           powerFactor = $("#powerFactor").val();
           if (powerFactor == "") { 
-            msg += "力率を選択してください";
+            msg += "力率を選択してください\n";
           }
         }
       }
