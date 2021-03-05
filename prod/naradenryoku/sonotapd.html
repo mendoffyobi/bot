@@ -53,85 +53,159 @@
       <select id="plan" class="form-control">
         <option value="">選択してください</option>
         <option value="基本料金のないプラン">基本料金のないプラン(例：従量電灯A)</option>
-        <option value="基本料金のあるプラン(kVA)">基本料金のあるプラン(例：従量電灯B　契約容量単位kVA)</option>
-        <option value="基本料金のあるプラン(kW)">基本料金のあるプラン(例：低圧電力　契約容量単位kW)</option>
+        <option value="基本料金のあるプラン(kVA)">基本料金のあるプラン(例：従量電灯B[単位kVA])</option>
+        <option value="基本料金のあるプラン(kW)">基本料金のあるプラン(例：低圧電力[単位kW])</option>
       </select>
     </div>
   </div>
-  <div class="row">
-    &nbsp;
-  </div>
-  <div id="dispCapacity">
-    <span style="font-size: 14pt;">ご契約容量を選択してください</span>
+
+  <div id="dispCapacity1">
+    <div class="row">
+      &nbsp;
+    </div>
+    <div style="font-size: 14pt;">
+      ご契約容量を選択してください
+    </div>
     <div class="row">
       <div class="col-sm-1"><font size="5"></font></div>
       <div class="col-sm-11">
-        <select id="capacity" class="form-control">
+        <select id="capacity1" class="form-control">
           <option value="">選択してください</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-          <option value="24">24</option>
-          <option value="25">25</option>
-          <option value="26">26</option>
-          <option value="27">27</option>
-          <option value="28">28</option>
-          <option value="29">29</option>
-          <option value="30">30</option>
-          <option value="31">31</option>
-          <option value="32">32</option>
-          <option value="33">33</option>
-          <option value="34">34</option>
-          <option value="35">35</option>
-          <option value="36">36</option>
-          <option value="37">37</option>
-          <option value="38">38</option>
-          <option value="39">39</option>
-          <option value="40">40</option>
-          <option value="41">41</option>
-          <option value="42">42</option>
-          <option value="43">43</option>
-          <option value="44">44</option>
-          <option value="45">45</option>
-          <option value="46">46</option>
-          <option value="47">47</option>
-          <option value="48">48</option>
-          <option value="49">49</option>
+          <option value="6kVA">6kVA</option>
+          <option value="7kVA">7kVA</option>
+          <option value="8kVA">8kVA</option>
+          <option value="9kVA">9kVA</option>
+          <option value="10kVA">10kVA</option>
+          <option value="11kVA">11kVA</option>
+          <option value="12kVA">12kVA</option>
+          <option value="13kVA">13kVA</option>
+          <option value="14kVA">14kVA</option>
+          <option value="15kVA">15kVA</option>
+          <option value="16kVA">16kVA</option>
+          <option value="17kVA">17kVA</option>
+          <option value="18kVA">18kVA</option>
+          <option value="19kVA">19kVA</option>
+          <option value="20kVA">20kVA</option>
+          <option value="21kVA">21kVA</option>
+          <option value="22kVA">22kVA</option>
+          <option value="23kVA">23kVA</option>
+          <option value="24kVA">24kVA</option>
+          <option value="25kVA">25kVA</option>
+          <option value="26kVA">26kVA</option>
+          <option value="27kVA">27kVA</option>
+          <option value="28kVA">28kVA</option>
+          <option value="29kVA">29kVA</option>
+          <option value="30kVA">30kVA</option>
+          <option value="31kVA">31kVA</option>
+          <option value="32kVA">32kVA</option>
+          <option value="33kVA">33kVA</option>
+          <option value="34kVA">34kVA</option>
+          <option value="35kVA">35kVA</option>
+          <option value="36kVA">36kVA</option>
+          <option value="37kVA">37kVA</option>
+          <option value="38kVA">38kVA</option>
+          <option value="39kVA">39kVA</option>
+          <option value="40kVA">40kVA</option>
+          <option value="41kVA">41kVA</option>
+          <option value="42kVA">42kVA</option>
+          <option value="43kVA">43kVA</option>
+          <option value="44kVA">44kVA</option>
+          <option value="45kVA">45kVA</option>
+          <option value="46kVA">46kVA</option>
+          <option value="47kVA">47kVA</option>
+          <option value="48kVA">48kVA</option>
+          <option value="49kVA">49kVA</option>
         </select>
       </div>
     </div>
   </div>
-  <div class="row">
-    &nbsp;
-  </div>
-  <div id="dispCapacityUnit">
-    <span style="font-size: 14pt;">ご契約容量の単位を選択してください</span>
+
+  <div id="dispCapacity2">
+    <div class="row">
+      &nbsp;
+    </div>
+    <div style="font-size: 14pt;">
+      ご契約容量を選択してください
+    </div>
     <div class="row">
       <div class="col-sm-1"><font size="5"></font></div>
       <div class="col-sm-11">
-        <select id="capacityUnit" class="form-control">
+        <select id="capacity2" class="form-control">
           <option value="">選択してください</option>
-          <option value="kVA">kVA</option>
-          <option value="kVA">kW</option>
+          <option value="0.5kW">0.5kW</option>
+          <option value="1kW">1kW</option>
+          <option value="2kW">2kW</option>
+          <option value="3kW">3kW</option>
+          <option value="4kW">4kW</option>
+          <option value="5kW">5kW</option>
+          <option value="6kW">6kW</option>
+          <option value="7kW">7kW</option>
+          <option value="8kW">8kW</option>
+          <option value="9kW">9kW</option>
+          <option value="10kW">10kW</option>
+          <option value="11kW">11kW</option>
+          <option value="12kW">12kW</option>
+          <option value="13kW">13kW</option>
+          <option value="14kW">14kW</option>
+          <option value="15kW">15kW</option>
+          <option value="16kW">16kW</option>
+          <option value="17kW">17kW</option>
+          <option value="18kW">18kW</option>
+          <option value="19kW">19kW</option>
+          <option value="20kW">20kW</option>
+          <option value="21kW">21kW</option>
+          <option value="22kW">22kW</option>
+          <option value="23kW">23kW</option>
+          <option value="24kW">24kW</option>
+          <option value="25kW">25kW</option>
+          <option value="26kW">26kW</option>
+          <option value="27kW">27kW</option>
+          <option value="28kW">28kW</option>
+          <option value="29kW">29kW</option>
+          <option value="30kW">30kW</option>
+          <option value="31kW">31kW</option>
+          <option value="32kW">32kW</option>
+          <option value="33kW">33kW</option>
+          <option value="34kW">34kW</option>
+          <option value="35kW">35kW</option>
+          <option value="36kW">36kW</option>
+          <option value="37kW">37kW</option>
+          <option value="38kW">38kW</option>
+          <option value="39kW">39kW</option>
+          <option value="40kW">40kW</option>
+          <option value="41kW">41kW</option>
+          <option value="42kW">42kW</option>
+          <option value="43kW">43kW</option>
+          <option value="44kW">44kW</option>
+          <option value="45kW">45kW</option>
+          <option value="46kW">46kW</option>
+          <option value="47kW">47kW</option>
+          <option value="48kW">48kW</option>
+          <option value="49kW">49kW</option>
         </select>
       </div>
     </div>
   </div>
+
+  <div id="dispPowerFactor">
+    <div class="row">
+      &nbsp;
+    </div>
+    <div style="font-size: 14pt;">
+      力率を選択してください
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+          <select id="powerFactor" class="form-control">
+            <option value="">選択してください</option>
+            <option value="90">90%</option>
+            <option value="85">85%</option>
+            <option value="80">80%</option>
+          </select>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     &nbsp;
   </div>
@@ -148,21 +222,32 @@
     function sendMsg() {
       let msg = "";
       let capacity = "";
-      let capacityUnit = "";
-      if ($("#company").val() == "") {
+      let powerFactor = "";
+      let company = $("#company").val();
+      let plan = $("#plan").val();
+      if (company == "") {
         msg += "電力会社を選択してください";
       }
-      if ($("#plan").val() == "") {
+      if (plan == "") {
         msg += "電気料金プランを選択してください";
-      }
-      if ($("#plan").val() == "基本料金のあるプラン") {
-        capacity = $("#capacity").val();
-        capacityUnit = $("#capacityUnit").val();
-        if (capacity == "") {
-          msg += "ご契約容量を選択してください";
-        }
-        if (capacityUnit == "") {
-          msg += "ご契約容量の単位を選択してください";
+      } else {
+        switch(plan) {
+          case "基本料金のあるプラン(kVA)":
+            capacity = $("#capacity1").val();
+            if (capacity == "") {
+              msg += "ご契約容量を選択してください\n";
+            }
+            break;
+          case "基本料金のあるプラン(kW)":
+            capacity = $("#capacity2").val();
+            powerFactor = $("#powerFactor").val();
+            if (capacity == "") {
+              msg += "ご契約容量を選択してください\n";
+            }
+            if (powerFactor == "") { 
+              msg += "力率を選択してください\n";
+            }
+            break;
         }
       }
       if (msg) {
@@ -171,9 +256,10 @@
       }
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += $("#company").val() + "|";
-      text += $("#plan").val() + "|";
-      text += capacity + capacityUnit;
+      text += company + "|";
+      text += plan + "|";
+      text += capacity + "|";
+      text += powerFactor;
       liff.sendMessages([
         {
           "type": "text",
@@ -192,12 +278,17 @@
     // 契約容量のプルダウン連動
     function makeCapacity() {
       $('#plan').change(function() {
-        if ($(this).val() === "基本料金のあるプラン") {
-          $("#dispCapacity").show();
-          $("#dispCapacityUnit").show();
-        } else {
-          $("#dispCapacity").hide();
-          $("#dispCapacityUnit").hide();
+        $("#dispCapacity1").hide();
+        $("#dispCapacity2").hide();
+        $("#dispPowerFactor").hide();
+        switch($(this).val()) {
+          case "基本料金のあるプラン(kVA)":
+            $("#dispCapacity1").show();
+            break;
+          case "基本料金のあるプラン(kW)":
+            $("#dispCapacity2").show();
+            $("#dispPowerFactor").show();
+            break;
         }
       });
       $('#plan').change();
