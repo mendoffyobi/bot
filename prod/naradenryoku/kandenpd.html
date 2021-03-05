@@ -3,7 +3,7 @@
     &nbsp;
   </div>
   <span id="keyword" style="display: none;"></span>
-  <span style="font-size: 14pt;">現在ご利用中の電気料金プランを選択してください</span>
+  <div style="font-size: 14pt;">現在ご利用中の電気料金プランを選択してください</div>
   <div class="row">
     &nbsp;
   </div>
@@ -26,11 +26,11 @@
       </select>
     </div>
   </div>
-  <div class="row">
-    &nbsp;
-  </div>
   <div id="dispCapacity">
-    <span style="font-size: 14pt;">ご契約容量を選択してください</span>
+    <div class="row">
+      &nbsp;
+    </div>
+    <div style="font-size: 14pt;">ご契約容量を選択してください(単位：<span  id="capacityUnit"></span>)</div>
     <div class="row">
       <div class="col-sm-1"><font size="5"></font></div>
       <div class="col-sm-11">
@@ -84,19 +84,19 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    &nbsp;
-  </div>
-  <div id="dispCapacityUnit">
-    <span style="font-size: 14pt;">ご契約容量の単位を選択してください</span>
+  <div id="dispPowerFactor">
     <div class="row">
-      <div class="col-sm-1"><font size="5"></font></div>
-      <div class="col-sm-11">
-        <select id="capacityUnit" class="form-control">
-          <option value="">選択してください</option>
-          <option value="kVA">kVA</option>
-          <option value="kVA">kW</option>
-        </select>
+      &nbsp;
+    </div>
+    <div style="font-size: 14pt;">力率を選択してください</div>
+    <div class="row">
+      <div class="col-sm-12">
+          <select id="powerFactor" class="form-control">
+            <option value="">選択してください</option>
+            <option value="90">90%</option>
+            <option value="85">85%</option>
+            <option value="80">80%</option>
+          </select>
       </div>
     </div>
   </div>
@@ -117,18 +117,26 @@
       let msg = "";
       let capacity = "";
       let capacityUnit = "";
-      if ($("#plan").val() == "") {
+      let powerFactor = "";
+      let plan = $("#plan").val();
+      if (plan == "") {
         msg += "電気料金プランを選択してください";
       }
-      if ($("#plan").val() == "従量電灯B" ||
-          $("#plan").val() == "低圧電力") {
+      if (plan == "従量電灯B" ||
+          plan == "低圧電力" ||
+          plan == "eスマート10" ||
+          plan == "eおとくプラン" ||
+          plan == "なっトクでんきBiz") {
         capacity = $("#capacity").val();
-        capacityUnit = $("#capacityUnit").val();
+        capacityUnit = $("#capacityUnit").text();
         if (capacity == "") {
           msg += "ご契約容量を選択してください";
         }
-        if (capacityUnit == "") {
-          msg += "ご契約容量の単位を選択してください";
+        if (plan == "低圧電力") {
+          powerFactor = $("#powerFactor").val();
+          if (powerFactor == "") { 
+            msg += "力率を選択してください";
+          }
         }
       }
       if (msg) {
@@ -137,8 +145,9 @@
       }
       var text = "入力-";
       text += $("#keyword").text() + ":";
-      text += $("#plan").val() + "|";
-      text += capacity + capacityUnit;
+      text += plan + "|";
+      text += capacity + capacityUnit + "|";
+      text += powerFactor + "|";
       liff.sendMessages([
         {
           "type": "text",
@@ -156,13 +165,30 @@
     // 契約容量のプルダウン連動
     function makeCapacity() {
       $('#plan').change(function() {
-        if ($(this).val() == "従量電灯B" ||
-            $(this).val() == "低圧電力") {
-          $("#dispCapacity").show();
-          $("#dispCapacityUnit").show();
-        } else {
-          $("#dispCapacity").hide();
-          $("#dispCapacityUnit").hide();
+        $("#dispCapacity").hide();
+        $("#dispPowerFactor").hide();
+        switch($(this).val()) {
+          case "従量電灯B":
+            $("#capacityUnit").text("kVA");
+            $("#dispCapacity").show();
+            break;
+          case "なっトクでんきBiz":
+            $("#capacityUnit").text("kVA");
+            $("#dispCapacity").show();
+            break;
+          case "eスマート10":
+            $("#capacityUnit").text("kW");
+            $("#dispCapacity").show();
+            break;
+          case "eおとくプラン":
+            $("#capacityUnit").text("kW");
+            $("#dispCapacity").show();
+            break;
+          case "低圧電力":
+            $("#capacityUnit").text("kW");
+            $("#dispCapacity").show();
+            $("#dispPowerFactor").show();
+            break;
         }
       });
       $('#plan').change();
