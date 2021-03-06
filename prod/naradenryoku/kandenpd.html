@@ -169,8 +169,6 @@
       <div class="col-sm-11">
         <select id="capacity3" class="form-control">
           <option value="">選択してください</option>
-          <option value="6kW未満">6kW未満</option>
-          <option value="6kW">6kW</option>
           <option value="7kW">7kW</option>
           <option value="8kW">8kW</option>
           <option value="9kW">9kW</option>
@@ -279,9 +277,6 @@
         case "eスマート10":
         case "eおとくプラン":
           capacity = $("#capacity3").val();
-          if (capacity == "") {
-            msg += "ご契約容量を選択してください\n";
-          }
           break;
       }
       if (msg) {
