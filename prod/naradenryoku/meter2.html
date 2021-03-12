@@ -140,7 +140,7 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row" style="display:none;">
+    <div class="row">
       <div class="col-sm-1">
         <font size="5">力率</font>
       </div>
@@ -221,6 +221,9 @@
         unit = $("#unit").text();
         if (size == "") {
           msg += "ご契約容量を選択してください";
+        }
+        if (pf == "") {
+          msg += "力率を選択してください";
         }
       }
       if ($("#month").val() == "") {
