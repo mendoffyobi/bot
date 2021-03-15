@@ -231,6 +231,10 @@
       }
       if ($("#amount").val() == "") {
         msg += "ご使用量を入力してください\n";
+      } else if (!/^[0-9]+$/.test($("#amount").val())) {
+        msg += "ご使用量は半角数値で入力してください\n";
+      } else if (/^[0]/.test($("#amount").val())) {
+        msg += "ご使用量を正しい数値で入力してください\n";
       }
       if (msg) {
         alert(msg);
