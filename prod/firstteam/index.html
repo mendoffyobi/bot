@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" />
+<link rel="stylesheet" href="https://ft1.mendoff.jp/css/firstteam.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="https://ft1.mendoff.jp/js/jquery.japan-map.min.js"></script>
+<script>
+var WebSafeBase64 = {
+  encode: function(str) {
+    var s = str.replace(/\+/g, '-').replace(/\//g, '_');
+    return btoa(unescape(encodeURIComponent(s)));
+  },
+  decode: function(str) {
+    var s = str.replace(/\-/g, '+').replace(/_/g , '/').replace(/%3D/g, '=');
+    return decodeURIComponent(escape(atob(s)));
+  }
+};
+jQuery(function() {
+  try {
+    var key = location.search.substring(1).slice(4);
+    if (key) {
+      json = JSON.parse(WebSafeBase64.decode(key));
+      liff.init({
+        liffId: json.liffId
+      }, (data) => {
+        $(function(){
+          let contents = "";
+          switch(json.keyword) {
+            case "STEP1":
+              contents = "step1.html";
+              break;
+            default:
+              contents = "input.html";
+              break;
+          }
+          $("#contents").load(contents, function() {
+            $("#keyword").text(json.keyword);
+            var p = {};
+            if (json.parameter) {
+              try {
+                var param = JSON.parse(WebSafeBase64.decode(json.parameter));
+                Object.keys(param).forEach(function(v) {
+                  let val = WebSafeBase64.decode(param[v]);
+                  $("#" + v).val(val);
+                  p[v] = val;
+                });
+              } catch(ex) {
+                alert(ex);
+              }
+            }
+            if (json.keyword == "STEP1") {
+              makeStep1();
+            }
+          });
+        });
+      });
+    }
+  } catch(ex) {
+    alert(ex);
+  }
+});
+</script>
+<style type="text/css">
+.big { font-size:14pt; }
+</style>
+<title>項目の入力</title>
+</head>
+<body>
+<div class="container">
+  <div id="contents"></div>
+</div>
+</body>
+</html>
