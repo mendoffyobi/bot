@@ -1,12 +1,8 @@
 <!-- 入力:step1.html start -->
   <div class="facility-group">
-    <hr class="hr-green">
     <div style="text-align:center;">
-      <h5 class="simulation-text-h5 step">STEP 1 / 6</h5>
-      <h5 class="simulation-text-h5">検針票など、お申込に必要な資料をお手元にご用意ください。</h5>
       <h5 class="simulation-text-h5">お住いのエリアを選択してください。</h5>
     </div>
-    <hr class="hr-green">
     <div>&nbsp;</div>
     <div style="text-align: center;">
       <div id="map-container"></div>
@@ -50,7 +46,7 @@
         return false;
       }
       var text = "入力-";
-      text += $("#keyword").text() + ":";
+      text += "エリア" + ":";
       text += name;
       liff.sendMessages([
         {
@@ -69,4 +65,4 @@
 
   </script>
 
-<!-- 入力:input.html end -->
+<!-- 入力:step1.html end -->
