@@ -44,20 +44,29 @@
 
     // 初期処理
     function makeStep3() {
-      $(function(){
-      });
     }
 
     // 決定ボタン押下時チェック
     function sendMsg(support, name) {
       let msg = "";
+      if ($("#zip").val() == "") {
+        msg += "郵便番号を入力してください\n";
+      }
+      if ($("#address1").val() == "") {
+        msg += "都道府県・市区町村を入力してください\n";
+      }
       if (msg) {
         alert(msg);
         return false;
       }
       var text = "入力-";
       text += "ご利用場所" + ":";
-      text += name;
+      text += $("#zip").val() + "|";
+      text += $("#address1").val() + "|";
+      text += $("#address2").val() + "|";
+      text += $("#bulidName").val() + "|";
+      text += $("#bulidNum").val() + "|";
+      text += $("#roomNum").val();
       liff.sendMessages([
         {
           "type": "text",
