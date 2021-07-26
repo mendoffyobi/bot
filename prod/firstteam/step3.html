@@ -1,0 +1,78 @@
+<!-- 入力:step3.html start -->
+  <div class="facility-group">
+    <div style="text-align:center;">
+      <h5 class="simulation-text-h5">現在のご利用場所を入力してください。</h5>
+    </div>
+    <div>&nbsp;</div>
+    <div class="row" style="margin-bottom: 3px;">
+      <div class="col-xs-6">
+        <input type="text" id="zip" name="zip" placeholder="〒" class="form-control">
+      </div>
+      <div class="col-xs-3">
+        <button type="button" class="btn btn-default btn-sm btn-success"
+             onClick="AjaxZip3.zip2addr('zip', '', 'address1', 'address1');">住所を取得</button>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 3px;">
+      <div class="col-sm-12">
+        <input type="text" id="address1" name="address1" placeholder="都道府県・市区町村を入力" class="form-control">
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 3px;">
+      <div class="col-sm-12">
+        <input type="text" id="address2" name="address2" class="form-control" placeholder="番地等を入力(任意)">
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 3px;">
+      <div class="col-sm-12">
+        <input type="text" id="bulidName" name="bulidName" class="form-control" placeholder="建物名を入力(任意)">
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 3px;">
+      <div class="col-sm-12">
+        <input type="text" id="bulidNum" name="bulidNum" class="form-control" placeholder="棟番号を半角英数字で入力(任意)">
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 3px;">
+      <div class="col-sm-12">
+        <input type="text" id="roomNum" name="roomNum" class="form-control" placeholder="部屋番号を半角英数字で入力(任意)">
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    // 初期処理
+    function makeStep3() {
+      $(function(){
+      });
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "ご利用場所" + ":";
+      text += name;
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:step1.html end -->
