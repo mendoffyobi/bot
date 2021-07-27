@@ -255,7 +255,10 @@
     // 初期処理
     function makeStep7() {
       $(function(){
-        
+        $.get('https://ft1.mendoff.jp/ocrft1/powerCompanyList', { area: "" })
+        .done(data => {
+          alert(data["list"]);
+        });
       });
     }
 
