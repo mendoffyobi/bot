@@ -48,6 +48,9 @@ jQuery(function() {
             case "STEP4":
               contents = "step4.html";
               break;
+            case "STEP5":
+              contents = "step5.html";
+              break;
             default:
               contents = "input.html";
               break;
@@ -75,6 +78,9 @@ jQuery(function() {
             }
             if (json.keyword == "STEP4") {
               makeStep4();
+            }
+            if (json.keyword == "STEP5") {
+              makeStep5();
             }
           });
         });
