@@ -1,0 +1,94 @@
+<!-- 入力:step3.html start -->
+  <div class="facility-group">
+    <div style="text-align:center;">
+      <h5 class="simulation-text-h5">現在のご利用場所を入力してください。</h5>
+      <h5 class="simulation-text-h5">法人名や店舗名でご契約の場合も、姓と名に区切ってご入力ください</h5>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>お名前(漢字)を入力してください <span class="required">(必須)<span></h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-xs-12">
+          <input type="text" id="lastName" name="lastName" placeholder="姓を漢字で入力" class="form-control">
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-xs-12">
+          <input type="text" id="firstName" name="firstName" placeholder="名を漢字で入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>お名前(フリガナ)を入力してください <span class="required">(必須)<span></h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-xs-12">
+          <input type="text" id="lastNameKana" name="lastNameKana" placeholder="姓をカタカナで入力" class="form-control">
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-xs-12">
+          <input type="text" id="firstNameKana" name="firstNameKana" placeholder="名をカタカナで入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      </div>
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+  </div>
+
+  <script>
+
+    // 初期処理
+    function makeStep3() {
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if ($("#lastName").val() == "") {
+        msg += "姓(漢字)を入力してください\n";
+      }
+      if ($("#firstName").val() == "") {
+        msg += "名(漢字)を入力してください\n";
+      }
+      if ($("#lastNameKana").val() == "") {
+        msg += "姓(カナ)を入力してください\n";
+      }
+      if ($("#firstNameKana").val() == "") {
+        msg += "名(カナ)を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "ご契約名義" + ":";
+      text += $("#lastName").val() + "|";
+      text += $("#firstName").val() + "|";
+      text += $("#lastNameKana").val() + "|";
+      text += $("#firstNameKana").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:step1.html end -->
