@@ -1,0 +1,293 @@
+<!-- 入力:step7.html start -->
+  <div class="facility-group">
+    <div style="text-align:center;">
+      <h5 class="simulation-text-h5">ご契約情報を入力してください。</h5>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>お客様番号を入力してください <span class="required">(必須)<span></h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="customerNo" name="customerNo" placeholder="お客様番号を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div>&nbsp;</div>
+      <h4>供給地点特定番号を入力してください <span class="required">(必須)<span></h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="supplyPointNo" name="supplyPointNo" placeholder="供給地点特定番号を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div>&nbsp;</div>
+      <h4>現在の電力会社を選択してください <span class="required">(必須)<span></h4>
+      <select id="powerCompany" name="powerCompany" class="form-control">
+        <option value="">選択してください</option>
+        <% for (let i = 0; i < companyList.length; i++) { %>
+        <option value="<%- companyList[i] %>"><%- companyList[i] %></option>
+        <% } %>
+        <option value="その他">その他</option>
+      </select>
+    </div>
+    <div class="container" id="dispInputPowerCompany" style="display:none;">
+      <div>&nbsp;</div>
+      <h4>現在の電力会社を入力してください <span class="required">(必須)<span></h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="inputPowerCompany" name="inputPowerCompany" placeholder="現在の電力会社を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div>&nbsp;</div>
+      <h4>契約種別を選択してください <span class="required">(必須)<span></h4>
+      <select id="currentPlan" name="currentPlan" class="form-control">
+        <option value="">選択してください</option>
+        <option value="従量電灯A">従量電灯A相当プラン</option>
+        <option value="従量電灯B">従量電灯B相当プラン</option>
+        <option value="低圧電力">低圧電力相当プラン</option>
+        <option value="オール電化">オール電化対応プラン（はぴeタイム等）</option>
+      </select>
+    </div>
+    <div class="container" id="dispCurrentCapacity1" style="display:none;">
+      <div>&nbsp;</div>
+      <h4>契約容量を選択してください <span class="required">(必須)<span></h4>
+      <select id="currentCapacity1" class="form-control">
+        <option value="">選択してください</option>
+        <option value="6kVA">6kVA</option>
+        <option value="7kVA">7kVA</option>
+        <option value="8kVA">8kVA</option>
+        <option value="9kVA">9kVA</option>
+        <option value="10kVA">10kVA</option>
+        <option value="11kVA">11kVA</option>
+        <option value="12kVA">12kVA</option>
+        <option value="13kVA">13kVA</option>
+        <option value="14kVA">14kVA</option>
+        <option value="15kVA">15kVA</option>
+        <option value="16kVA">16kVA</option>
+        <option value="17kVA">17kVA</option>
+        <option value="18kVA">18kVA</option>
+        <option value="19kVA">19kVA</option>
+        <option value="20kVA">20kVA</option>
+        <option value="21kVA">21kVA</option>
+        <option value="22kVA">22kVA</option>
+        <option value="23kVA">23kVA</option>
+        <option value="24kVA">24kVA</option>
+        <option value="25kVA">25kVA</option>
+        <option value="26kVA">26kVA</option>
+        <option value="27kVA">27kVA</option>
+        <option value="28kVA">28kVA</option>
+        <option value="29kVA">29kVA</option>
+        <option value="30kVA">30kVA</option>
+        <option value="31kVA">31kVA</option>
+        <option value="32kVA">32kVA</option>
+        <option value="33kVA">33kVA</option>
+        <option value="34kVA">34kVA</option>
+        <option value="35kVA">35kVA</option>
+        <option value="36kVA">36kVA</option>
+        <option value="37kVA">37kVA</option>
+        <option value="38kVA">38kVA</option>
+        <option value="39kVA">39kVA</option>
+        <option value="40kVA">40kVA</option>
+        <option value="41kVA">41kVA</option>
+        <option value="42kVA">42kVA</option>
+        <option value="43kVA">43kVA</option>
+        <option value="44kVA">44kVA</option>
+        <option value="45kVA">45kVA</option>
+        <option value="46kVA">46kVA</option>
+        <option value="47kVA">47kVA</option>
+        <option value="48kVA">48kVA</option>
+        <option value="49kVA">49kVA</option>
+      </select>
+    </div>
+    <div class="container" id="dispCurrentCapacity2" style="display:none;">
+      <div>&nbsp;</div>
+      <h4>契約容量を選択してください <span class="required">(必須)<span></h4>
+      <select id="currentCapacity2" class="form-control">
+        <option value="">選択してください</option>
+        <option value="0.5kW">0.5kW</option>
+        <option value="1kW">1kW</option>
+        <option value="2kW">2kW</option>
+        <option value="3kW">3kW</option>
+        <option value="4kW">4kW</option>
+        <option value="5kW">5kW</option>
+        <option value="6kW">6kW</option>
+        <option value="7kW">7kW</option>
+        <option value="8kW">8kW</option>
+        <option value="9kW">9kW</option>
+        <option value="10kW">10kW</option>
+        <option value="11kW">11kW</option>
+        <option value="12kW">12kW</option>
+        <option value="13kW">13kW</option>
+        <option value="14kW">14kW</option>
+        <option value="15kW">15kW</option>
+        <option value="16kW">16kW</option>
+        <option value="17kW">17kW</option>
+        <option value="18kW">18kW</option>
+        <option value="19kW">19kW</option>
+        <option value="20kW">20kW</option>
+        <option value="21kW">21kW</option>
+        <option value="22kW">22kW</option>
+        <option value="23kW">23kW</option>
+        <option value="24kW">24kW</option>
+        <option value="25kW">25kW</option>
+        <option value="26kW">26kW</option>
+        <option value="27kW">27kW</option>
+        <option value="28kW">28kW</option>
+        <option value="29kW">29kW</option>
+        <option value="30kW">30kW</option>
+        <option value="31kW">31kW</option>
+        <option value="32kW">32kW</option>
+        <option value="33kW">33kW</option>
+        <option value="34kW">34kW</option>
+        <option value="35kW">35kW</option>
+        <option value="36kW">36kW</option>
+        <option value="37kW">37kW</option>
+        <option value="38kW">38kW</option>
+        <option value="39kW">39kW</option>
+        <option value="40kW">40kW</option>
+        <option value="41kW">41kW</option>
+        <option value="42kW">42kW</option>
+        <option value="43kW">43kW</option>
+        <option value="44kW">44kW</option>
+        <option value="45kW">45kW</option>
+        <option value="46kW">46kW</option>
+        <option value="47kW">47kW</option>
+        <option value="48kW">48kW</option>
+        <option value="49kW">49kW</option>
+      </select>
+    </div>
+    <div class="container" id="dispCurrentCapacity3" style="display:none;">
+      <div>&nbsp;</div>
+      <h4>契約容量を選択してください <span class="required">(必須)<span></h4>
+      <select id="currentCapacity3" class="form-control">
+        <option value="">選択してください</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+      </select>
+    </div>
+    <div class="container" id="dispCurrentPowerFactor" style="display:none;">
+      <div>&nbsp;</div>
+      <h4>力率を選択してください <span class="required">(必須)<span></h4>
+      <select id="currentPowerFactor" class="form-control">
+        <option value="">選択してください</option>
+        <option value="90%">90%</option>
+        <option value="85%">85%</option>
+        <option value="80%">80%</option>
+      </select>
+    </div>
+    <div class="container" id="dispDiscount" style="display:none;">
+      <div>&nbsp;</div>
+      <h4>電化割引の有無を選択してください <span class="required">(必須)<span></h4>
+      <group class="inline-radio">
+        <div><input type="radio" name="discount" value="割引あり">
+          <label>割引あり</label>
+        </div>
+        <div><input type="radio" name="discount" value="割引なし">
+          <label>割引なし</label>
+        </div>
+      </group>
+    </div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      </div>
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+  </div>
+
+  <script>
+
+    // 初期処理
+    function makeStep7() {
+      $(function(){
+        
+      });
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if ($("#tel").val() == "") {
+        msg += "電話番号を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "ご連絡先" + ":";
+      text += $("#tel").val() + "|";
+      text += $("#email").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:step7.html end -->
