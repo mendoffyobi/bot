@@ -255,11 +255,18 @@
     // 初期処理
     function makeStep7() {
       $(function(){
-        alert("hello");
         try {
-        $.get('https://ft1.mendoff.jp/ocrft1/powerCompanyList', { area: "" })
+        $.ajax({
+          type: "GET",
+          url: 'https://ft1.mendoff.jp/ocrft1/powerCompanyList',
+          data: {area: ""},
+          dataType: "json"
+        }
         .done(data => {
           alert(data["list"]);
+        })
+        .fail(ex => {
+          alert(ex);
         });
         } catch(ex) {
             alert(ex);
