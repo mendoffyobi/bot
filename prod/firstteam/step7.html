@@ -243,6 +243,7 @@
     <div class="row">
       &nbsp;
     </div>
+    <input type="hidden" id="wkPlan">
     <div id="loader-bg">
       <div id="loader" style="top: 100px;">
         <img src="./img/loading.svg" alt="Now Loading..." width="200px" height="200px"/>
@@ -255,8 +256,43 @@
 
     // 初期処理
     function makeStep7() {
+        
+      // changeイベントセット
+      var plan = document.getElementsByName('currentPlan');    
+      plan.forEach(function(e) {
+        e.addEventListener("change", function() {
+          planChange();
+        });
+      });
+      var powerCompany = document.getElementsByName('powerCompany');    
+      powerCompany.forEach(function(e) {
+        e.addEventListener("change", function() {
+          powerCompanyChange();
+        });
+      });
+
+      // 初期値設定
+      var wkPlan = $("#wkPlan");
+      switch(wkPlan) {
+        case "自由でんき電灯A":
+          $("#currentPlan").val("従量電灯A");
+          break;
+        case "自由でんき電灯B":
+          $("#currentPlan").val("従量電灯B");
+          break;
+        case "自由でんき低圧電力":
+          $("#currentPlan").val("低圧電力");
+          break;
+        case "自由でんきオール電化プラン":
+          $("#currentPlan").val("オール電化");
+          break;
+      }
+
+      planChange();
+      powerCompanyChange();
+
       $(function(){
-        loading("Now Loading..");
+        loading("");
         $.ajax({
           type: "GET",
           url: 'https://ft1.mendoff.jp/ocrft1/powerCompanyList',
@@ -303,6 +339,40 @@
         alert(err);
         liff.closeWindow();
       });
+    }
+
+  // 契約種別変更
+    function planChange() {
+      $("#dispCurrentCapacity1").hide();
+      $("#dispCurrentCapacity2").hide();
+      $("#dispCurrentCapacity3").hide();
+      $("#dispCurrentPowerFactor").hide();
+      $("#dispDiscount").hide();
+      let plan = $("#currentPlan").val();
+      switch(plan) {
+        case "従量電灯A":
+          break;
+        case "従量電灯B":
+          $("#dispCurrentCapacity1").show();
+          break;
+        case "低圧電力":
+          $("#dispCurrentCapacity2").show();
+          $("#dispCurrentPowerFactor").show();
+          break;
+        case "オール電化":
+          $("#dispCurrentCapacity3").show();
+          $("#dispDiscount").show();
+          break;
+      }
+    }
+
+    // 電力会社変更
+    function powerCompanyChange() {
+      $("#dispInputPowerCompany").hide();
+      let powerCompany = $("#powerCompany").val();
+      if (powerCompany == "その他") {
+        $("#dispInputPowerCompany").show();
+      }
     }
 
     /* ローダー制御 */
