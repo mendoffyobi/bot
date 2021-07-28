@@ -256,6 +256,7 @@
     // 初期処理
     function makeStep7() {
       $(function(){
+        loading("");
         $.ajax({
           type: "GET",
           url: 'https://ft1.mendoff.jp/ocrft1/powerCompanyList',
@@ -270,6 +271,7 @@
             p.append($('<option>').html(list[i]).val(list[i]));
           }
           p.append($('<option>').html("その他").val("その他"));
+          stopload();
         });
       });
     }
