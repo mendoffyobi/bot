@@ -25,11 +25,6 @@
       <div>&nbsp;</div>
       <h4>現在の電力会社を選択してください <span class="required">(必須)<span></h4>
       <select id="powerCompany" name="powerCompany" class="form-control">
-        <option value="">選択してください</option>
-        <% for (let i = 0; i < companyList.length; i++) { %>
-        <option value="<%- companyList[i] %>"><%- companyList[i] %></option>
-        <% } %>
-        <option value="その他">その他</option>
       </select>
     </div>
     <div class="container" id="dispInputPowerCompany" style="display:none;">
@@ -255,22 +250,21 @@
     // 初期処理
     function makeStep7() {
       $(function(){
-        try {
         $.ajax({
           type: "GET",
           url: 'https://ft1.mendoff.jp/ocrft1/powerCompanyList',
           data: {area: ""},
           dataType: "json"
-        }
-        .done(data => {
-          alert(data["list"]);
         })
-        .fail(ex => {
-          alert(ex);
+        .done(data => {
+          let list = data["list"];
+          let p = $('#powerCompany');
+          p.append($('<option>').html("選択してください").val(""));
+          for (let i = 0; i < list.length; i++) {
+            p.append($('<option>').html(list[i]).val(list[i]));
+          }
+          p.append($('<option>').html("その他").val("その他"));
         });
-        } catch(ex) {
-            alert(ex);
-        }
       });
     }
 
