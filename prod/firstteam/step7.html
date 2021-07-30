@@ -256,15 +256,15 @@
 
     // 初期処理
     function makeStep7() {
-        
+
       // changeイベントセット
-      var plan = document.getElementsByName('currentPlan');    
+      let plan = document.getElementsByName('currentPlan');    
       plan.forEach(function(e) {
         e.addEventListener("change", function() {
           planChange();
         });
       });
-      var powerCompany = document.getElementsByName('powerCompany');    
+      let powerCompany = document.getElementsByName('powerCompany');    
       powerCompany.forEach(function(e) {
         e.addEventListener("change", function() {
           powerCompanyChange();
@@ -272,7 +272,7 @@
       });
 
       // 初期値設定
-      var wkPlan = $("#wkPlan");
+      let wkPlan = $("#wkPlan");
       switch(wkPlan) {
         case "自由でんき電灯A":
           $("#currentPlan").val("従量電灯A");
@@ -315,17 +315,78 @@
     // 決定ボタン押下時チェック
     function sendMsg(support, name) {
       let msg = "";
-      if ($("#tel").val() == "") {
-        msg += "電話番号を入力してください\n";
+
+      let currentCapacity = '';
+      let currentPowerFactor = '';
+      let discount = '';
+      // 現在の電力会社
+      if (!$('#customerNo').val()) {
+        msg += "お客様番号を入力してください|";
       }
+      if (!$('#supplyPointNo').val()) {
+        msg += "供給地点特定番号を入力してください|";
+      } else if ($('#supplyPointNo').val().length != 22) {
+        msg += "供給地点特定番号は22桁で入力してください|";
+      }
+      let powerCompany = $('#powerCompany').val();
+      let inputPowerCompany = $('#inputPowerCompany').val();
+      if (!powerCompany) {
+        msg += "現在の電力会社を選択してください|";
+      } else if(powerCompany == "その他") {
+        if(!inputPowerCompany) {
+          msg += "現在の電力会社を入力してください|";
+        }
+      }
+      let currentPlan = $('#currentPlan').val();
+      if (!currentPlan) {
+        msg += "契約種別を選択してください|";
+      } else {
+        switch(currentPlan) {
+          case "従量電灯A":
+            break;
+          case "従量電灯B":
+            currentCapacity = $('#currentCapacity1').val();
+            if (!currentCapacity) {
+              msg += "契約容量を選択してください|";
+            }
+            break;
+          case "低圧電力":
+            currentCapacity = $('#currentCapacity2').val();
+            currentPowerFactor = $('#currentPowerFactor').val();
+            if (!currentCapacity) {
+              msg += "契約容量を選択してください|";
+            }
+            if (!currentPowerFactor) {
+              msg += "力率を選択してください|";
+            }
+            break;
+          case "オール電化":
+            currentCapacity = $('#currentCapacity3').val();
+            discount = $("input:checked[name=discount]").val();
+            if (!currentCapacity) {
+              msg += "契約容量を選択してください|";
+            }
+            if (!discount) {
+              msg += "電化割引の有無を選択してください|";
+            }
+            break;
+        }
+      }
+
       if (msg) {
         alert(msg);
         return false;
       }
-      var text = "入力-";
-      text += "ご連絡先" + ":";
-      text += $("#tel").val() + "|";
-      text += $("#email").val();
+      let text = "入力-";
+      text += "ご契約情報" + ":";
+      text += $("#customerNo").val() + "|";
+      text += $("#supplyPointNo").val() + "|";
+      text += powerCompany + "|";
+      text += inputPowerCompany + "|";
+      text += currentPlan + "|";
+      text += currentCapacity + "|";
+      text += currentPowerFactor + "|";
+      text += discount;
       liff.sendMessages([
         {
           "type": "text",
@@ -341,7 +402,7 @@
       });
     }
 
-  // 契約種別変更
+    // 契約種別変更
     function planChange() {
       $("#dispCurrentCapacity1").hide();
       $("#dispCurrentCapacity2").hide();
@@ -380,7 +441,7 @@
       let h = $(window).height();
       $('#loader-bg ,#loader').height(h).css('display','block');
       let m = msg || '';
-      var div = document.getElementById('progress');
+      let div = document.getElementById('progress');
       div.innerHTML = msg;
     }
     function stopload() {
