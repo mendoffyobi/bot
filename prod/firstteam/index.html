@@ -54,6 +54,15 @@ jQuery(function() {
             case "STEP7":
               contents = "step7.html";
               break;
+            case "STEP8A":
+              contents = "step8A.html";
+              break;
+            case "STEP8B":
+              contents = "step8B.html";
+              break;
+            case "STEP8C":
+              contents = "step8C.html";
+              break;
             case "STEP9":
               contents = "step9.html";
               break;
@@ -90,6 +99,15 @@ jQuery(function() {
             }
             if (json.keyword == "STEP7") {
               makeStep7();
+            }
+            if (json.keyword == "STEP8A") {
+              makeStep8A();
+            }
+            if (json.keyword == "STEP8B") {
+              makeStep8B();
+            }
+            if (json.keyword == "STEP8C") {
+              makeStep8C();
             }
             if (json.keyword == "STEP9") {
               makeStep9();
