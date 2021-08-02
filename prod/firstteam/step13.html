@@ -1,0 +1,94 @@
+<!-- 入力:step13.html start -->
+  <style>
+  @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+  input[type=checkbox] {
+    display:none;
+  }
+  input[type=checkbox] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+  }
+  input[type=checkbox] + label:before {
+    content: "\f096";
+  }
+  input[type=checkbox] + label:before { 
+    etter-spacing: 10px;
+  }
+  input[type=checkbox]:checked + label:before {
+    content: "\f046";
+    color: #15A04C;
+  }
+  input[type=checkbox]:checked + label:before {
+    letter-spacing: 5px;
+  }
+  .checklbl {
+    font-size: 20px;
+    color: #424242
+  }
+  .checkarea { 
+    //width: 175px; 
+    margin-left: 15px;
+  }
+  </style>
+  <div class="facility-group">
+    <div style="text-align:center;">
+      <h5 class="simulation-text-h5">電気需給約款のご確認/h5>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>
+        <a href="https://jiyuudenki.jp/wp/wp-content/themes/xeory_extension/lib/pdf/yakkan_low_20210401jyd.pdf" target="_blank">電気需給約款</a>をお読みになり、同意いただけましたらチェックを入れてください。
+      </h4>
+      <div class="checkarea">
+        <input id="agreement" type="checkbox">
+        <label class="checklbl" for="agreement">&nbsp;電気需給約款に同意します</label>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      </div>
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+  </div>
+
+  <script>
+
+    // 初期処理
+    function makeStep9() {
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      // 現在の電力会社
+      if (!$('#agreement').prop('checked')) {
+        msg += "お申し込みには電気需給約款に同意いただく必要がございます";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "";
+      text += "電気受給約款に同意します";
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:step13.html end -->
