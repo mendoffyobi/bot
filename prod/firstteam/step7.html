@@ -328,7 +328,7 @@
       } else if ($('#supplyPointNo').val().length != 22) {
         msg += "供給地点特定番号は22桁で入力してください|";
       }
-      let powerCompany = $('#powerCompany').val();
+      let powerCompany = $('#powerCompany').val().replace(":", "_");
       let inputPowerCompany = $('#inputPowerCompany').val();
       if (!powerCompany) {
         msg += "現在の電力会社を選択してください|";
