@@ -72,6 +72,9 @@ jQuery(function() {
             case "SIMULATION1":
               contents = "simulation1.html";
               break;
+            case "SIMULATION4B":
+              contents = "simulation4B.html";
+              break;
             default:
               contents = "input.html";
               break;
@@ -123,6 +126,9 @@ jQuery(function() {
             }
             if (json.keyword == "SIMULATION1") {
               makeSimulation1();
+            }
+            if (json.keyword == "SIMULATION4B") {
+              makeSimulation4B();
             }
           });
         });
