@@ -1,0 +1,58 @@
+<!-- 入力:simulation4B.html start -->
+  <div class="facility-group">
+    <div class="container">
+      <h4>実際に支払った料金を入力してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-xs-12">
+          <input type="text" id="input1" name="input1" placeholder="お支払金額を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      </div>
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+  </div>
+
+  <script>
+
+    // 初期処理
+    function makeSimulation4B() {
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if ($("#input1").val() == "") {
+        msg += "お支払金額を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "超簡単シミュレーション" + ":";
+      text += $("#input1").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:step8C.html end -->
