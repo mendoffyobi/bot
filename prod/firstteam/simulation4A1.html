@@ -128,8 +128,20 @@
     // 決定ボタン押下時チェック
     function sendMsg(support, name) {
       let msg = "";
-      if ($("#input1").val() == "") {
+      if ($("#simulationCapacity1").val() == "") {
+        msg += "契約容量を選択してください\n";
+      }
+      if ($("#simulationMoney").val() == "") {
         msg += "お支払金額を入力してください\n";
+      }
+      if ($("#simulationYear").val() == "") {
+        msg += "ご使用の年を選択してください\n";
+      }
+      if ($("#simulationMonth").val() == "") {
+        msg += "ご使用の月を選択してください\n";
+      }
+      if ($("#dispAmount1").val() == "") {
+        msg += "ご使用量を入力してください\n";
       }
       if (msg) {
         alert(msg);
