@@ -69,6 +69,9 @@ jQuery(function() {
             case "STEP13":
               contents = "step13.html";
               break;
+            case "SIMULATION1":
+              contents = "simulation1.html";
+              break;
             default:
               contents = "input.html";
               break;
@@ -117,6 +120,9 @@ jQuery(function() {
             }
             if (json.keyword == "STEP13") {
               makeStep13();
+            }
+            if (json.keyword == "SIMULATION1") {
+              makeSimulation1();
             }
           });
         });
