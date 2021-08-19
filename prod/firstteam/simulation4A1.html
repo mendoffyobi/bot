@@ -128,9 +128,6 @@
     // 決定ボタン押下時チェック
     function sendMsg(support, name) {
       let msg = "";
-      if ($("#simulationCapacity1").val() == "") {
-        msg += "契約容量を選択してください\n";
-      }
       if ($("#simulationMoney").val() == "") {
         msg += "お支払金額を入力してください\n";
       }
@@ -148,7 +145,7 @@
         return false;
       }
       var text = "入力-";
-      text += "簡単シミュレーション" + ":";
+      text += "簡単シミュレーション(従量電灯)" + ":";
       text += $("#simulationCapacity1").val() + "|";
       text += $("#simulationMoney").val() + "|";
       text += $("#simulationDiscount").val() + "|";
