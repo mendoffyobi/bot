@@ -1,0 +1,165 @@
+<!-- 入力:simulation4A1.html start -->
+  <div class="facility-group">
+    <hr class="hr-green">
+    <div style="text-align:center;">
+      <h5 class="simulation-text-h5">お手元の請求書または電気料金の明細からご入力下さい</h5>
+    </div>
+    <hr class="hr-green">
+    <div>&nbsp;</div>
+    <div class="container" id="dispPlan1">
+      <div>&nbsp;</div>
+      <h4>契約容量を選択してください</h4>
+      <select id="simulationCapacity1" class="form-control">
+        <option value="">契約容量なし</option>
+        <option value="6kVA">6kVA</option>
+        <option value="7kVA">7kVA</option>
+        <option value="8kVA">8kVA</option>
+        <option value="9kVA">9kVA</option>
+        <option value="10kVA">10kVA</option>
+        <option value="11kVA">11kVA</option>
+        <option value="12kVA">12kVA</option>
+        <option value="13kVA">13kVA</option>
+        <option value="14kVA">14kVA</option>
+        <option value="15kVA">15kVA</option>
+        <option value="16kVA">16kVA</option>
+        <option value="17kVA">17kVA</option>
+        <option value="18kVA">18kVA</option>
+        <option value="19kVA">19kVA</option>
+        <option value="20kVA">20kVA</option>
+        <option value="21kVA">21kVA</option>
+        <option value="22kVA">22kVA</option>
+        <option value="23kVA">23kVA</option>
+        <option value="24kVA">24kVA</option>
+        <option value="25kVA">25kVA</option>
+        <option value="26kVA">26kVA</option>
+        <option value="27kVA">27kVA</option>
+        <option value="28kVA">28kVA</option>
+        <option value="29kVA">29kVA</option>
+        <option value="30kVA">30kVA</option>
+        <option value="31kVA">31kVA</option>
+        <option value="32kVA">32kVA</option>
+        <option value="33kVA">33kVA</option>
+        <option value="34kVA">34kVA</option>
+        <option value="35kVA">35kVA</option>
+        <option value="36kVA">36kVA</option>
+        <option value="37kVA">37kVA</option>
+        <option value="38kVA">38kVA</option>
+        <option value="39kVA">39kVA</option>
+        <option value="40kVA">40kVA</option>
+        <option value="41kVA">41kVA</option>
+        <option value="42kVA">42kVA</option>
+        <option value="43kVA">43kVA</option>
+        <option value="44kVA">44kVA</option>
+        <option value="45kVA">45kVA</option>
+        <option value="46kVA">46kVA</option>
+        <option value="47kVA">47kVA</option>
+        <option value="48kVA">48kVA</option>
+        <option value="49kVA">49kVA</option>
+      </select>
+      <h5 style="color:red;">・関西電力の電灯Ａなど一般家庭用の契約は「契約容量なし」です。</h5>
+      <h5 style="color:red;">・関西電力の電灯Ｂなど6kVA以上の契約は、容量を選択してください。</h5>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>お支払金額を入力してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="simulationMoney" name="simulationMoney" placeholder="お支払金額を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>割引金額があれば入力してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="simulationDiscount" name="simulationDiscount" placeholder="割引金額を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>ご使用の年・月を選択してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-6">
+          <select id="simulationYear" name="simulationYear" class="form-control">
+            <option value="">ご使用の年を選択してください</option>
+            <option value="2021">2021年</option>
+            <option value="2020">2020年</option>
+            <option value="2019">2019年</option>
+          </select>
+        </div>
+        <div class="col-sm-6">
+          <select id="simulationMonth" name="simulationMonth" class="form-control">
+            <option value="">ご使用の月を選択してください</option>
+            <option value="1">1月</option>
+            <option value="2">2月</option>
+            <option value="3">3月</option>
+            <option value="4">4月</option>
+            <option value="5">5月</option>
+            <option value="6">6月</option>
+            <option value="7">7月</option>
+            <option value="8">8月</option>
+            <option value="9">9月</option>
+            <option value="10">10月</option>
+            <option value="11">11月</option>
+            <option value="12">12月</option>
+          </select>
+        </div>
+      </div>
+      <div>※2019年4月以降の価格に対応しております。</div>
+    </div>
+    <div class="container" id="dispAmount1">
+      <div>&nbsp;</div>
+      <h4>ご使用量を入力してください(単位：kWh)</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="simulationAmount1" placeholder="ご使用量を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+  </div>
+  <script>
+
+    // 初期処理
+    function makeSimulation4A1() {
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if ($("#input1").val() == "") {
+        msg += "お支払金額を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "超簡単シミュレーション" + ":";
+      text += $("#input1").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:simulation4A1.html end -->
