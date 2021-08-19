@@ -1,13 +1,6 @@
 <!-- 入力:simulation4A1.html start -->
   <div class="facility-group">
-    <hr class="hr-green">
-    <div style="text-align:center;">
-      <h5 class="simulation-text-h5">お手元の請求書または電気料金の明細からご入力下さい</h5>
-    </div>
-    <hr class="hr-green">
-    <div>&nbsp;</div>
     <div class="container" id="dispPlan1">
-      <div>&nbsp;</div>
       <h4>契約容量を選択してください</h4>
       <select id="simulationCapacity1" class="form-control">
         <option value="">契約容量なし</option>
@@ -143,8 +136,13 @@
         return false;
       }
       var text = "入力-";
-      text += "超簡単シミュレーション" + ":";
-      text += $("#input1").val();
+      text += "簡単シミュレーション" + ":";
+      text += $("#simulationCapacity1").val() + "|";
+      text += $("#simulationMoney").val() + "|";
+      text += $("#simulationDiscount").val() + "|";
+      text += $("#simulationYear").val() + "|";
+      text += $("#simulationMonth").val() + "|";
+      text += $("#simulationAmount1").val();
       liff.sendMessages([
         {
           "type": "text",
