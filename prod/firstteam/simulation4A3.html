@@ -1,4 +1,84 @@
 <!-- 入力:simulation4A3.html start -->
+  <style>
+  group + group {
+    margin-top: 20px;
+  }
+  .inline-radio {
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #b6b6b6;
+  }
+  .inline-radio-small {
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #b6b6b6;
+    width: 70%;
+  }
+  .inline-radio div {
+    position: relative;
+    flex: 1;
+  }
+  .inline-radio-small div {
+    position: relative;
+    flex: 1;
+  }
+  .inline-radio input {
+    width: 100%;
+    height: 60px;
+    opacity: 0;
+  }
+  .inline-radio-small input {
+    width: 100%;
+    height: 30px;
+    opacity: 0;
+  }
+  .inline-radio label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #b6b6b6;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    border-right: 1px solid #b6b6b6;
+  }
+  .inline-radio-small label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #b6b6b6;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    border-right: 1px solid #b6b6b6;
+  }
+  .inline-radio div:last-child label {
+    border-right: 0;
+  }
+  .inline-radio-small div:last-child label {
+    border-right: 0;
+  }
+  .inline-radio input:checked + label {
+    background: #4169e1;
+    font-weight: 500;
+    color: #fff;
+  }
+  .inline-radio-small input:checked + label {
+    background: #808080;
+    font-weight: 500;
+    color: #fff;
+  }
+  </style>
   <div class="facility-group">
     <div class="container" id="dispPlan3">
       <div>&nbsp;</div>
