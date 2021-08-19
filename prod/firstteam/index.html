@@ -78,6 +78,12 @@ jQuery(function() {
             case "SIMULATION4A1":
               contents = "simulation4A1.html";
               break;
+            case "SIMULATION4A2":
+              contents = "simulation4A2.html";
+              break;
+            case "SIMULATION4A3":
+              contents = "simulation4A3.html";
+              break;
             default:
               contents = "input.html";
               break;
@@ -135,6 +141,12 @@ jQuery(function() {
             }
             if (json.keyword == "SIMULATION4A1") {
               makeSimulation4A1();
+            }
+            if (json.keyword == "SIMULATION4A2") {
+              makeSimulation4A2();
+            }
+            if (json.keyword == "SIMULATION4A3") {
+              makeSimulation4A3();
             }
           });
         });

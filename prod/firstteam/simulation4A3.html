@@ -1,0 +1,222 @@
+<!-- 入力:simulation4A3.html start -->
+  <div class="facility-group">
+    <div class="container" id="dispPlan3">
+      <div>&nbsp;</div>
+      <h4>契約容量を選択してください</h4>
+      <select id="simulationCapacity3" class="form-control">
+        <option value="">選択してください</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+      </select>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>お支払金額を入力してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="simulationMoney" name="simulationMoney" placeholder="お支払金額を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>割引金額があれば入力してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="simulationDiscount" name="simulationDiscount" placeholder="割引金額を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div id="dispIhDiscount" class="container">
+      <div>&nbsp;</div>
+      <h4>IH割引の有無を選択してください</h4>
+      <group class="inline-radio-small">
+        <div><input type="radio" name="simulationIhDiscount" value="IH割引あり">
+          <label>IH割引あり</label>
+        </div>
+        <div><input type="radio" name="simulationIhDiscount" value="IH割引なし">
+          <label>IH割引なし</label>
+        </div>
+      </group>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>ご使用の年・月を選択してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-6">
+          <select id="simulationYear" name="simulationYear" class="form-control">
+            <option value="">ご使用の年を選択してください</option>
+            <option value="2021">2021年</option>
+            <option value="2020">2020年</option>
+            <option value="2019">2019年</option>
+          </select>
+        </div>
+        <div class="col-sm-6">
+          <select id="simulationMonth" name="simulationMonth" class="form-control">
+            <option value="">ご使用の月を選択してください</option>
+            <option value="1">1月</option>
+            <option value="2">2月</option>
+            <option value="3">3月</option>
+            <option value="4">4月</option>
+            <option value="5">5月</option>
+            <option value="6">6月</option>
+            <option value="7">7月</option>
+            <option value="8">8月</option>
+            <option value="9">9月</option>
+            <option value="10">10月</option>
+            <option value="11">11月</option>
+            <option value="12">12月</option>
+          </select>
+        </div>
+      </div>
+      <div>※2019年4月以降の価格に対応しております。</div>
+    </div>
+    <div class="container" id="dispAmount3">
+      <div>&nbsp;</div>
+      <h4>ご使用量を入力してください(単位：kWh)</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-3">
+          <span>デイタイム夏季</span>
+          <input type="text" id="simulationAmount3-1" placeholder="ご使用量を入力" class="form-control">
+        </div>
+        <div class="col-sm-3">
+          <span>デイタイムその他季</span>
+          <input type="text" id="simulationAmount3-2" placeholder="ご使用量を入力" class="form-control">
+        </div>
+        <div class="col-sm-3">
+          <span>リビングタイム</span>
+          <input type="text" id="simulationAmount3-3" placeholder="ご使用量を入力" class="form-control">
+        </div>
+        <div class="col-sm-3">
+          <span>ナイトタイム</span>
+          <input type="text" id="simulationAmount3-4" placeholder="ご使用量を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+  </div>
+  <script>
+
+    // 初期処理
+    function makeSimulation4A3() {
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if ($("#simulationCapacity3").val() == "") {
+        msg += "契約容量を選択してください\n";
+      }
+      if ($("#simulationMoney").val() == "") {
+        msg += "お支払金額を入力してください\n";
+      }
+      let simulationIhDiscount = $("input:checked[name=simulationIhDiscount]").val();
+      if (!simulationIhDiscount) {
+        msg += "IH割引の有無を選択してください|";
+      }
+      if ($("#simulationYear").val() == "") {
+        msg += "ご使用の年を選択してください\n";
+      }
+      if ($("#simulationMonth").val() == "") {
+        msg += "ご使用の月を選択してください\n";
+      }
+      if ($("#simulationAmount3-1").val() == "") {
+        msg += "ご使用量(デイタイム夏季)を入力してください\n";
+      }
+      if ($("#simulationAmount3-2").val() == "") {
+        msg += "ご使用量(デイタイムその他季)を入力してください\n";
+      }
+      if ($("#simulationAmount3-3").val() == "") {
+        msg += "ご使用量(リビングタイム)を入力してください\n";
+      }
+      if ($("#simulationAmount3-4").val() == "") {
+        msg += "ご使用量(ナイトタイム)を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "簡単シミュレーション" + ":";
+      text += $("#simulationCapacity3").val() + "|";
+      text += $("#simulationMoney").val() + "|";
+      text += $("#simulationDiscount").val() + "|";
+      text += simulationIhDiscount + "|";
+      text += $("#simulationYear").val() + "|";
+      text += $("#simulationMonth").val() + "|";
+      text += $("#simulationAmount3-1").val() + "|";
+      text += $("#simulationAmount3-2").val() + "|";
+      text += $("#simulationAmount3-3").val() + "|";
+      text += $("#simulationAmount3-4").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:simulation4A3.html end -->

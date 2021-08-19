@@ -1,0 +1,197 @@
+<!-- 入力:simulation4A2.html start -->
+  <div class="facility-group">
+    <div class="container" id="dispPlan2">
+      <div>&nbsp;</div>
+      <h4>契約容量を選択してください</h4>
+      <select id="simulationCapacity2" class="form-control">
+        <option value="">選択してください</option>
+        <option value="0.5kW">0.5kW</option>
+        <option value="1kW">1kW</option>
+        <option value="2kW">2kW</option>
+        <option value="3kW">3kW</option>
+        <option value="4kW">4kW</option>
+        <option value="5kW">5kW</option>
+        <option value="6kW">6kW</option>
+        <option value="7kW">7kW</option>
+        <option value="8kW">8kW</option>
+        <option value="9kW">9kW</option>
+        <option value="10kW">10kW</option>
+        <option value="11kW">11kW</option>
+        <option value="12kW">12kW</option>
+        <option value="13kW">13kW</option>
+        <option value="14kW">14kW</option>
+        <option value="15kW">15kW</option>
+        <option value="16kW">16kW</option>
+        <option value="17kW">17kW</option>
+        <option value="18kW">18kW</option>
+        <option value="19kW">19kW</option>
+        <option value="20kW">20kW</option>
+        <option value="21kW">21kW</option>
+        <option value="22kW">22kW</option>
+        <option value="23kW">23kW</option>
+        <option value="24kW">24kW</option>
+        <option value="25kW">25kW</option>
+        <option value="26kW">26kW</option>
+        <option value="27kW">27kW</option>
+        <option value="28kW">28kW</option>
+        <option value="29kW">29kW</option>
+        <option value="30kW">30kW</option>
+        <option value="31kW">31kW</option>
+        <option value="32kW">32kW</option>
+        <option value="33kW">33kW</option>
+        <option value="34kW">34kW</option>
+        <option value="35kW">35kW</option>
+        <option value="36kW">36kW</option>
+        <option value="37kW">37kW</option>
+        <option value="38kW">38kW</option>
+        <option value="39kW">39kW</option>
+        <option value="40kW">40kW</option>
+        <option value="41kW">41kW</option>
+        <option value="42kW">42kW</option>
+        <option value="43kW">43kW</option>
+        <option value="44kW">44kW</option>
+        <option value="45kW">45kW</option>
+        <option value="46kW">46kW</option>
+        <option value="47kW">47kW</option>
+        <option value="48kW">48kW</option>
+        <option value="49kW">49kW</option>
+      </select>
+      <div>&nbsp;</div>
+      <h4>力率を選択してください</h4>
+      <select id="simulationPowerFactor" class="form-control">
+        <option value="">選択してください</option>
+        <option value="90%">90%</option>
+        <option value="85%">85%</option>
+        <option value="80%">80%</option>
+      </select>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>お支払金額を入力してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="simulationMoney" name="simulationMoney" placeholder="お支払金額を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>割引金額があれば入力してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-12">
+          <input type="text" id="simulationDiscount" name="simulationDiscount" placeholder="割引金額を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+      <h4>ご使用の年・月を選択してください</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-6">
+          <select id="simulationYear" name="simulationYear" class="form-control">
+            <option value="">ご使用の年を選択してください</option>
+            <option value="2021">2021年</option>
+            <option value="2020">2020年</option>
+            <option value="2019">2019年</option>
+          </select>
+        </div>
+        <div class="col-sm-6">
+          <select id="simulationMonth" name="simulationMonth" class="form-control">
+            <option value="">ご使用の月を選択してください</option>
+            <option value="1">1月</option>
+            <option value="2">2月</option>
+            <option value="3">3月</option>
+            <option value="4">4月</option>
+            <option value="5">5月</option>
+            <option value="6">6月</option>
+            <option value="7">7月</option>
+            <option value="8">8月</option>
+            <option value="9">9月</option>
+            <option value="10">10月</option>
+            <option value="11">11月</option>
+            <option value="12">12月</option>
+          </select>
+        </div>
+      </div>
+      <div>※2019年4月以降の価格に対応しております。</div>
+    </div>
+    <div class="container" id="dispAmount2">
+      <div>&nbsp;</div>
+      <h4>ご使用量を入力してください(単位：kWh)</h4>
+      <div class="row" style="margin-bottom: 3px;">
+        <div class="col-sm-6">
+          <span>夏季</span>
+          <input type="text" id="simulationAmount2-1" placeholder="ご使用量を入力" class="form-control">
+        </div>
+        <div class="col-sm-6">
+          <span>その他季</span>
+          <input type="text" id="simulationAmount2-2" placeholder="ご使用量を入力" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-lg btn-success" onClick="sendMsg();">決定</button>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+  </div>
+  <script>
+
+    // 初期処理
+    function makeSimulation4A2() {
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if ($("#simulationCapacity2").val() == "") {
+        msg += "契約容量を選択してください\n";
+      }
+      if ($("#simulationMoney").val() == "") {
+        msg += "お支払金額を入力してください\n";
+      }
+      if ($("#simulationYear").val() == "") {
+        msg += "ご使用の年を選択してください\n";
+      }
+      if ($("#simulationMonth").val() == "") {
+        msg += "ご使用の月を選択してください\n";
+      }
+      if ($("#simulationAmount2-1").val() == "") {
+        msg += "ご使用量(夏季)を入力してください\n";
+      }
+      if ($("#simulationAmount2-2").val() == "") {
+        msg += "ご使用量(その他季)を入力してください\n";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "簡単シミュレーション" + ":";
+      text += $("#simulationCapacity2").val() + "|";
+      text += $("#simulationMoney").val() + "|";
+      text += $("#simulationDiscount").val() + "|";
+      text += $("#simulationYear").val() + "|";
+      text += $("#simulationMonth").val() + "|";
+      text += $("#simulationAmount2-1").val() + "|";
+      text += $("#simulationAmount2-2").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+  </script>
+
+<!-- 入力:simulation4A2.html end -->
