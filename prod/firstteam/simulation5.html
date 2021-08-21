@@ -253,7 +253,8 @@
   <script>
 
     // 初期処理
-    function makeSimulation5() {
+    function makeSimulation5(res) {
+      $("#billingMonth"        ).text(res["基本情報"]["ご請求月"]);
 /*
       let toYen = function(val){return Number(val).toLocaleString() + "円"};
       $(function(){
