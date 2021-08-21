@@ -108,8 +108,7 @@
         <table style="width: 320px;">
           <thead>
             <tr>
-              <th scope="col" width="120px;"></th>
-              <th scope="col">基本情報</th>
+              <th scope="col" width="120px;" colspan="2">基本情報</th>
             </tr>
           </thead>
           <tbody>
@@ -255,9 +254,53 @@
     // 初期処理
     function makeSimulation5(res) {
       $(function(){
-        alert(res);
-        alert(res["billingMonth"]);
-        $("#billingMonth"        ).text(res["billingMonth"]);
+        let addUnit = function(v, u) {return (v.replace(u, "") || 0) + u};
+        let toYen   = function(val){return Number(val).toLocaleString() + "円"};
+        $("title").text("簡単電気代シミュレーション");
+        $("#billingMonth"    ).text(res["billingMonth"]);
+        $("#contractCapacity").text(res["contractCapacity"]);
+        let plan = res["plan"];
+        let amount1 = addUnit(res["amount1"], "kWh");
+        let amount2 = addUnit(res["amount2"], "kWh");
+        let amount3 = addUnit(res["amount3"], "kWh");
+        let amount4 = addUnit(res["amount4"], "kWh");
+        switch(plan) {
+          case "従量電灯":
+            $("#amount").text(amount1);
+            $("#amountNm").text("ご使用量");
+            $("#dispAmount").show();
+            break;
+          case "低圧電力":
+            $("#powerFactor").text(res["powerFactor"]);
+            $("#dispPowerFactor").show();
+            $("#amount").text(amount1);
+            $("#amountNm").text("ご使用量(夏季)");
+            $("#dispAmount").show();
+            $("#amount2").text(amount2);
+            $("#amountNm2").text("ご使用量(その他季)");
+            $("#dispAmount2").show();
+            break;
+          case "オール電化":
+            $("#ihDiscount").text(res["ihDiscount"]);
+            $("#dispIhDiscount").show();
+            if (res["ihDiscountUmu"] == "IH割引あり") {
+              $("#dispIhDetail").show();
+              $("#dispIhDescription").show();
+            }
+            $("#amount").text(amount1);
+            $("#amountNm").html("ご使用量<br>デイタイム夏季");
+            $("#dispAmount").show();
+            $("#amount2").text(amount2);
+            $("#amountNm2").html("ご使用量<br>デイタイムその他季");
+            $("#dispAmount2").show();
+            $("#amount3").text(amount3);
+            $("#amountNm3").html("ご使用量<br>リビングタイム");
+            $("#dispAmount3").show();
+            $("#amount4").text(amount4);
+            $("#amountNm4").html("ご使用量<br>ナイトタイム");
+            $("#dispAmount4").show();
+            break;
+        }
       });
 /*
       let toYen = function(val){return Number(val).toLocaleString() + "円"};
