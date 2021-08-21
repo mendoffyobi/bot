@@ -254,6 +254,8 @@
 
     // 初期処理
     function makeSimulation5(res) {
+      alert(res);
+      alert(res["基本情報"]["ご請求月"]);
       $("#billingMonth"        ).text(res["基本情報"]["ご請求月"]);
 /*
       let toYen = function(val){return Number(val).toLocaleString() + "円"};
