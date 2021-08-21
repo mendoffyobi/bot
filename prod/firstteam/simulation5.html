@@ -254,13 +254,13 @@
 
     // 初期処理
     function makeSimulation5(result) {
-      alert(JSON.stringify(result));
+      //alert(JSON.stringify(result));
       let toYen = function(val){return Number(val).toLocaleString() + "円"};
       $(function(){
         let addUnit = function(v, u) {return (v.replace(u, "") || 0) + u};
         $("#simulationTitle").text("簡単電気代シミュレーション");
         $("#simulationTitle").css("color", "#ff8c00");
-        let res = JSON.parse(result);
+        let res = result["content"]["message"];
         let plan = res["基本情報"]["プラン"];
         $("#billingMonth"        ).text(res["基本情報"]["ご請求月"]);
         $("#contractCapacity").text(res["基本情報"]["ご契約容量"]);
