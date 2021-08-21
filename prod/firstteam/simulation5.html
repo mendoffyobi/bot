@@ -1,0 +1,395 @@
+<!-- 入力:simulation5.html start -->
+  <style>
+  .row {
+    background-color: #dbffdb;
+    margin-bottom: 5px;
+  }
+  .header {
+    font-weight: bold;
+    color: #1e90ff;
+  }
+  .subtitle-header {
+    flex: 1;
+    text-align:left;
+  }
+  table {
+    border-collapse: collapse;
+    padding: 0;
+    table-layout: fixed;
+  }
+  table tr {
+    background-color: #fff;
+    padding: .35em;
+    border: 2px solid #eee;
+  }
+  table th{
+    padding: 0.5em;
+    border-right: 2px solid #fff;
+  }
+  table td {
+    border-right: 2px solid #eee;
+    text-align: center;
+  }
+  table th {
+    font-size: .85em;
+    text-align: center;
+  }
+  table thead tr{
+    background-color: #50535d;
+    color:#fff;
+  }
+  table tbody th {
+    border-right: 2px solid #eee;
+    text-align: left;
+  }
+  .txt{
+    text-align: left;
+    font-size: .85em;
+  }
+  .price{
+    color: #000;
+    font-weight: bold;
+    font-size:1.3em
+  }
+  .price span {
+    font-size: .6em;
+  }
+  .red_bk{
+    background:#e81010
+  }
+  .red-txt{
+    color:#e81010
+  }
+  .black {
+    background-color: #50535d;
+    color:#fff;
+    text-align: center;
+  }
+  .umai-lg {
+    vertical-align: top;
+    content: url("/img/umai.png");
+    height: 80px;
+  }
+  .umai-md {
+    vertical-align: top;
+    content: url("/img/umai.png");
+    height: 60px;
+  }
+  .umai-sm {
+    vertical-align: top;
+    content: url("/img/umai.png");
+    height: 40px;
+  }
+  .umai-xs {
+    vertical-align: top;
+    content: url("/img/umai.png");
+    height: 20px;
+  }
+  #umaihon {
+    color: red;
+    font-size: xxx-large;
+  }
+  #umaifont {
+    font-size: x-large;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  }
+  
+  </style>
+  <div class="facility-group">
+    <hr class="hr-green">
+    <div style="text-align:center;">
+      <h5 class="simulation-text-h5">シミュレーション結果</h5>
+      <h5 class="simulation-text-h5">※ご入力された使用量に基づく、ご利用エリアの電力会社との比較</h5>
+      <h5 class="simulation-text-h5">&nbsp;</h5>
+    </div>
+    <hr class="hr-green">
+    <div class="container">
+      <div class="wrap">
+        <table style="width: 320px;">
+          <thead>
+            <tr>
+              <th scope="col" width="120px;"></th>
+              <th scope="col">基本情報</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>ご使用月</th>
+              <td id="billingMonth"></td>
+            </tr>
+            <tr>
+              <th>ご契約容量</th>
+              <td id="contractCapacity"></td>
+            </tr>
+            <tr id="dispPowerFactor" style="display:none">
+              <th>力率</th>
+              <td id="powerFactor"></td>
+            </tr>
+            <tr id="dispIhDiscount" style="display:none">
+              <th>IH割引有無</th>
+              <td id="ihDiscount"></td>
+            </tr>
+            <tr id="dispAmount" style="display:none">
+              <th id="amountNm">ご使用量1</th>
+              <td id="amount" style="text-align: right; padding-right: 80px;"></td>
+            </tr>
+            <tr id="dispAmount2" style="display:none">
+              <th id="amountNm2">ご使用量2</th>
+              <td id="amount2" style="text-align: right; padding-right: 80px;"></td>
+            </tr>
+            <tr id="dispAmount3" style="display:none">
+              <th id="amountNm3">ご使用量3</th>
+              <td id="amount3" style="text-align: right; padding-right: 80px;"></td>
+            </tr>
+            <tr id="dispAmount4" style="display:none">
+              <th id="amountNm4">ご使用量4</th>
+              <td id="amount4" style="text-align: right; padding-right: 80px;"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>&nbsp;</div>
+      <div class="wrap">
+        <table style="width: 720px;">
+          <thead>
+            <tr>
+              <th scope="col" width="120px;"></th>
+              <th scope="col">現在ご契約</th>
+              <th scope="col" class="red_bk" id="agentName"></th>
+              <th scope="col">(参考)関西電力</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:none;">
+              <th style="padding: 0.1em; padding-left: 5px;">ご契約プラン</th>
+              <td id="currentPlan"></td>
+              <td id="agentPlan"></td>
+              <td id="generalPlan"></td>
+            </tr>
+            <tr style="border-top:none; border-bottom:none;">
+              <th style="padding: 0.1em; padding-left: 5px;">電気料金</th>
+              <td id="currentTotalBill" style="text-align: right; padding-right: 60px;"></td>
+              <td id="agentTotalBill" style="text-align: right; padding-right: 60px;"></td>
+              <td id="generalTotalBill" style="text-align: right; padding-right: 60px;"></td>
+            </tr>
+            <tr style="border-bottom:none;">
+              <th style="padding: 0.1em; padding-left: 5px;">＜内訳＞</th>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr style="border-top:none; border-bottom:none;">
+              <th style="padding: 0.1em; padding-left: 5px;">電力量料金</th>
+              <td id="currentBill" style="text-align: right; padding-right: 60px;"></td>
+              <td id="agentBill" style="text-align: right; padding-right: 60px;"></td>
+              <td id="generalBill" style="text-align: right; padding-right: 60px;"></td>
+            </tr>
+            <tr style="border-top:none; border-bottom:none; display:none" id="dispIhDetail">
+              <th style="padding: 0.1em; padding-left: 5px;">IH割引額</th>
+              <td id="currentIH" style="text-align: right; padding-right: 60px;"></td>
+              <td id="agentIH" style="text-align: right; padding-right: 60px;"></td>
+              <td id="generalIH" style="text-align: right; padding-right: 60px;"></td>
+            </tr>
+            <tr style="border-top:none; border-bottom:none;">
+              <th style="padding: 0.1em; padding-left: 5px;">燃料費調整</th>
+              <td id="currentBaf" style="text-align: right; padding-right: 60px;"></td>
+              <td id="agentBaf" style="text-align: right; padding-right: 60px;"></td>
+              <td id="generalBaf" style="text-align: right; padding-right: 60px;"></td>
+            </tr>
+            <tr style="border-top:none;">
+              <th style="padding: 0.1em; padding-left: 5px;">再エネ賦課金</th>
+              <td id="currentREL" style="text-align: right; padding-right: 60px;"></td>
+              <td id="agentREL" style="text-align: right; padding-right: 60px;"></td>
+              <td id="generalREL" style="text-align: right; padding-right: 60px;"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="dispIhDescription" style="display:none;">※現在ご契約の電気料金はIH割引額を含みます。</div>
+      </div>
+      <div>&nbsp;</div>
+      <div class="wrap">
+        <table style="width: 520px;">
+            <tr style="border:none;">
+              <th scope="col" width="120px;"></th>
+              <th scope="col" style="border: 2px solid #eee" class="black">1ヶ月のお得額</th>
+              <td scope="col" style="border: 2px solid #eee; text-align: right; padding-right: 60px;" id="otoku"></th>
+            </tr>
+            <tr style="border:none;">
+              <th scope="col" width="120px;"></th>
+              <th scope="col" style="border: 2px solid #eee" class="black">年間お得額（×１２）</th>
+              <td scope="col" style="border: 2px solid #eee; color:red; text-align: right; padding-right: 60px;" id="otokuTotal"></th>
+            </tr>
+        </table>
+      </div>
+      <div>&nbsp;</div>
+      <div id="dispUmai" style="display:none">
+        <h4 style="font-weight:bold;float: left;"><span id="umaifont">うまい棒</span>(税別)に換算すると... <span id="umaihon"></span> 本分お得！</h4>
+        <div id="umai" class="wrap" style="float:none; vertical-align: top;">
+          <img style="margin-left: 10px;">
+        </div>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+    <div>
+      <label for="next" class="button-raised">
+        <span>
+          <i class="fas fa-chevron-circle-right"></i>
+          上記のプランでお申し込み
+        </span>
+      </label>
+      <button id="next" type="button" style="display:none" onclick="return checkSubmit();"></button>
+    </div>
+    <div>&nbsp;</div>
+    <div>
+      <label for="prev" class="button-raised" style="background-color:#a9a9a9;">
+        <span>
+          <i class="fas fa-chevron-circle-left"></i>
+          前のページに戻る
+        </span>
+      </label>
+      <button id="prev" type="button" style="display:none" onclick="location.href='step3';"></button>
+    </div>
+  </div>
+  <script>
+
+    // 初期処理
+    function makeSimulation5(result) {
+        
+      let toYen = function(val){return Number(val).toLocaleString() + "円"};
+      $(function(){
+        let addUnit = function(v, u) {return (v.replace(u, "") || 0) + u};
+        $("#simulationTitle").text("簡単電気代シミュレーション");
+        $("#simulationTitle").css("color", "#ff8c00");
+        let res = JSON.parse(result);
+        let plan = res["基本情報"]["プラン"];
+        $("#billingMonth"        ).text(res["基本情報"]["ご請求月"]);
+        $("#contractCapacity").text(res["基本情報"]["ご契約容量"]);
+        let amount1 = addUnit(res["基本情報"]["ご使用量"], "kWh");
+        let amount2 = addUnit(res["基本情報"]["ご使用量2"], "kWh");
+        let amount3 = addUnit(res["基本情報"]["ご使用量3"], "kWh");
+        let amount4 = addUnit(res["基本情報"]["ご使用量4"], "kWh");
+        switch(plan) {
+          case "従量電灯":
+            $("#amount").text(amount1);
+            $("#amountNm").text("ご使用量");
+            $("#dispAmount").show();
+            break;
+          case "低圧電力":
+            $("#powerFactor").text(res["基本情報"]["力率"]);
+            $("#dispPowerFactor").show();
+            $("#amount").text(amount1);
+            $("#amountNm").text("ご使用量(夏季)");
+            $("#dispAmount").show();
+            $("#amount2").text(amount2);
+            $("#amountNm2").text("ご使用量(その他季)");
+            $("#dispAmount2").show();
+            break;
+          case "オール電化":
+            $("#ihDiscount").text(res["基本情報"]["IH割引有無"]);
+            $("#dispIhDiscount").show();
+            if (res["基本情報"]["IH割引有無"] == "IH割引あり") {
+              $("#dispIhDetail").show();
+              $("#dispIhDescription").show();
+            }
+            $("#amount").text(amount1);
+            $("#amountNm").html("ご使用量<br>デイタイム夏季");
+            $("#dispAmount").show();
+            $("#amount2").text(amount2);
+            $("#amountNm2").html("ご使用量<br>デイタイムその他季");
+            $("#dispAmount2").show();
+            $("#amount3").text(amount3);
+            $("#amountNm3").html("ご使用量<br>リビングタイム");
+            $("#dispAmount3").show();
+            $("#amount4").text(amount4);
+            $("#amountNm4").html("ご使用量<br>ナイトタイム");
+            $("#dispAmount4").show();
+            break;
+          }
+          // ----------------------------
+          $("#currentPlan"        ).text(res["現在ご契約"]["ご契約プラン"]);
+          $("#currentTotalBill"   ).text(toYen(res["現在ご契約"]["電気料金"]));
+          $("#currentBill"           ).text(toYen(res["現在ご契約"]["内訳"]["電力量料金"]));
+          $("#currentBaf"          ).text(toYen(res["現在ご契約"]["内訳"]["燃料費調整"]));
+          $("#currentREL"        ).text(toYen(res["現在ご契約"]["内訳"]["再エネ賦課金"]));
+          $("#currentIH"           ).text("※");
+          // ----------------------------
+          $("#agentName"        ).text(res["代理店"]["名称"]);
+          $("#agentPlan"          ).text(res["代理店"]["ご契約プラン"]);
+          $("#agentTotalBill"     ).text(toYen(res["代理店"]["電気料金"]));
+          $("#agentBill"             ).text(toYen(res["代理店"]["内訳"]["電力量料金"]));
+          $("#agentBaf"            ).text(toYen(res["代理店"]["内訳"]["燃料費調整"]));
+          $("#agentREL"          ).text(toYen(res["代理店"]["内訳"]["再エネ賦課金"]));
+          $("#agentIH"             ).text(toYen(res["代理店"]["内訳"]["IH割引額"]));
+          // ----------------------------
+          $("#generalPlan"       ).text(res["比較元"]["ご契約プラン"]);
+          $("#generalTotalBill"  ).text(toYen(res["比較元"]["電気料金"]));
+          $("#generalBill"          ).text(toYen(res["比較元"]["内訳"]["電力量料金"]));
+          $("#generalBaf"         ).text(toYen(res["比較元"]["内訳"]["燃料費調整"]));
+          $("#generalREL"       ).text(toYen(res["比較元"]["内訳"]["再エネ賦課金"]));
+          $("#generalIH"          ).text(toYen(res["比較元"]["内訳"]["IH割引額"]));
+          // ----------------------------
+          $("#otoku"                 ).text(toYen(res["お得額"]));
+          $("#otokuTotal"         ).text(toYen(res["年間お得額"]));
+          // ----------------------------
+          convertUmaibou(res["年間お得額"]);
+      });
+        
+        
+    }
+
+    // 決定ボタン押下時チェック
+    function sendMsg(support, name) {
+      let msg = "";
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      var text = "入力-";
+      text += "シミュレーションからのお申込" + ":";
+      text += $("#input1").val();
+      liff.sendMessages([
+        {
+          "type": "text",
+          "text":  text
+        }
+      ])
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert(err);
+        liff.closeWindow();
+      });
+    }
+
+    // うまい棒換算
+    function convertUmaibou(val) {
+      const umaiLg = '<img class="umai-lg">';
+      const umaiMd = '<img class="umai-md">';
+      const umaiSm = '<img class="umai-sm">';
+      const umaiXs = '<img class="umai-xs">';
+      let buf = Math.floor(val / 10);
+      if (buf > 0) {
+        $("#umaihon").text(buf.toLocaleString());
+        while(buf > 0) {
+          if (buf >= 1000) {
+            $("#umai").append(umaiLg);
+            buf -= 1000;
+          } else if (buf >= 100) {
+            $("#umai").append(umaiMd);
+            buf -= 100;
+          } else if (buf >= 10) {
+            $("#umai").append(umaiSm);
+            buf -= 10;
+          } else {
+            $("#umai").append(umaiXs);
+            buf -= 1;
+          }
+        }
+        $("#dispUmai").show();
+      }
+    }
+
+  </script>
+
+<!-- 入力:simulation5.html end -->
