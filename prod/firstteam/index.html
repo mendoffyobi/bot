@@ -84,6 +84,9 @@ jQuery(function() {
             case "SIMULATION4A3":
               contents = "simulation4A3.html";
               break;
+            case "SIMULATION5":
+              contents = "simulation5.html";
+              break;
             default:
               contents = "input.html";
               break;
@@ -147,6 +150,10 @@ jQuery(function() {
             }
             if (json.keyword == "SIMULATION4A3") {
               makeSimulation4A3();
+            }
+            if (json.keyword == "SIMULATION5") {
+              var p = JSON.parse(WebSafeBase64.decode(json.parameter));
+              makeSimulation5(p);
             }
           });
         });
