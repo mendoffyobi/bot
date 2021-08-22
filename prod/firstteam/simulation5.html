@@ -306,11 +306,14 @@
         let amount2 = addUnit(res["a2"], "kWh");
         let amount3 = addUnit(res["a3"], "kWh");
         let amount4 = addUnit(res["a4"], "kWh");
+        let cPlan = "";
         switch(plan) {
           case "A":
             $("#amount").text(amount1);
             $("#amountNm").text("ご使用量");
             $("#dispAmount").show();
+            cPlan = res["c"] == "" ? "関西電力従量電灯A相当" : "関西電力従量電灯B相当";
+            gPlan = res["c"] == "" ? "従量電灯A" : "従量電灯B";
             break;
           case "B":
             $("#powerFactor").text(res["pf"]);
@@ -321,6 +324,8 @@
             $("#amount2").text(amount2);
             $("#amountNm2").text("ご使用量(その他季)");
             $("#dispAmount2").show();
+            cPlan = "関西電力低圧電力相当";
+            gPlan = "低圧電力";
             break;
           case "C":
             $("#ihDiscount").text(res["ihd"] == "Y" ? "IH割引あり" : "IH割引なし");
@@ -341,10 +346,12 @@
             $("#amount4").text(amount4);
             $("#amountNm4").html("ご使用量<br>ナイトタイム");
             $("#dispAmount4").show();
+            cPlan = "関西電力はぴeタイムR相当";
+            gPlan = "はぴeタイムR";
             break;
         }
         // ----------------------------
-        $("#currentPlan"     ).text(res["cPlan"]);
+        $("#currentPlan"     ).text(cPlan);
         $("#currentTotalBill").text(toYen(res["cTotal"]));
         $("#currentBill"     ).text(toYen(res["cBill"]));
         $("#currentBaf"      ).text(toYen(res["baf"]));
@@ -359,7 +366,7 @@
         $("#agentREL"        ).text(toYen(res["rel"]));
         $("#agentIH"         ).text(toYen(res["aIH"]));
         // ----------------------------
-        $("#generalPlan"     ).text(res["gPlan"]);
+        $("#generalPlan"     ).text(gPlan);
         $("#generalTotalBill").text(toYen(res["gTotal"]));
         $("#generalBill"     ).text(toYen(res["gBill"]));
         $("#generalBaf"      ).text(toYen(res["baf"]));
