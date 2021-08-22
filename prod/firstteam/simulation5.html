@@ -299,13 +299,13 @@
         let addUnit = function(v, u) {return (v.replace(u, "") || 0) + u};
         let toYen   = function(val){return Number(val).toLocaleString() + "円"};
         $("title").text("簡単電気代シミュレーション");
-        $("#billingMonth"    ).text(res["billingMonth"]);
-        $("#contractCapacity").text(res["contractCapacity"]);
+        $("#billingMonth"    ).text(res["month"]);
+        $("#contractCapacity").text(res["capacity"]);
         let plan = res["plan"];
-        let amount1 = addUnit(res["amount1"], "kWh");
-        let amount2 = addUnit(res["amount2"], "kWh");
-        let amount3 = addUnit(res["amount3"], "kWh");
-        let amount4 = addUnit(res["amount4"], "kWh");
+        let amount1 = addUnit(res["a1"], "kWh");
+        let amount2 = addUnit(res["a2"], "kWh");
+        let amount3 = addUnit(res["a3"], "kWh");
+        let amount4 = addUnit(res["a4"], "kWh");
         switch(plan) {
           case "従量電灯":
             $("#amount").text(amount1);
@@ -313,7 +313,7 @@
             $("#dispAmount").show();
             break;
           case "低圧電力":
-            $("#powerFactor").text(res["powerFactor"]);
+            $("#powerFactor").text(res["pf"]);
             $("#dispPowerFactor").show();
             $("#amount").text(amount1);
             $("#amountNm").text("ご使用量(夏季)");
@@ -344,27 +344,27 @@
             break;
         }
         // ----------------------------
-        $("#currentPlan"     ).text(res["currentPlan"]);
-        $("#currentTotalBill").text(toYen(res["currentTotalBill"]));
-        $("#currentBill"     ).text(toYen(res["currentBill"]));
-        $("#currentBaf"      ).text(toYen(res["currentBaf"]));
-        $("#currentREL"      ).text(toYen(res["currentREL"]));
-        $("#currentIH"       ).text(res["currentIH"]);
+        $("#currentPlan"     ).text(res["cPlan"]);
+        $("#currentTotalBill").text(toYen(res["cTotalBill"]));
+        $("#currentBill"     ).text(toYen(res["cBill"]));
+        $("#currentBaf"      ).text(toYen(res["baf"]));
+        $("#currentREL"      ).text(toYen(res["rel"]));
+        $("#currentIH"       ).text("*");
         // ----------------------------
-        $("#agentName"       ).text(res["agentName"]);
-        $("#agentPlan"       ).text(res["agentPlan"]);
-        $("#agentTotalBill"  ).text(toYen(res["agentTotalBill"]));
-        $("#agentBill"       ).text(toYen(res["agentBill"]));
-        $("#agentBaf"        ).text(toYen(res["agentBaf"]));
-        $("#agentREL"        ).text(toYen(res["agentREL"]));
-        $("#agentIH"         ).text(toYen(res["agentIH"]));
+        $("#agentName"       ).text(res["aName"]);
+        $("#agentPlan"       ).text(res["aPlan"]);
+        $("#agentTotalBill"  ).text(toYen(res["aTotalBill"]));
+        $("#agentBill"       ).text(toYen(res["aBill"]));
+        $("#agentBaf"        ).text(toYen(res["baf"]));
+        $("#agentREL"        ).text(toYen(res["rel"]));
+        $("#agentIH"         ).text(toYen(res["aIH"]));
         // ----------------------------
-        $("#generalPlan"     ).text(res["generalPlan"]);
-        $("#generalTotalBill").text(toYen(res["generalTotalBill"]));
-        $("#generalBill"     ).text(toYen(res["generalBill"]));
-        $("#generalBaf"      ).text(toYen(res["generalBaf"]));
-        $("#generalREL"      ).text(toYen(res["generalREL"]));
-        $("#generalIH"       ).text(toYen(res["generalIH"]));
+        $("#generalPlan"     ).text(res["gPlan"]);
+        $("#generalTotalBill").text(toYen(res["gTotalBill"]));
+        $("#generalBill"     ).text(toYen(res["gBill"]));
+        $("#generalBaf"      ).text(toYen(res["baf"]));
+        $("#generalREL"      ).text(toYen(res["rel"]));
+        $("#generalIH"       ).text(toYen(res["glIH"]));
         // ----------------------------
         $("#otoku"           ).text(toYen(res["otoku"]));
         $("#otokuTotal"      ).text(toYen(res["otokuTotal"]));
