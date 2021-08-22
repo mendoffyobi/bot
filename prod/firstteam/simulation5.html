@@ -323,9 +323,9 @@
             $("#dispAmount2").show();
             break;
           case "C":
-            $("#ihDiscount").text(res["ihd"]);
+            $("#ihDiscount").text(res["ihd"] == "Y" ? "IH割引あり" : "IH割引なし");
             $("#dispIhDiscount").show();
-            if (res["ihDiscountUmu"] == "IH割引あり") {
+            if (res["ihDiscountUmu"] == "Y") {
               $("#dispIhDetail").show();
               $("#dispIhDescription").show();
             }
