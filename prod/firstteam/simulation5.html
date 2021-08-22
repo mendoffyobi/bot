@@ -130,19 +130,19 @@
             </tr>
             <tr id="dispAmount" style="display:none">
               <th id="amountNm">ご使用量1</th>
-              <td id="amount" style="text-align: right; padding-right: 30px;"></td>
+              <td id="amount" style="text-align: right; padding-right: 60px;"></td>
             </tr>
             <tr id="dispAmount2" style="display:none">
               <th id="amountNm2">ご使用量2</th>
-              <td id="amount2" style="text-align: right; padding-right: 30px;"></td>
+              <td id="amount2" style="text-align: right; padding-right: 60px;"></td>
             </tr>
             <tr id="dispAmount3" style="display:none">
               <th id="amountNm3">ご使用量3</th>
-              <td id="amount3" style="text-align: right; padding-right: 30px;"></td>
+              <td id="amount3" style="text-align: right; padding-right: 60px;"></td>
             </tr>
             <tr id="dispAmount4" style="display:none">
               <th id="amountNm4">ご使用量4</th>
-              <td id="amount4" style="text-align: right; padding-right: 30px;"></td>
+              <td id="amount4" style="text-align: right; padding-right: 60px;"></td>
             </tr>
           </tbody>
         </table>
@@ -343,6 +343,33 @@
             $("#dispAmount4").show();
             break;
         }
+        // ----------------------------
+        $("#currentPlan"        ).text(res["現在ご契約"]["ご契約プラン"]);
+        $("#currentTotalBill"   ).text(toYen(res["現在ご契約"]["電気料金"]));
+        $("#currentBill"           ).text(toYen(res["現在ご契約"]["内訳"]["電力量料金"]));
+        $("#currentBaf"          ).text(toYen(res["現在ご契約"]["内訳"]["燃料費調整"]));
+        $("#currentREL"        ).text(toYen(res["現在ご契約"]["内訳"]["再エネ賦課金"]));
+        $("#currentIH"           ).text("※");
+        // ----------------------------
+        $("#agentName"        ).text(res["代理店"]["名称"]);
+        $("#agentPlan"          ).text(res["代理店"]["ご契約プラン"]);
+        $("#agentTotalBill"     ).text(toYen(res["代理店"]["電気料金"]));
+        $("#agentBill"             ).text(toYen(res["代理店"]["内訳"]["電力量料金"]));
+        $("#agentBaf"            ).text(toYen(res["代理店"]["内訳"]["燃料費調整"]));
+        $("#agentREL"          ).text(toYen(res["代理店"]["内訳"]["再エネ賦課金"]));
+        $("#agentIH"             ).text(toYen(res["代理店"]["内訳"]["IH割引額"]));
+        // ----------------------------
+        $("#generalPlan"       ).text(res["比較元"]["ご契約プラン"]);
+        $("#generalTotalBill"  ).text(toYen(res["比較元"]["電気料金"]));
+        $("#generalBill"          ).text(toYen(res["比較元"]["内訳"]["電力量料金"]));
+        $("#generalBaf"         ).text(toYen(res["比較元"]["内訳"]["燃料費調整"]));
+        $("#generalREL"       ).text(toYen(res["比較元"]["内訳"]["再エネ賦課金"]));
+        $("#generalIH"          ).text(toYen(res["比較元"]["内訳"]["IH割引額"]));
+        // ----------------------------
+        $("#otoku"                 ).text(toYen(res["お得額"]));
+        $("#otokuTotal"         ).text(toYen(res["年間お得額"]));
+        // ----------------------------
+        convertUmaibou(res["年間お得額"]);
       });
 /*
       let toYen = function(val){return Number(val).toLocaleString() + "円"};
