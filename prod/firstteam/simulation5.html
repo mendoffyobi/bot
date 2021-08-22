@@ -373,31 +373,6 @@
       });
     }
 
-    // 決定ボタン押下時チェック
-    function sendMsg(support, name) {
-      let msg = "";
-      if (msg) {
-        alert(msg);
-        return false;
-      }
-      var text = "入力-";
-      text += "シミュレーションからのお申込" + ":";
-      text += $("#input1").val();
-      liff.sendMessages([
-        {
-          "type": "text",
-          "text":  text
-        }
-      ])
-      .then(() => {
-        liff.closeWindow();
-      })
-      .catch((err) => {
-        alert(err);
-        liff.closeWindow();
-      });
-    }
-
     // うまい棒換算
     function convertUmaibou(val) {
       const umaiLg = '<img class="umai-lg">';
