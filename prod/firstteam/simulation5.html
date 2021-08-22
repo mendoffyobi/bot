@@ -345,7 +345,7 @@
         }
         // ----------------------------
         $("#currentPlan"     ).text(res["cPlan"]);
-        $("#currentTotalBill").text(toYen(res["cTotalBill"]));
+        $("#currentTotalBill").text(toYen(res["cTotal"]));
         $("#currentBill"     ).text(toYen(res["cBill"]));
         $("#currentBaf"      ).text(toYen(res["baf"]));
         $("#currentREL"      ).text(toYen(res["rel"]));
@@ -353,14 +353,14 @@
         // ----------------------------
         $("#agentName"       ).text(res["aName"]);
         $("#agentPlan"       ).text(res["aPlan"]);
-        $("#agentTotalBill"  ).text(toYen(res["aTotalBill"]));
+        $("#agentTotalBill"  ).text(toYen(res["aTotal"]));
         $("#agentBill"       ).text(toYen(res["aBill"]));
         $("#agentBaf"        ).text(toYen(res["baf"]));
         $("#agentREL"        ).text(toYen(res["rel"]));
         $("#agentIH"         ).text(toYen(res["aIH"]));
         // ----------------------------
         $("#generalPlan"     ).text(res["gPlan"]);
-        $("#generalTotalBill").text(toYen(res["gTotalBill"]));
+        $("#generalTotalBill").text(toYen(res["gTotal"]));
         $("#generalBill"     ).text(toYen(res["gBill"]));
         $("#generalBaf"      ).text(toYen(res["baf"]));
         $("#generalREL"      ).text(toYen(res["rel"]));

@@ -149,6 +149,9 @@
       if ($("#simulationCapacity2").val() == "") {
         msg += "契約容量を選択してください\n";
       }
+      if ($("#simulationPowerFactor").val() == "") {
+        msg += "力率を選択してください\n";
+      }
       if ($("#simulationMoney").val() == "") {
         msg += "お支払金額を入力してください\n";
       }
@@ -171,6 +174,7 @@
       var text = "入力-";
       text += "簡単シミュレーション低圧電力" + ":";
       text += $("#simulationCapacity2").val() + "|";
+      text += $("#simulationPowerFactor").val() + "|";
       text += $("#simulationMoney").val() + "|";
       text += $("#simulationDiscount").val() + "|";
       text += $("#simulationYear").val() + "|";
