@@ -344,113 +344,33 @@
             break;
         }
         // ----------------------------
-        $("#currentPlan"        ).text(res["現在ご契約"]["ご契約プラン"]);
-        $("#currentTotalBill"   ).text(toYen(res["現在ご契約"]["電気料金"]));
-        $("#currentBill"           ).text(toYen(res["現在ご契約"]["内訳"]["電力量料金"]));
-        $("#currentBaf"          ).text(toYen(res["現在ご契約"]["内訳"]["燃料費調整"]));
-        $("#currentREL"        ).text(toYen(res["現在ご契約"]["内訳"]["再エネ賦課金"]));
-        $("#currentIH"           ).text("※");
+        $("#currentPlan"     ).text(res["currentPlan"]);
+        $("#currentTotalBill").text(toYen(res["currentTotalBill"]));
+        $("#currentBill"     ).text(toYen(res["currentBill"]));
+        $("#currentBaf"      ).text(toYen(res["currentBaf"]));
+        $("#currentREL"      ).text(toYen(res["currentREL"]));
+        $("#currentIH"       ).text(res["currentIH"]);
         // ----------------------------
-        $("#agentName"        ).text(res["代理店"]["名称"]);
-        $("#agentPlan"          ).text(res["代理店"]["ご契約プラン"]);
-        $("#agentTotalBill"     ).text(toYen(res["代理店"]["電気料金"]));
-        $("#agentBill"             ).text(toYen(res["代理店"]["内訳"]["電力量料金"]));
-        $("#agentBaf"            ).text(toYen(res["代理店"]["内訳"]["燃料費調整"]));
-        $("#agentREL"          ).text(toYen(res["代理店"]["内訳"]["再エネ賦課金"]));
-        $("#agentIH"             ).text(toYen(res["代理店"]["内訳"]["IH割引額"]));
+        $("#agentName"       ).text(res["agentName"]);
+        $("#agentPlan"       ).text(res["agentPlan"]);
+        $("#agentTotalBill"  ).text(toYen(res["agentTotalBill"]));
+        $("#agentBill"       ).text(toYen(res["agentBill"]));
+        $("#agentBaf"        ).text(toYen(res["agentBaf"]));
+        $("#agentREL"        ).text(toYen(res["agentREL"]));
+        $("#agentIH"         ).text(toYen(res["agentIH"]));
         // ----------------------------
-        $("#generalPlan"       ).text(res["比較元"]["ご契約プラン"]);
-        $("#generalTotalBill"  ).text(toYen(res["比較元"]["電気料金"]));
-        $("#generalBill"          ).text(toYen(res["比較元"]["内訳"]["電力量料金"]));
-        $("#generalBaf"         ).text(toYen(res["比較元"]["内訳"]["燃料費調整"]));
-        $("#generalREL"       ).text(toYen(res["比較元"]["内訳"]["再エネ賦課金"]));
-        $("#generalIH"          ).text(toYen(res["比較元"]["内訳"]["IH割引額"]));
+        $("#generalPlan"     ).text(res["generalPlan"]);
+        $("#generalTotalBill").text(toYen(res["generalTotalBill"]));
+        $("#generalBill"     ).text(toYen(res["generalBill"]));
+        $("#generalBaf"      ).text(toYen(res["generalBaf"]));
+        $("#generalREL"      ).text(toYen(res["generalREL"]));
+        $("#generalIH"       ).text(toYen(res["generalIH"]));
         // ----------------------------
-        $("#otoku"                 ).text(toYen(res["お得額"]));
-        $("#otokuTotal"         ).text(toYen(res["年間お得額"]));
+        $("#otoku"           ).text(toYen(res["otoku"]));
+        $("#otokuTotal"      ).text(toYen(res["otokuTotal"]));
         // ----------------------------
-        convertUmaibou(res["年間お得額"]);
+        convertUmaibou(res["otokuTotal"]);
       });
-/*
-      let toYen = function(val){return Number(val).toLocaleString() + "円"};
-      $(function(){
-        let addUnit = function(v, u) {return (v.replace(u, "") || 0) + u};
-        $("#simulationTitle").text("簡単電気代シミュレーション");
-        $("#simulationTitle").css("color", "#ff8c00");
-        let res = result["content"]["message"];
-        let plan = res["基本情報"]["プラン"];
-        $("#billingMonth"        ).text(res["基本情報"]["ご請求月"]);
-        $("#contractCapacity").text(res["基本情報"]["ご契約容量"]);
-        let amount1 = addUnit(res["基本情報"]["ご使用量"], "kWh");
-        let amount2 = addUnit(res["基本情報"]["ご使用量2"], "kWh");
-        let amount3 = addUnit(res["基本情報"]["ご使用量3"], "kWh");
-        let amount4 = addUnit(res["基本情報"]["ご使用量4"], "kWh");
-        switch(plan) {
-          case "従量電灯":
-            $("#amount").text(amount1);
-            $("#amountNm").text("ご使用量");
-            $("#dispAmount").show();
-            break;
-          case "低圧電力":
-            $("#powerFactor").text(res["基本情報"]["力率"]);
-            $("#dispPowerFactor").show();
-            $("#amount").text(amount1);
-            $("#amountNm").text("ご使用量(夏季)");
-            $("#dispAmount").show();
-            $("#amount2").text(amount2);
-            $("#amountNm2").text("ご使用量(その他季)");
-            $("#dispAmount2").show();
-            break;
-          case "オール電化":
-            $("#ihDiscount").text(res["基本情報"]["IH割引有無"]);
-            $("#dispIhDiscount").show();
-            if (res["基本情報"]["IH割引有無"] == "IH割引あり") {
-              $("#dispIhDetail").show();
-              $("#dispIhDescription").show();
-            }
-            $("#amount").text(amount1);
-            $("#amountNm").html("ご使用量<br>デイタイム夏季");
-            $("#dispAmount").show();
-            $("#amount2").text(amount2);
-            $("#amountNm2").html("ご使用量<br>デイタイムその他季");
-            $("#dispAmount2").show();
-            $("#amount3").text(amount3);
-            $("#amountNm3").html("ご使用量<br>リビングタイム");
-            $("#dispAmount3").show();
-            $("#amount4").text(amount4);
-            $("#amountNm4").html("ご使用量<br>ナイトタイム");
-            $("#dispAmount4").show();
-            break;
-          }
-          // ----------------------------
-          $("#currentPlan"        ).text(res["現在ご契約"]["ご契約プラン"]);
-          $("#currentTotalBill"   ).text(toYen(res["現在ご契約"]["電気料金"]));
-          $("#currentBill"           ).text(toYen(res["現在ご契約"]["内訳"]["電力量料金"]));
-          $("#currentBaf"          ).text(toYen(res["現在ご契約"]["内訳"]["燃料費調整"]));
-          $("#currentREL"        ).text(toYen(res["現在ご契約"]["内訳"]["再エネ賦課金"]));
-          $("#currentIH"           ).text("※");
-          // ----------------------------
-          $("#agentName"        ).text(res["代理店"]["名称"]);
-          $("#agentPlan"          ).text(res["代理店"]["ご契約プラン"]);
-          $("#agentTotalBill"     ).text(toYen(res["代理店"]["電気料金"]));
-          $("#agentBill"             ).text(toYen(res["代理店"]["内訳"]["電力量料金"]));
-          $("#agentBaf"            ).text(toYen(res["代理店"]["内訳"]["燃料費調整"]));
-          $("#agentREL"          ).text(toYen(res["代理店"]["内訳"]["再エネ賦課金"]));
-          $("#agentIH"             ).text(toYen(res["代理店"]["内訳"]["IH割引額"]));
-          // ----------------------------
-          $("#generalPlan"       ).text(res["比較元"]["ご契約プラン"]);
-          $("#generalTotalBill"  ).text(toYen(res["比較元"]["電気料金"]));
-          $("#generalBill"          ).text(toYen(res["比較元"]["内訳"]["電力量料金"]));
-          $("#generalBaf"         ).text(toYen(res["比較元"]["内訳"]["燃料費調整"]));
-          $("#generalREL"       ).text(toYen(res["比較元"]["内訳"]["再エネ賦課金"]));
-          $("#generalIH"          ).text(toYen(res["比較元"]["内訳"]["IH割引額"]));
-          // ----------------------------
-          $("#otoku"                 ).text(toYen(res["お得額"]));
-          $("#otokuTotal"         ).text(toYen(res["年間お得額"]));
-          // ----------------------------
-          convertUmaibou(res["年間お得額"]);
-      });
-*/
     }
 
     // 決定ボタン押下時チェック
