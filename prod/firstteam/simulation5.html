@@ -299,9 +299,9 @@
         let addUnit = function(v, u) {return (v.replace(u, "") || 0) + u};
         let toYen   = function(val){return Number(val).toLocaleString() + "円"};
         $("title").text("簡単電気代シミュレーション");
-        $("#billingMonth"    ).text(res["month"]);
-        $("#contractCapacity").text(res["capacity"]);
-        let plan = res["plan"];
+        $("#billingMonth"    ).text(res["m"]);
+        $("#contractCapacity").text(res["c"]);
+        let plan = res["p"];
         let amount1 = addUnit(res["a1"], "kWh");
         let amount2 = addUnit(res["a2"], "kWh");
         let amount3 = addUnit(res["a3"], "kWh");
