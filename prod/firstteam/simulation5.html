@@ -307,12 +307,12 @@
         let amount3 = addUnit(res["a3"], "kWh");
         let amount4 = addUnit(res["a4"], "kWh");
         switch(plan) {
-          case "従量電灯":
+          case "A":
             $("#amount").text(amount1);
             $("#amountNm").text("ご使用量");
             $("#dispAmount").show();
             break;
-          case "低圧電力":
+          case "B":
             $("#powerFactor").text(res["pf"]);
             $("#dispPowerFactor").show();
             $("#amount").text(amount1);
@@ -322,7 +322,7 @@
             $("#amountNm2").text("ご使用量(その他季)");
             $("#dispAmount2").show();
             break;
-          case "オール電化":
+          case "C":
             $("#ihDiscount").text(res["ihd"]);
             $("#dispIhDiscount").show();
             if (res["ihDiscountUmu"] == "IH割引あり") {
