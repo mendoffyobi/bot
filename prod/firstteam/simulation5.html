@@ -228,45 +228,47 @@
           </tbody>
         </table>
       </div>
-      <div>&nbsp;</div>
-      <div class="wrap">
-        <table style="width: 320px;">
-          <thead>
-            <tr>
-              <th scope="col" width="120px;" colspan="2">(参考)関西電力</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:none;">
-              <th style="padding: 0.1em; padding-left: 5px;">ご契約プラン</th>
-              <td id="generalPlan"></td>
-            </tr>
-            <tr style="border-top:none; border-bottom:none;">
-              <th style="padding: 0.1em; padding-left: 5px;">電気料金</th>
-              <td id="generalTotalBill" style="text-align: right; padding-right: 60px;"></td>
-            </tr>
-            <tr style="border-bottom:none;">
-              <th style="padding: 0.1em; padding-left: 5px;">＜内訳＞</th>
-              <td></td>
-            </tr>
-            <tr style="border-top:none; border-bottom:none;">
-              <th style="padding: 0.1em; padding-left: 5px;">電力量料金</th>
-              <td id="generalBill" style="text-align: right; padding-right: 60px;"></td>
-            </tr>
-            <tr style="border-top:none; border-bottom:none; display:none" id="dispIhDetail">
-              <th style="padding: 0.1em; padding-left: 5px;">IH割引額</th>
-              <td id="generalIH" style="text-align: right; padding-right: 60px;"></td>
-            </tr>
-            <tr style="border-top:none; border-bottom:none;">
-              <th style="padding: 0.1em; padding-left: 5px;">燃料費調整</th>
-              <td id="generalBaf" style="text-align: right; padding-right: 60px;"></td>
-            </tr>
-            <tr style="border-top:none;">
-              <th style="padding: 0.1em; padding-left: 5px;">再エネ賦課金</th>
-              <td id="generalREL" style="text-align: right; padding-right: 60px;"></td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="sankou">
+        <div>&nbsp;</div>
+        <div class="wrap">
+          <table style="width: 320px;">
+            <thead>
+              <tr>
+                <th scope="col" width="120px;" colspan="2">(参考)関西電力</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:none;">
+                <th style="padding: 0.1em; padding-left: 5px;">ご契約プラン</th>
+                <td id="generalPlan"></td>
+              </tr>
+              <tr style="border-top:none; border-bottom:none;">
+                <th style="padding: 0.1em; padding-left: 5px;">電気料金</th>
+                <td id="generalTotalBill" style="text-align: right; padding-right: 60px;"></td>
+              </tr>
+              <tr style="border-bottom:none;">
+                <th style="padding: 0.1em; padding-left: 5px;">＜内訳＞</th>
+                <td></td>
+              </tr>
+              <tr style="border-top:none; border-bottom:none;">
+                <th style="padding: 0.1em; padding-left: 5px;">電力量料金</th>
+                <td id="generalBill" style="text-align: right; padding-right: 60px;"></td>
+              </tr>
+              <tr style="border-top:none; border-bottom:none; display:none" id="dispIhDetail">
+                <th style="padding: 0.1em; padding-left: 5px;">IH割引額</th>
+                <td id="generalIH" style="text-align: right; padding-right: 60px;"></td>
+              </tr>
+              <tr style="border-top:none; border-bottom:none;">
+                <th style="padding: 0.1em; padding-left: 5px;">燃料費調整</th>
+                <td id="generalBaf" style="text-align: right; padding-right: 60px;"></td>
+              </tr>
+              <tr style="border-top:none;">
+                <th style="padding: 0.1em; padding-left: 5px;">再エネ賦課金</th>
+                <td id="generalREL" style="text-align: right; padding-right: 60px;"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       
       <div>&nbsp;</div>
@@ -308,6 +310,10 @@
         let amount4 = addUnit(res["a4"], "kWh");
         let cPlan = "";
         switch(plan) {
+          case "D":
+            $("title").text("超簡単電気代シミュレーション");
+            $("#sankou").hide();
+            // break through
           case "A":
             $("#amount").text(amount1);
             $("#amountNm").text("ご使用量");
